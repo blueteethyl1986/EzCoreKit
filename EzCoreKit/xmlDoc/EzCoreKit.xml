@@ -637,6 +637,34 @@
             <param name="context">Http通訊內容</param>
             <param name="socket">WebSocket物件</param>
         </member>
+        <member name="M:EzCoreKit.NodaTime.InstantFactory.ConvertToJsTime(NodaTime.Instant)">
+            <summary>
+            轉換為Js時間表示
+            </summary>
+            <param name="instance">時間</param>
+            <returns>Js時間表示</returns>
+        </member>
+        <member name="M:EzCoreKit.NodaTime.InstantFactory.ConvertToInstant(System.Int64)">
+            <summary>
+            自Js時間表示轉換
+            </summary>
+            <param name="jsTime">Js時間表示</param>
+            <returns>時間</returns>
+        </member>
+        <member name="M:EzCoreKit.System.DateTimeFactory.ConvertToJsTime(System.DateTime)">
+            <summary>
+            轉換為Js時間表示
+            </summary>
+            <param name="datetime">時間</param>
+            <returns>Js時間表示</returns>
+        </member>
+        <member name="M:EzCoreKit.System.DateTimeFactory.ConvertFromJsTime(System.Int64)">
+            <summary>
+            自Js時間表示轉換
+            </summary>
+            <param name="jsTime">Js時間表示</param>
+            <returns>時間</returns>
+        </member>
         <member name="M:EzCoreKit.System.Dynamic.ExpandoObjectFactory.ConvertToExpando(System.Object,System.Boolean)">
             <summary>
             將物件轉換為動態物件，僅欄位與屬性
@@ -644,6 +672,13 @@
             <param name="obj">目標物件</param>
             <param name="publicOnly">僅為public屬性與欄位</param>
             <returns>動態物件</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.DateTimeExtension.ToJsTime(System.DateTime)">
+            <summary>
+            轉換為Js時間表示
+            </summary>
+            <param name="datetime">時間</param>
+            <returns>Js時間表示</returns>
         </member>
         <member name="M:EzCoreKit.System.Extensions.ObjectExtension.ToExpando(System.Object,System.Boolean)">
             <summary>
