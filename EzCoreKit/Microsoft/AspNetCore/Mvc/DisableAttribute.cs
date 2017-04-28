@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.AspNetCore.Mvc {
+namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
     /// <summary>
     /// 標誌停用的控制器或方法
     /// </summary>

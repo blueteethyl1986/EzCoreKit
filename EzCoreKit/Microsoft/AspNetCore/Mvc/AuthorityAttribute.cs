@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.AspNetCore.Mvc {
+namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
     /// <summary>
     /// 存取權限設定
     /// </summary>

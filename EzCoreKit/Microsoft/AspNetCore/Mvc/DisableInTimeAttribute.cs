@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.AspNetCore.Mvc {
+namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
     /// <summary>
     /// 標誌控制器或方法在指定期間內停用，其餘時間啟用
     /// </summary>

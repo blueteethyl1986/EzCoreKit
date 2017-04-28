@@ -7,7 +7,7 @@ using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace Microsoft.AspNetCore.Mvc {
+namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
     /// <summary>
     /// 進階MVC控制器，支援OnException與執行前檢測的控制器
     /// </summary>
