@@ -6,7 +6,7 @@ namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
     /// <summary>
     /// 執行Action前先行設定TempData
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class SetTempDataAttribute : Attribute {
         /// <summary>
         /// 鍵值

@@ -6,7 +6,7 @@ namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
     /// <summary>
     /// 執行Action前先行設定ViewData
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class SetViewDataAttribute : Attribute {
         /// <summary>
         /// 鍵值
