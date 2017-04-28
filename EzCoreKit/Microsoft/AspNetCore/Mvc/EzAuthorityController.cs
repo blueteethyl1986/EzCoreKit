@@ -21,7 +21,7 @@ namespace Microsoft.AspNetCore.Mvc {
         public TAuthorityEnum UserAuthority { get; }
 
         public EzAuthorityController() : base() {
-
+            
         }
 
         public override void OnActionExecuting(ActionExecutingContext context) {
@@ -37,7 +37,7 @@ namespace Microsoft.AspNetCore.Mvc {
             var now = DateTime.Now;
             foreach (var attribute in attributes) {
                 if (Convert.ToInt32(UserAuthority) < Convert.ToInt32(attribute.Minimum)) {
-                    throw new NotSupportedException("disabled method");
+                    throw new Exception("authority problem");
                 }
             }
 
