@@ -4,6 +4,22 @@
         <name>EzCoreKit</name>
     </assembly>
     <members>
+        <member name="M:EzCoreKit.System.Dynamic.ExpandoObjectFactory.ConvertToExpando(System.Object,System.Boolean)">
+            <summary>
+            將物件轉換為動態物件，僅欄位與屬性
+            </summary>
+            <param name="obj">目標物件</param>
+            <param name="publicOnly">僅為public屬性與欄位</param>
+            <returns>動態物件</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.ObjectExtension.ToExpando(System.Object,System.Boolean)">
+            <summary>
+            將物件轉換為動態物件，僅欄位與屬性
+            </summary>
+            <param name="obj">目標物件</param>
+            <param name="publicOnly">僅為public屬性與欄位</param>
+            <returns>動態物件</returns>
+        </member>
         <member name="M:EzCoreKit.System.Extensions.StringExtension.SplitByRegex(System.String,System.String)">
             <summary>
             使用正規表示式切割字串
@@ -39,6 +55,85 @@
             <param name="start">起始字串</param>
             <param name="end">結束字串</param>
             <returns>字串間的字串</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Action})">
+            <summary>
+            取得指定成員資訊
+            </summary>
+            <typeparam name="T">類別</typeparam>
+            <param name="instance">物件實體</param>
+            <param name="expression">Lambda運算式(建構子、無回傳值靜態方法)</param>
+            <returns>成員資訊</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember(System.Type,System.Linq.Expressions.Expression{System.Action})">
+            <summary>
+            取得指定成員資訊
+            </summary>
+            <param name="instance">物件實體</param>
+            <param name="expression">Lambda運算式(建構子、無回傳值靜態方法)</param>
+            <returns>成員資訊</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+            取得指定成員資訊
+            </summary>
+            <typeparam name="T">類別</typeparam>
+            <param name="instance">物件實體</param>
+            <param name="expression">Lambda運算式(建構子、無回傳值方法)</param>
+            <returns>成員資訊</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(System.Type,System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+            取得指定成員資訊
+            </summary>
+            <typeparam name="T">類別</typeparam>
+            <param name="instance">物件實體</param>
+            <param name="expression">Lambda運算式(建構子、無回傳值方法)</param>
+            <returns>成員資訊</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            取得指定成員資訊
+            </summary>
+            <typeparam name="T">類別</typeparam>
+            <param name="instance">物件實體</param>
+            <param name="expression">Lambda運算式(建構子、屬性、欄位、索引子、方法)</param>
+            <returns>成員資訊</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(System.Type,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            取得指定成員資訊
+            </summary>
+            <typeparam name="T">類別</typeparam>
+            <param name="instance">物件實體</param>
+            <param name="expression">Lambda運算式(建構子、屬性、欄位、索引子、方法)</param>
+            <returns>成員資訊</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MethodInfoExtensions.Invoke(System.Reflection.MethodBase,System.Object[])">
+            <summary>
+            用指定的參數，叫用目前執行個體所表示的方法或建構函式。
+            </summary>
+            <param name="methodBase"></param>
+            <param name="parameters">參數</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MethodInfoExtensions.AsInvoke(System.Reflection.MemberInfo,System.Object,System.Object@,System.Object[])">
+            <summary>
+            嘗試將MemberInfo轉換為MethodInfo並用指定的參數，叫用目前執行個體所表示的方法或建構函式。
+            </summary>
+            <param name="info"></param>
+            <param name="instance">實體</param>
+            <param name="result">結果</param>
+            <param name="parameters">參數</param>
+            <returns>是否成功引動</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Reflection.Extensions.MethodInfoExtensions.ToDelegate(System.Reflection.MethodInfo,System.Object)">
+            <summary>
+            將目前執行個體所表示的方法或建構函式轉換為Func委派。
+            </summary>
+            <param name="info"></param>
+            <param name="instance">實體</param>
+            <returns>結果</returns>
         </member>
         <member name="M:EzCoreKit.System.Security.Cryptography.StringHashExtension.ToHash``1(System.String)">
             <summary>
