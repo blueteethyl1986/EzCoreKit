@@ -1,0 +1,12 @@
+D:\EzCoreKit\TestConsole\bin\Debug\netcoreapp1.1\TestConsole.deps.json
+D:\EzCoreKit\TestConsole\bin\Debug\netcoreapp1.1\TestConsole.runtimeconfig.json
+D:\EzCoreKit\TestConsole\bin\Debug\netcoreapp1.1\TestConsole.runtimeconfig.dev.json
+D:\EzCoreKit\TestConsole\bin\Debug\netcoreapp1.1\TestConsole.dll
+D:\EzCoreKit\TestConsole\bin\Debug\netcoreapp1.1\TestConsole.pdb
+D:\EzCoreKit\TestConsole\bin\Debug\netcoreapp1.1\EzCoreKit.dll
+D:\EzCoreKit\TestConsole\bin\Debug\netcoreapp1.1\EzCoreKit.pdb
+D:\EzCoreKit\TestConsole\bin\Debug\netcoreapp1.1\EzCoreKit.xml
+D:\EzCoreKit\TestConsole\obj\Debug\netcoreapp1.1\TestConsole.csprojResolveAssemblyReference.cache
+D:\EzCoreKit\TestConsole\obj\Debug\netcoreapp1.1\TestConsole.AssemblyInfo.cs
+D:\EzCoreKit\TestConsole\obj\Debug\netcoreapp1.1\TestConsole.dll
+D:\EzCoreKit\TestConsole\obj\Debug\netcoreapp1.1\TestConsole.pdb
