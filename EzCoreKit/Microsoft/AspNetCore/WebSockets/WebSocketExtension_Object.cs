@@ -27,7 +27,7 @@ namespace EzCoreKit.Microsoft.AspNetCore.WebSockets {
         public static async Task SendJsonAsync<T>(this WebSocket obj, T data, Encoding encoding, CancellationToken cancellationToken, int bufferSize = 1024 * 4, int millisecondsTimeout = -1) {
             await obj.SendTextAsync(JsonConvert.SerializeObject(data), encoding, cancellationToken, bufferSize, millisecondsTimeout);
         }
-
+        
         /// <summary>
         /// 非同步送出物件
         /// </summary>
