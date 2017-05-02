@@ -35,7 +35,7 @@ namespace EzCoreKit.System.Extensions {
             var isEnum = value.GetType().GetTypeInfo().IsValueType;
             if (!isEnum) throw new NotSupportedException("value is not Enum");
             var typeinfo = value.GetType().GetTypeInfo();
-            var fieldInfo = typeinfo.GetField(GetEnumName(type,value));
+            var fieldInfo = typeinfo.GetField(GetEnumName(value.GetType(),value));
             return fieldInfo.GetCustomAttributes(type);
         }
 
@@ -49,7 +49,7 @@ namespace EzCoreKit.System.Extensions {
             var isEnum = value.GetType().GetTypeInfo().IsValueType;
             if (!isEnum) throw new NotSupportedException("value is not Enum");
             var typeinfo = value.GetType().GetTypeInfo();
-            var fieldInfo = typeinfo.GetField(GetEnumName(type, value));
+            var fieldInfo = typeinfo.GetField(GetEnumName(value.GetType(), value));
             return fieldInfo.GetCustomAttribute(type);
         }
 
