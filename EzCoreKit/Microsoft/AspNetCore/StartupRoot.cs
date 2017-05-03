@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EzCoreKit.Microsoft.AspNetCore {
-    public class StartupBase {
+    public class StartupRoot {
         /// <summary>
         /// 設定值
         /// </summary>

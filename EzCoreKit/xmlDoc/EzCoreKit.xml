@@ -4,6 +4,13 @@
         <name>EzCoreKit</name>
     </assembly>
     <members>
+        <member name="M:EzCoreKit.Microsoft.AspNetCore.Extensions.ConfigurationExtension.ToDynamicObject(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            將IConfiguration物件轉換為dynamic物件
+            </summary>
+            <param name="configureation">擴充對象</param>
+            <returns>動態物件</returns>
+        </member>
         <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.AuthorityAttribute">
             <summary>
             存取權限設定
@@ -102,6 +109,39 @@
             <summary>
             值
             </summary>
+        </member>
+        <member name="P:EzCoreKit.Microsoft.AspNetCore.StartupRoot.Configuration">
+            <summary>
+            設定值
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ErrorPages">
+            <summary>
+            錯誤頁面與錯誤代碼對應
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ExceptionHttpStatusCode">
+            <summary>
+            錯誤時是否傳送狀態碼
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ConfigureDefaultFiles(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            此方法在執行階段被呼叫，使用此方法設定預設的檔案
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ConfigureMvcRoute(Microsoft.AspNetCore.Routing.IRouteBuilder)">
+            <summary>
+            此方法在執行階段被呼叫，使用此方法設定MVC預設路由規則
+            </summary>
+            <param name="routes">路由建構器</param>
+        </member>
+        <member name="M:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ConfigureErrorPages(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            此方法在執行階段被呼叫，使用此方法設定錯誤頁面的檔案
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
         <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.IApplicationBuilderExtension">
             <summary>
