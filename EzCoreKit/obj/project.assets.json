@@ -9987,7 +9987,7 @@
     "C:\\Users\\superuser\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "restore": {
       "projectUniqueName": "D:\\EzCoreKit\\EzCoreKit\\EzCoreKit.csproj",
       "projectName": "EzCoreKit",
@@ -10012,7 +10012,7 @@
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[1.1.0, )"
+            "version": "1.1.0"
           },
           "Microsoft.AspNetCore.Http": {
             "target": "Package",
