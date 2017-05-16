@@ -3222,7 +3222,7 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netstandard1.6/System.Security.Cryptography.OpenSsl.dll": {}
         },
         "runtime": {
           "lib/netstandard1.6/System.Security.Cryptography.OpenSsl.dll": {}
@@ -3557,6 +3557,20 @@
         },
         "compile": {
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
+        }
+      },
+      "System.ValueTuple/4.3.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
         }
       },
       "System.Xml.ReaderWriter/4.3.0": {
@@ -9651,6 +9665,33 @@
         "system.threading.timer.nuspec"
       ]
     },
+    "System.ValueTuple/4.3.1": {
+      "sha512": "xzDmg26Wb2x2rFDjwziaMYQJqxhrK+b4OUC008o7CnZhUMb2p5XfwgOgAQ/WlKhqxMUSDWRUm5/lNTKdh27pJA==",
+      "type": "package",
+      "path": "system.valuetuple/4.3.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/netstandard1.0/.xml",
+        "lib/netstandard1.0/System.ValueTuple.dll",
+        "lib/portable-net40+sl4+win8+wp8/.xml",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.3.1.nupkg.sha512",
+        "system.valuetuple.nuspec"
+      ]
+    },
     "System.Xml.ReaderWriter/4.3.0": {
       "sha512": "GrprA+Z0RUXaR4N7/eW71j1rgMnEnEVlgii49GZyAjTH7uliMnrOU3HNFBr6fEDBCJCIdlVNq9hHbaDR621XBA==",
       "type": "package",
@@ -9980,14 +10021,17 @@
       "Microsoft.AspNetCore.WebSockets >= 1.0.1",
       "Microsoft.EntityFrameworkCore >= 1.1.0",
       "Microsoft.NETCore.App >= 1.1.1",
-      "NodaTime >= 2.0.0"
+      "NodaTime >= 2.0.0",
+      "System.Security.Cryptography.Algorithms >= 4.3.0",
+      "System.Security.Cryptography.OpenSsl >= 4.3.0",
+      "System.ValueTuple >= 4.3.1"
     ]
   },
   "packageFolders": {
     "C:\\Users\\superuser\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "restore": {
       "projectUniqueName": "D:\\EzCoreKit\\EzCoreKit\\EzCoreKit.csproj",
       "projectName": "EzCoreKit",
@@ -10013,6 +10057,18 @@
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "1.1.0"
+          },
+          "System.ValueTuple": {
+            "target": "Package",
+            "version": "4.3.1"
+          },
+          "System.Security.Cryptography.Algorithms": {
+            "target": "Package",
+            "version": "4.3.0"
+          },
+          "System.Security.Cryptography.OpenSsl": {
+            "target": "Package",
+            "version": "4.3.0"
           },
           "Microsoft.AspNetCore.Http": {
             "target": "Package",
