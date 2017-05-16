@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace EzCoreKit.LetsEncrypt {
+namespace EzCoreKit.System.Security.Cryptography {
     public static class RSAFactory {
         public static (byte[] PublicKey, byte[] PrivateKey) GenerateRSAKeys(int keySize = 4096) {
             using (RSA rsa = RSA.Create()) {
@@ -85,7 +84,7 @@ namespace EzCoreKit.LetsEncrypt {
             }
         }
 
-        public static (string PublicKey, string PrivateKey) GenerateRSAKeysBase64(int keySize = 4096) {
+        public static (string PublicKey, string PrivateKey) GenerateRSAKeysPEM(int keySize = 4096) {
             var result = GenerateRSAKeys(keySize);
 
             List<string> PublicKeyList = new List<string>();
