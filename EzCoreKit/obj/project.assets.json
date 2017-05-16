@@ -2,6 +2,20 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
+      "BouncyCastle.NetCore/1.8.1.2": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/BouncyCastle.Crypto.dll": {}
+        }
+      },
       "Libuv/1.9.1": {
         "type": "package",
         "dependencies": {
@@ -3743,6 +3757,22 @@
     }
   },
   "libraries": {
+    "BouncyCastle.NetCore/1.8.1.2": {
+      "sha512": "zH7dFAPBcOoJpSHVXbZKKofbxs2kOUueyGbRN012m+Hc8ZakrcH9FMiJJS04LTfimRds/5PYDUhTRREfc04NOw==",
+      "type": "package",
+      "path": "bouncycastle.netcore/1.8.1.2",
+      "files": [
+        "bouncycastle.netcore.1.8.1.2.nupkg.sha512",
+        "bouncycastle.netcore.nuspec",
+        "lib/Mono/BouncyCastle.Crypto.dll",
+        "lib/MonoAndroid/BouncyCastle.Crypto.dll",
+        "lib/MonoMac/BouncyCastle.Crypto.dll",
+        "lib/MonoTouch/BouncyCastle.Crypto.dll",
+        "lib/net20/BouncyCastle.Crypto.dll",
+        "lib/netstandard1.3/BouncyCastle.Crypto.dll",
+        "lib/xamarinios/BouncyCastle.Crypto.dll"
+      ]
+    },
     "Libuv/1.9.1": {
       "sha512": "uqX2Frwf9PW8MaY7PRNY6HM5BpW1D8oj1EdqzrmbEFD5nH63Yat3aEjN/tws6Tw6Fk7LwmLBvtUh32tTeTaHiA==",
       "type": "package",
@@ -10060,6 +10090,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
+      "BouncyCastle.NetCore >= 1.8.1.2",
       "Microsoft.AspNetCore >= 1.1.1",
       "Microsoft.AspNetCore.Http >= 1.1.2",
       "Microsoft.AspNetCore.Http.Abstractions >= 1.1.2",
@@ -10113,6 +10144,10 @@
           "System.Security.Cryptography.Algorithms": {
             "target": "Package",
             "version": "4.3.0"
+          },
+          "BouncyCastle.NetCore": {
+            "target": "Package",
+            "version": "1.8.1.2"
           },
           "System.Security.Cryptography.OpenSsl": {
             "target": "Package",

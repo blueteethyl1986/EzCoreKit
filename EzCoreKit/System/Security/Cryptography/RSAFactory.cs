@@ -1,11 +1,68 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Math;
+using Org.BouncyCastle.OpenSsl;
+using Org.BouncyCastle.Security;
+using Org.BouncyCastle.X509;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace EzCoreKit.System.Security.Cryptography {
     public static class RSAFactory {
+        public static X509Certificate2 GenerateCSR(CSRConfigure configure) {
+            var gen = new X509V3CertificateGenerator();
+            
+            
+            gen.SetPublicKey(configure.KeyPair.Public);
+            gen.SetSubjectDN(configure.GetX509Name());
+            gen.SetIssuerDN(configure.GetX509Name());
+            gen.SetNotAfter(configure.NotAfter);
+            gen.SetNotBefore(configure.NotBefore);
+            gen.SetSerialNumber(configure.SN);
+            gen.SetSignatureAlgorithm(configure.SignatureAlgorithm);
+
+            return new X509Certificate2(
+                gen.Generate(configure.KeyPair.Private)
+                .GetEncoded());
+        }
+
+        private static AsymmetricKeyParameter ReadKeyParameter(byte[] pemBinary, bool isPublic) {
+            if (isPublic) {
+                return PublicKeyFactory.CreateKey(pemBinary);
+            } else {
+                var keyPair = (AsymmetricCipherKeyPair)new Org.BouncyCastle.OpenSsl.PemReader(new StreamReader(new MemoryStream(pemBinary))).ReadObject();
+                return keyPair.Private;
+            }
+        }
+
+        public static AsymmetricCipherKeyPair GenerateRSAKeyPair(int keySize = 4096) {
+            var kpgen = new RsaKeyPairGenerator();
+            kpgen.Init(new KeyGenerationParameters(new SecureRandom(), keySize));
+            return kpgen.GenerateKeyPair();
+        }
+
+        public static string ConvertKeyToPEM(AsymmetricKeyParameter key) {
+            MemoryStream stream = new MemoryStream();
+            TextWriter textWriter = new StreamWriter(stream);
+            var writer = new PemWriter(textWriter);
+            writer.WriteObject(key);
+            writer.Writer.Flush();
+            
+            return Encoding.UTF8.GetString(stream.ToArray());
+        }
+
+        public static object ConvertPEMToKey(string pem) {
+            MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(pem));
+            TextReader textReader = new StreamReader(stream);
+            var reader = new PemReader(textReader);
+            return reader.ReadObject();
+        }
+
         public static (byte[] PublicKey, byte[] PrivateKey) GenerateRSAKeys(int keySize = 4096) {
             using (RSA rsa = RSA.Create()) {
                 rsa.KeySize = keySize;
