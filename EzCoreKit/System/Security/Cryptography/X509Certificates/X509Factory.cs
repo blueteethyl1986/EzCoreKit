@@ -2,6 +2,7 @@
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
+using Org.BouncyCastle.Utilities.IO.Pem;
 using Org.BouncyCastle.X509;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,15 @@ using System.Text;
 
 namespace EzCoreKit.System.Security.Cryptography.X509Certificates {
     public static class X509Factory {
+        public static string ToPEM(this Pkcs10CertificationRequest csr) {
+            PemObject pemObject = new PemObject("CERTIFICATE REQUEST", csr.GetEncoded());
+            StringWriter str = new StringWriter();
+            Org.BouncyCastle.OpenSsl.PemWriter pemWriter = new Org.BouncyCastle.OpenSsl.PemWriter(str);
+            pemWriter.WriteObject(pemObject);
+            str.Flush();
+            return str.GetStringBuilder().ToString();
+        }
+
         public static Pkcs10CertificationRequest GenerateCertificationRequest(CSRConfigure configure) {
             var result = new Pkcs10CertificationRequest(
                 configure.SignatureAlgorithm, configure.GetX509Name(),

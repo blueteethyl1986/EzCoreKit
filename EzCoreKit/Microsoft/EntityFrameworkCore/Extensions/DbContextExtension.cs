@@ -10,7 +10,5 @@ namespace EzCoreKit.Microsoft.EntityFrameworkCore.Extensions {
             var options = dbcontext.GetType().GetTypeInfo().BaseType.GetField("_options", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(dbcontext);
             return options as DbContextOptions<T>;
         }
-            
-
     }
 }
