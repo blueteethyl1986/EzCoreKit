@@ -16,11 +16,11 @@ using System.Text;
 
 namespace EzCoreKit.System.Security.Cryptography {
     public static class RSAFactory {
-        public static string GenerateSignature(this AsymmetricKeyParameter key, byte[] data, string signatureAlgorithm = "SHA1withRSA") { 
+        public static byte[] GenerateSignature(this AsymmetricKeyParameter key, byte[] data, string signatureAlgorithm = "SHA1withRSA") {
             var signer = SignerUtilities.GetSigner(signatureAlgorithm);
             signer.Init(true, key);
             signer.BlockUpdate(data, 0, data.Length);
-            return BitConverter.ToString(signer.GenerateSignature());
+            return signer.GenerateSignature();
         }
 
         public static AsymmetricCipherKeyPair GenerateRSAKeyPair(int keySize = 4096) {
