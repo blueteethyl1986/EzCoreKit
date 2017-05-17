@@ -10103,6 +10103,7 @@
       "System.Security.Cryptography.Algorithms >= 4.3.0",
       "System.Security.Cryptography.OpenSsl >= 4.3.0",
       "System.Security.Cryptography.Pkcs >= 4.3.0",
+      "System.Security.Cryptography.X509Certificates >= 4.3.0",
       "System.ValueTuple >= 4.3.1"
     ]
   },
@@ -10154,6 +10155,10 @@
             "version": "4.3.0"
           },
           "System.Security.Cryptography.Pkcs": {
+            "target": "Package",
+            "version": "4.3.0"
+          },
+          "System.Security.Cryptography.X509Certificates": {
             "target": "Package",
             "version": "4.3.0"
           },

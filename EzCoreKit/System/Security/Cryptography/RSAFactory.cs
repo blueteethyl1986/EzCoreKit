@@ -1,8 +1,10 @@
-﻿using Org.BouncyCastle.Asn1.X509;
+﻿using Org.BouncyCastle.Asn1.Pkcs;
+using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Crypto.Generators;
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.OpenSsl;
+using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
 using System;
@@ -14,10 +16,26 @@ using System.Text;
 
 namespace EzCoreKit.System.Security.Cryptography {
     public static class RSAFactory {
-        public static X509Certificate2 GenerateCSR(CSRConfigure configure) {
+        public static string ToPEM(this Pkcs10CertificationRequest csr) {
+            MemoryStream stream = new MemoryStream();
+            TextWriter textWriter = new StreamWriter(stream);
+            var writer = new PemWriter(textWriter);
+            writer.WriteObject(csr);
+            writer.Writer.Flush();
+
+            return Encoding.UTF8.GetString(stream.ToArray());
+        }
+
+        public static Pkcs10CertificationRequest GenerateCertificationRequest(CSRConfigure configure) {
+            var result = new Pkcs10CertificationRequest(
+                configure.SignatureAlgorithm, configure.GetX509Name(),
+                configure.KeyPair.Public,null, configure.KeyPair.Private);
+            return result;
+        }
+
+        public static X509Certificate2 GenerateCertificate(CSRConfigure configure) {
             var gen = new X509V3CertificateGenerator();
-            
-            
+                        
             gen.SetPublicKey(configure.KeyPair.Public);
             gen.SetSubjectDN(configure.GetX509Name());
             gen.SetIssuerDN(configure.GetX509Name());
@@ -26,9 +44,15 @@ namespace EzCoreKit.System.Security.Cryptography {
             gen.SetSerialNumber(configure.SN);
             gen.SetSignatureAlgorithm(configure.SignatureAlgorithm);
 
-            return new X509Certificate2(
+            foreach (var ext in configure.Extensions) {
+                gen.AddExtension(ext.Key, false, Encoding.UTF8.GetBytes(ext.Value));
+            }
+            var result=new X509Certificate2(
                 gen.Generate(configure.KeyPair.Private)
                 .GetEncoded());
+            
+
+            return result;
         }
 
         private static AsymmetricKeyParameter ReadKeyParameter(byte[] pemBinary, bool isPublic) {
