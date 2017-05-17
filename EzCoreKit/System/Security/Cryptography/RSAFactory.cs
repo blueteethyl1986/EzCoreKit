@@ -16,54 +16,6 @@ using System.Text;
 
 namespace EzCoreKit.System.Security.Cryptography {
     public static class RSAFactory {
-        public static string ToPEM(this Pkcs10CertificationRequest csr) {
-            MemoryStream stream = new MemoryStream();
-            TextWriter textWriter = new StreamWriter(stream);
-            var writer = new PemWriter(textWriter);
-            writer.WriteObject(csr);
-            writer.Writer.Flush();
-
-            return Encoding.UTF8.GetString(stream.ToArray());
-        }
-
-        public static Pkcs10CertificationRequest GenerateCertificationRequest(CSRConfigure configure) {
-            var result = new Pkcs10CertificationRequest(
-                configure.SignatureAlgorithm, configure.GetX509Name(),
-                configure.KeyPair.Public,null, configure.KeyPair.Private);
-            return result;
-        }
-
-        public static X509Certificate2 GenerateCertificate(CSRConfigure configure) {
-            var gen = new X509V3CertificateGenerator();
-                        
-            gen.SetPublicKey(configure.KeyPair.Public);
-            gen.SetSubjectDN(configure.GetX509Name());
-            gen.SetIssuerDN(configure.GetX509Name());
-            gen.SetNotAfter(configure.NotAfter);
-            gen.SetNotBefore(configure.NotBefore);
-            gen.SetSerialNumber(configure.SN);
-            gen.SetSignatureAlgorithm(configure.SignatureAlgorithm);
-
-            foreach (var ext in configure.Extensions) {
-                gen.AddExtension(ext.Key, false, Encoding.UTF8.GetBytes(ext.Value));
-            }
-            var result=new X509Certificate2(
-                gen.Generate(configure.KeyPair.Private)
-                .GetEncoded());
-            
-
-            return result;
-        }
-
-        private static AsymmetricKeyParameter ReadKeyParameter(byte[] pemBinary, bool isPublic) {
-            if (isPublic) {
-                return PublicKeyFactory.CreateKey(pemBinary);
-            } else {
-                var keyPair = (AsymmetricCipherKeyPair)new Org.BouncyCastle.OpenSsl.PemReader(new StreamReader(new MemoryStream(pemBinary))).ReadObject();
-                return keyPair.Private;
-            }
-        }
-
         public static AsymmetricCipherKeyPair GenerateRSAKeyPair(int keySize = 4096) {
             var kpgen = new RsaKeyPairGenerator();
             kpgen.Init(new KeyGenerationParameters(new SecureRandom(), keySize));
