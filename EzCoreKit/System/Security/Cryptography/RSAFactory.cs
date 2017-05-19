@@ -16,7 +16,7 @@ using System.Text;
 
 namespace EzCoreKit.System.Security.Cryptography {
     public static class RSAFactory {
-        public static byte[] GenerateSignature(this AsymmetricKeyParameter key, byte[] data, string signatureAlgorithm = "SHA1withRSA") {
+        public static byte[] GenerateSignature(this AsymmetricKeyParameter key, byte[] data, string signatureAlgorithm = "SHA256withRSA") {
             var signer = SignerUtilities.GetSigner(signatureAlgorithm);
             signer.Init(true, key);
             signer.BlockUpdate(data, 0, data.Length);
