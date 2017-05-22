@@ -12,7 +12,11 @@ namespace EzCoreKit.System.Security.Cryptography {
         public AsymmetricCipherKeyPair KeyPair { get; set; }
         public DateTime NotAfter { get; set; }
         public DateTime NotBefore { get; set; }
+<<<<<<< HEAD
         public string SignatureAlgorithm { get; set; } = "SHA256withRSA";
+=======
+        public string SignatureAlgorithm { get; set; } = "SHA256WithRSA";
+>>>>>>> origin/master
         public BigInteger SN { get; set; } = BigInteger.ProbablePrime(120, new Random());
         
         public Dictionary<DerObjectIdentifier, string> Attributes
