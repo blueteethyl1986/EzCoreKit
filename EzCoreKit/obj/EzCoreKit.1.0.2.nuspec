@@ -8,6 +8,22 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>針對dotnet core的擴充功能組件</description>
     <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="Microsoft.AspNetCore" version="1.1.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.3.1" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="BouncyCastle.NetCore" version="1.8.1.2" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.OpenSsl" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.Pkcs" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Security.Cryptography.X509Certificates" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http" version="1.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.WebSockets" version="1.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc" version="1.1.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http.Abstractions" version="1.1.2" exclude="Build,Analyzers" />
+        <dependency id="NodaTime" version="2.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.StaticFiles" version="1.1.1" exclude="Build,Analyzers" />
+      </group>
       <group targetFramework=".NETCoreApp1.1">
         <dependency id="Microsoft.AspNetCore" version="1.1.1" exclude="Build,Analyzers" />
         <dependency id="Microsoft.EntityFrameworkCore" version="1.1.0" exclude="Build,Analyzers" />
@@ -30,5 +46,7 @@
   <files>
     <file src="D:\EzCoreKit\EzCoreKit\bin\Debug\netcoreapp1.1\EzCoreKit.dll" target="lib\netcoreapp1.1\EzCoreKit.dll" />
     <file src="D:\EzCoreKit\EzCoreKit\bin\Debug\netcoreapp1.1\EzCoreKit.xml" target="lib\netcoreapp1.1\EzCoreKit.xml" />
+    <file src="D:\EzCoreKit\EzCoreKit\bin\Debug\net451\EzCoreKit.dll" target="lib\net451\EzCoreKit.dll" />
+    <file src="D:\EzCoreKit\EzCoreKit\bin\Debug\net451\EzCoreKit.xml" target="lib\net451\EzCoreKit.xml" />
   </files>
 </package>
