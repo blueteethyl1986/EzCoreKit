@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
@@ -12,7 +13,7 @@ namespace EzCoreKit.System.Security.Cryptography {
         /// <param name="value">值</param>
         /// <returns>雜湊Binary</returns>
         public static byte[] ToHash<Algorithm>(string value) where Algorithm : HashAlgorithm {
-            using (var hash = typeof(Algorithm).GetMethod("Create").Invoke(null, null) as HashAlgorithm) {
+            using (var hash = typeof(Algorithm).GetMethod("Create",new Type[] { }).Invoke(null, null) as HashAlgorithm) {
                 return hash.ComputeHash(Encoding.UTF8.GetBytes(value));
             }
         }

@@ -7,9 +7,9 @@
     <Authors>XuPeiYao</Authors>
     <Company />
     <Description>針對dotnet core的擴充功能組件</Description>
-    <Version>1.0.3</Version>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
+    <Version>1.0.4</Version>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
