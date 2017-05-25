@@ -761,6 +761,34 @@
             <param name="value">值</param>
             <returns>Attribute</returns>
         </member>
+        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.Full(System.Array,System.Object)">
+            <summary>
+            將輸入陣列填滿指定的值
+            </summary>
+            <param name="Ary">目標陣列</param>
+            <param name="Value">指定數值</param>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.LCM(System.Int32[])">
+            <summary>
+            求陣列數值最小公倍數
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.LCM(System.Int32,System.Int32)">
+            <summary>
+            求兩數值之最小公倍數
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.GCD(System.Int32[])">
+            <summary>
+            求陣列數值之最大公因數
+            </summary>
+            <param name="ary">輸入陣列</param>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.GCD(System.Int32,System.Int32)">
+            <summary>
+            求兩數值之最大公因數
+            </summary>
+        </member>
         <member name="M:EzCoreKit.System.Extensions.DateTimeExtension.ToJsTime(System.DateTime)">
             <summary>
             轉換為Js時間表示
@@ -775,6 +803,55 @@
             <param name="obj">目標物件</param>
             <param name="publicOnly">僅為public屬性與欄位</param>
             <returns>動態物件</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.ObjectExtension.ToBytes(System.Object)">
+            <summary>
+            自物件轉換為byte[]
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.ObjectExtension.ToObject``1(System.Byte[])">
+            <summary>
+            自byte[]還原為目標型別參數
+            </summary>
+            <param name="bytes">資料來源</param>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextDouble(System.Random,System.Double,System.Double)">
+            <summary>
+            隨機取指定數值內的double值
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextDouble(System.Random,System.Double)">
+            <summary>
+            隨機取得0到指定數值內的double值
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextBool(System.Random)">
+            <summary>
+            隨機取得bool值
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextEnum``1(System.Random)">
+            <summary>
+            隨機自列舉型別中取得值
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextEnum(System.Random,System.Type)">
+            <summary>
+            隨機自列舉型別中取得值
+            </summary>
+            <param name="type">目標型別</param>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextString(System.Random,System.String[])">
+            <summary>
+            隨機自字串陣列中取得值
+            </summary>
+            <param name="data">目標字串</param>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.StringExtension.IsMatch(System.String,System.String)">
+            <summary>
+            檢查字串是否符合表示式
+            </summary>
+            <param name="regexString">正規表示式</param>
         </member>
         <member name="M:EzCoreKit.System.Extensions.StringExtension.SplitByRegex(System.String,System.String)">
             <summary>
@@ -818,6 +895,27 @@
             </summary>
             <param name="str">字串</param>
             <returns>自動加入空白後的字串</returns>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.TypeExtension.AllBaseTypes(System.Reflection.TypeInfo)">
+            <summary>
+            取得指定的類別繼承鍊所有的基礎類別
+            </summary>
+            <param name="Type">指定類別</param>
+        </member>
+        <member name="M:EzCoreKit.System.Extensions.TypeExtension.IsAnonymousType(System.Type)">
+            <summary>
+            確認目前類別是否為匿名型別
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.IO.StreamExtension.ToBytes(System.IO.Stream)">
+            <summary>
+            串流轉換為byte[]
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.System.IO.StreamExtension.ToStream(System.Byte[])">
+            <summary>
+            byte[]轉換為串流
+            </summary>
         </member>
         <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Action})">
             <summary>

@@ -7,6 +7,15 @@ using System.Text.RegularExpressions;
 namespace EzCoreKit.System.Extensions {
     public static class StringExtension {
         /// <summary>
+        /// 檢查字串是否符合表示式
+        /// </summary>
+        /// <param name="regexString">正規表示式</param>
+        public static bool IsMatch(this string target, string regexString) {
+            Regex Regex = new Regex(regexString);
+            return Regex.IsMatch(target);
+        }
+
+        /// <summary>
         /// 使用正規表示式切割字串
         /// </summary>
         /// <param name="input">值</param>

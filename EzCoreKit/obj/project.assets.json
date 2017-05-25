@@ -2,6 +2,18 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
+      "BinaryFormatter/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/BinaryFormatter.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/BinaryFormatter.dll": {}
+        }
+      },
       "BouncyCastle.NetCore/1.8.1.2": {
         "type": "package",
         "dependencies": {
@@ -3727,6 +3739,18 @@
       }
     },
     ".NETFramework,Version=v4.6.1": {
+      "BinaryFormatter/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/net461/BinaryFormatter.dll": {}
+        },
+        "runtime": {
+          "lib/net461/BinaryFormatter.dll": {}
+        }
+      },
       "BouncyCastle.NetCore/1.8.1.2": {
         "type": "package",
         "dependencies": {
@@ -5919,6 +5943,18 @@
     }
   },
   "libraries": {
+    "BinaryFormatter/1.0.1": {
+      "sha512": "hiSnkS95cXIqbIeBVNaViAv5kX+6BPT/5Le6BAVcLbrOGFSuKx4Kq+mh8Ihx9LhA8jIJYyR1t1AKFVSpJWrMeQ==",
+      "type": "package",
+      "path": "binaryformatter/1.0.1",
+      "files": [
+        "binaryformatter.1.0.1.nupkg.sha512",
+        "binaryformatter.nuspec",
+        "lib/net452/BinaryFormatter.dll",
+        "lib/net461/BinaryFormatter.dll",
+        "lib/netstandard1.1/BinaryFormatter.dll"
+      ]
+    },
     "BouncyCastle.NetCore/1.8.1.2": {
       "sha512": "zH7dFAPBcOoJpSHVXbZKKofbxs2kOUueyGbRN012m+Hc8ZakrcH9FMiJJS04LTfimRds/5PYDUhTRREfc04NOw==",
       "type": "package",
@@ -12543,6 +12579,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
+      "BinaryFormatter >= 1.0.1",
       "BouncyCastle.NetCore >= 1.8.1.2",
       "Microsoft.AspNetCore >= 1.1.1",
       "Microsoft.AspNetCore.Http >= 1.1.2",
@@ -12558,6 +12595,7 @@
       "System.ValueTuple >= 4.3.1"
     ],
     ".NETFramework,Version=v4.6.1": [
+      "BinaryFormatter >= 1.0.1",
       "BouncyCastle.NetCore >= 1.8.1.2",
       "Microsoft.AspNetCore >= 1.1.1",
       "Microsoft.AspNetCore.Http >= 1.1.2",
@@ -12576,7 +12614,7 @@
     "C:\\Users\\superuser\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "restore": {
       "projectUniqueName": "D:\\EzCoreKit\\EzCoreKit\\EzCoreKit.csproj",
       "projectName": "EzCoreKit",
@@ -12595,6 +12633,12 @@
         "netcoreapp1.1": {
           "projectReferences": {}
         }
+      }
+    },
+    "dependencies": {
+      "BinaryFormatter": {
+        "target": "Package",
+        "version": "[1.0.1, )"
       }
     },
     "frameworks": {

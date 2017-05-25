@@ -1,7 +1,9 @@
-﻿using EzCoreKit.System.Dynamic;
+﻿using BinaryFormatter;
+using EzCoreKit.System.Dynamic;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using System.Text;
 
 namespace EzCoreKit.System.Extensions {
@@ -14,6 +16,23 @@ namespace EzCoreKit.System.Extensions {
         /// <returns>動態物件</returns>
         public static ExpandoObject ToExpando(this object obj, bool publicOnly = true) {
             return ExpandoObjectFactory.ConvertToExpando(obj, publicOnly);
+        }
+
+        /// <summary>
+        /// 自物件轉換為byte[]
+        /// </summary>
+        public static byte[] ToBytes(this object obj) {
+            BinaryConverter sf = new BinaryConverter();            
+            return sf.Serialize(obj);
+        }
+
+        /// <summary>
+        /// 自byte[]還原為目標型別參數
+        /// </summary>
+        /// <param name="bytes">資料來源</param>
+        public static T ToObject<T>(this byte[] bytes) {
+            BinaryConverter sf = new BinaryConverter();
+            return sf.Deserialize<T>(bytes);
         }
     }
 }
