@@ -188,7 +188,7 @@ namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
             ActionExecutingContext executingContext,
             ActionExecutedContext executedContext,
             Exception exception) {
-            if (executingContext.Result != null) executingContext.Result = new EmptyResult();
+            if (executingContext.Result == null) executingContext.Result = new EmptyResult();
         }
     }
 }
