@@ -12635,12 +12635,6 @@
         }
       }
     },
-    "dependencies": {
-      "BinaryFormatter": {
-        "target": "Package",
-        "version": "[1.0.1, )"
-      }
-    },
     "frameworks": {
       "net461": {
         "dependencies": {
@@ -12663,6 +12657,10 @@
           "BouncyCastle.NetCore": {
             "target": "Package",
             "version": "1.8.1.2"
+          },
+          "BinaryFormatter": {
+            "target": "Package",
+            "version": "1.0.1"
           },
           "System.Security.Cryptography.X509Certificates": {
             "target": "Package",
@@ -12715,6 +12713,10 @@
           "BouncyCastle.NetCore": {
             "target": "Package",
             "version": "1.8.1.2"
+          },
+          "BinaryFormatter": {
+            "target": "Package",
+            "version": "1.0.1"
           },
           "System.Security.Cryptography.X509Certificates": {
             "target": "Package",

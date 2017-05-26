@@ -44,7 +44,7 @@ namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
                 //檢查無問題執行下一階段
                 base.OnActionExecuting(context);
             } catch (Exception e) {
-                OnException(context, null, e);
+                OnException(context, null, e);                
             }
         }
 
@@ -187,6 +187,8 @@ namespace EzCoreKit.Microsoft.AspNetCore.Mvc {
         public virtual void OnException(
             ActionExecutingContext executingContext,
             ActionExecutedContext executedContext,
-            Exception exception) { }
+            Exception exception) {
+            if (executingContext.Result != null) executingContext.Result = new EmptyResult();
+        }
     }
 }

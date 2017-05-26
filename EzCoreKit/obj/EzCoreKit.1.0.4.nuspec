@@ -9,12 +9,12 @@
     <description>針對dotnet core的擴充功能組件</description>
     <dependencies>
       <group targetFramework=".NETFramework4.6.1">
-        <dependency id="BinaryFormatter" version="1.0.1" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore" version="1.1.1" exclude="Build,Analyzers" />
         <dependency id="Microsoft.EntityFrameworkCore" version="1.1.0" exclude="Build,Analyzers" />
         <dependency id="System.ValueTuple" version="4.3.1" exclude="Build,Analyzers" />
         <dependency id="System.Security.Cryptography.Algorithms" version="4.3.0" exclude="Build,Analyzers" />
         <dependency id="BouncyCastle.NetCore" version="1.8.1.2" exclude="Build,Analyzers" />
+        <dependency id="BinaryFormatter" version="1.0.1" exclude="Build,Analyzers" />
         <dependency id="System.Security.Cryptography.X509Certificates" version="4.3.0" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore.Http" version="1.1.2" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore.WebSockets" version="1.0.1" exclude="Build,Analyzers" />
@@ -24,12 +24,12 @@
         <dependency id="Microsoft.AspNetCore.StaticFiles" version="1.1.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework=".NETCoreApp1.1">
-        <dependency id="BinaryFormatter" version="1.0.1" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore" version="1.1.1" exclude="Build,Analyzers" />
         <dependency id="Microsoft.EntityFrameworkCore" version="1.1.0" exclude="Build,Analyzers" />
         <dependency id="System.ValueTuple" version="4.3.1" exclude="Build,Analyzers" />
         <dependency id="System.Security.Cryptography.Algorithms" version="4.3.0" exclude="Build,Analyzers" />
         <dependency id="BouncyCastle.NetCore" version="1.8.1.2" exclude="Build,Analyzers" />
+        <dependency id="BinaryFormatter" version="1.0.1" exclude="Build,Analyzers" />
         <dependency id="System.Security.Cryptography.X509Certificates" version="4.3.0" exclude="Build,Analyzers" />
         <dependency id="Microsoft.AspNetCore.Http" version="1.1.2" exclude="Build,Analyzers" />
         <dependency id="Microsoft.NETCore.App" version="1.1.1" exclude="Build,Analyzers" />
