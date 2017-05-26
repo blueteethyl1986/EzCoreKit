@@ -1,5 +1,4 @@
-﻿using EzCoreKit.System;
-using EzCoreKit.System.Extensions;
+﻿using EzCoreKit.Extensions;
 using NodaTime;
 using System;
 using System.Collections.Generic;

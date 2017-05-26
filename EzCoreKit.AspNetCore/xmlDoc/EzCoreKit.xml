@@ -1,0 +1,681 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EzCoreKit.AspNetCore</name>
+    </assembly>
+    <members>
+        <member name="M:EzCoreKit.AspNetCore.ConfigurationExtension.ToDynamicObject(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            將IConfiguration物件轉換為dynamic物件
+            </summary>
+            <param name="configureation">擴充對象</param>
+            <returns>動態物件</returns>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.AuthorityAttribute">
+            <summary>
+            存取權限設定
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.AuthorityAttribute.Minimum">
+            <summary>
+            能夠使用此操作的最低權限，必須為列舉類型
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.DisableAttribute">
+            <summary>
+            標誌停用的控制器或方法
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.DisableInTimeAttribute">
+            <summary>
+            標誌控制器或方法在指定期間內停用，其餘時間啟用
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.EnableInTimeAttribute">
+            <summary>
+            標誌控制器或方法在指定期間內啟用，其餘時間停用
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.EzAuthorityController`1">
+            <summary>
+            支援權限管理的進階控制器
+            </summary>
+            <typeparam name="TAuthorityEnum"></typeparam>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.EzAuthorityController`1.UserAuthority">
+            <summary>
+            取得目前使用者權限
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.EzController">
+            <summary>
+            進階MVC控制器，支援OnException與執行前檢測的控制器
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.EzController.ExecutingCheckList">
+            <summary>
+            執行階段檢查表
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.Mvc.EzController.OnException(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext,System.Exception)">
+            <summary>
+            執行Action時候發生的例外處理
+            </summary>
+            <param name="executingContext">執行前發生例外</param>
+            <param name="executedContext">執行中發生例外</param>
+            <param name="exception">例外</param>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.SetTempDataAttribute">
+            <summary>
+            執行Action前先行設定TempData
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.SetTempDataAttribute.Key">
+            <summary>
+            鍵值
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.SetTempDataAttribute.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.SetViewBagAttribute">
+            <summary>
+            執行Action前先行設定ViewBag
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.SetViewBagAttribute.Key">
+            <summary>
+            鍵值
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.SetViewBagAttribute.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.Mvc.SetViewDataAttribute">
+            <summary>
+            執行Action前先行設定ViewData
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.SetViewDataAttribute.Key">
+            <summary>
+            鍵值
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.Mvc.SetViewDataAttribute.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.StartupRoot.Configuration">
+            <summary>
+            設定值
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.StartupRoot.ErrorPages">
+            <summary>
+            錯誤頁面與錯誤代碼對應
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.StartupRoot.ExceptionHttpStatusCode">
+            <summary>
+            錯誤時是否傳送狀態碼
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.StartupRoot.ConfigureDefaultFiles(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            此方法在執行階段被呼叫，使用此方法設定預設的檔案
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.StartupRoot.ConfigureMvcRoute(Microsoft.AspNetCore.Routing.IRouteBuilder)">
+            <summary>
+            此方法在執行階段被呼叫，使用此方法設定MVC預設路由規則
+            </summary>
+            <param name="routes">路由建構器</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.StartupRoot.ConfigureErrorPages(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            此方法在執行階段被呼叫，使用此方法設定錯誤頁面的檔案
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.IApplicationBuilderExtension">
+            <summary>
+            針對<see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>類型的擴充方法
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.IApplicationBuilderExtension.UseWebSockets``1(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Builder.WebSocketOptions)">
+            <summary>
+            將WebSocket服務加入服務空間，使用指定的WebSocket處理容器
+            </summary>
+            <typeparam name="Handler">處理容器型別，必須繼承自WebSocketHandler</typeparam>
+            <param name="builder">擴充對象</param>
+            <param name="options">WebSocket選項</param>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Binary">
+            <summary>
+            針對<see cref="T:System.Net.WebSockets.WebSocket"/>類型的擴充方法
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Binary.SendAsync(System.Net.WebSockets.WebSocket,System.Byte[],System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            透過WebSocket以非同步的方式傳送資料
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="buffer">要透過連線傳送的緩衝區</param>
+            <param name="messageType">表示應用程式正在傳送二進位或文字訊息</param>
+            <param name="endOfMessage">指示「緩衝區」中的資料是否為訊息的最後一部分</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Binary.SendAsync(System.Net.WebSockets.WebSocket,System.Byte[],System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            透過WebSocket以非同步的方式傳送資料
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="buffer">要透過連線傳送的緩衝區</param>
+            <param name="messageType">表示應用程式正在傳送二進位或文字訊息</param>
+            <param name="endOfMessage">指示「緩衝區」中的資料是否為訊息的最後一部分</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Binary.ReceiveAsync(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步接收資料
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的位元組</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Binary.ReceiveAsync(System.Net.WebSockets.WebSocket,System.Int32,System.Int32)">
+            <summary>
+            非同步接收資料
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的位元組</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Binary.SendAndReceiveAsync(System.Net.WebSockets.WebSocket,System.Byte[],System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            透過WebSocket以非同步的方式傳送資料並等候接收
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="buffer">要透過連線傳送的緩衝區</param>
+            <param name="messageType">表示應用程式正在傳送二進位或文字訊息</param>
+            <param name="endOfMessage">指示「緩衝區」中的資料是否為訊息的最後一部分</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的位元組</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Binary.SendAndReceiveAsync(System.Net.WebSockets.WebSocket,System.Byte[],System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            透過WebSocket以非同步的方式傳送資料並等候接收
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="buffer">要透過連線傳送的緩衝區</param>
+            <param name="messageType">表示應用程式正在傳送二進位或文字訊息</param>
+            <param name="endOfMessage">指示「緩衝區」中的資料是否為訊息的最後一部分</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的位元組</returns>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json">
+            <summary>
+            針對<see cref="T:System.Net.WebSockets.WebSocket"/>類型的擴充方法
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.SendJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步送出Json
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">Json內容</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.SendJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步送出Json
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">Json內容</param>
+            <param name="encoding">文字編碼</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.SendJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Int32,System.Int32)">
+            <summary>
+            非同步送出Json(UTF8)
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">Json內容</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.ReceiveJsonAsync(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步接收Json資料
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的Json</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.ReceiveJsonAsync(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步接收Json資料(UTF8)
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的Json</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.ReceiveJsonAsync(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步接收Json資料
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="encoding">文字編碼</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的Json</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.ReceiveJsonAsync(System.Net.WebSockets.WebSocket,System.Int32,System.Int32)">
+            <summary>
+            非同步接收Json資料(UTF8)
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的Json</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.SendAndReceiveJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步送出Json並等候接收
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的Json</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.SendAndReceiveJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步送出Json並等候接收
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="encoding">文字編碼(</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的Json</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Json.SendAndReceiveJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Int32,System.Int32)">
+            <summary>
+            非同步送出Json(UTF8)並等候接收
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的Json</returns>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object">
+            <summary>
+            針對<see cref="T:System.Net.WebSockets.WebSocket"/>類型的擴充方法
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.SendJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步送出物件
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="data">物件內容將轉換為Json</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.SendJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步送出物件
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="data">物件內容將轉換為Json</param>
+            <param name="encoding">文字編碼</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.SendJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Int32,System.Int32)">
+            <summary>
+            非同步送出物件
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="data">物件內容將轉換為Json</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.ReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步接收物件
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的物件</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.ReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步接收物件(UTF8)
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的物件</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.ReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步接收物件
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="encoding">文字編碼</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的物件</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.ReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,System.Int32,System.Int32)">
+            <summary>
+            非同步接收Json資料(UTF8)
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的Json</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.SendAndReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步送出物件並等候接收
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="data">內容</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的物件</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.SendAndReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步送出物件並等候接收
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="data">內容</param>
+            <param name="encoding">文字編碼(</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的物件</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Object.SendAndReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Int32,System.Int32)">
+            <summary>
+            非同步送出物件(UTF8)並等候接收
+            </summary>
+            <typeparam name="T">類型</typeparam>
+            <param name="obj">擴充對象</param>
+            <param name="data">內容</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的物件</returns>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text">
+            <summary>
+            針對<see cref="T:System.Net.WebSockets.WebSocket"/>類型的擴充方法
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.SendTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步送出文字
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.SendTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步送出文字
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="encoding">文字編碼</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.SendTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Int32,System.Int32)">
+            <summary>
+            非同步送出文字(UTF8)
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.ReceiveTextAsync(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步接收字串資料
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的字串</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.ReceiveTextAsync(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步接收字串資料(UTF8)
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的字串</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.ReceiveTextAsync(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步接收字串資料
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="encoding">文字編碼</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的字串</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.ReceiveTextAsync(System.Net.WebSockets.WebSocket,System.Int32,System.Int32)">
+            <summary>
+            非同步接收字串資料(UTF8)
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的字串</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.SendAndReceiveTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
+            <summary>
+            非同步送出文字並等候接收
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="encoding">文字編碼</param>
+            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的字串</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.SendAndReceiveTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Text.Encoding,System.Int32,System.Int32)">
+            <summary>
+            非同步送出文字並等候接收
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="encoding">文字編碼</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的字串</returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketExtension_Text.SendAndReceiveTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Int32,System.Int32)">
+            <summary>
+            非同步送出文字(UTF8)並等候接收
+            </summary>
+            <param name="obj">擴充對象</param>
+            <param name="data">文字內容</param>
+            <param name="bufferSize">緩衝區大小</param>
+            <param name="millisecondsTimeout">逾時限制</param>
+            <returns>接收到的字串</returns>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler">
+            <summary>
+            為<see cref="M:EzCoreKit.AspNetCore.WebSockets.IApplicationBuilderExtension.UseWebSockets``1(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Builder.WebSocketOptions)"/>方法所參考的處理類型
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.WebSocketConnectionEvent">
+            <summary>
+            WebSocket連線狀態改變事件
+            </summary>
+            <param name="context">Http通訊內容</param>
+            <param name="socket">WebSocket物件</param>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.WebSocketReceivedEvent">
+            <summary>
+            WebSocket接收訊息事件
+            </summary>
+            <param name="socket">WebSocket物件</param>
+            <param name="messageType">訊息類型</param>
+            <param name="receiveMessage">接收到的訊息</param>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.WebSocketException">
+            <summary>
+            WebSocket服務發生例外
+            </summary>
+            <param name="socket">WebSocket物件</param>
+            <param name="exception">例外</param>
+        </member>
+        <member name="T:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.WebsocketReceivingEvent">
+            <summary>
+            WebSocket正在接收訊息事件
+            </summary>
+            <param name="socket">WebSocket物件</param>
+            <param name="messageType">訊息類型</param>
+            <param name="receiveMessage">接收到的訊息片段</param>
+            <param name="endOfMessage">是否接收結束</param>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.RequestPath">
+            <summary>
+            表示Request路徑
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.BufferSize">
+            <summary>
+            緩衝區大小
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.SubProtocol">
+            <summary>
+            子通訊協定
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.#ctor(System.String,System.String)">
+            <summary>
+            Handler建構式，您必須至少聲明Request路徑
+            </summary>
+            <param name="requestPath">Request路徑</param>
+            <param name="subProtocol">子通訊協定</param>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.Start(Microsoft.AspNetCore.Http.HttpContext,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Handler進入點
+            </summary>
+            <param name="context">Http通訊內容</param>
+            <param name="next">下一個連線工作</param>
+            <returns></returns>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.AcceptConditions(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            允許WebSocket連線之條件
+            </summary>
+            <param name="context">Http通訊內容</param>
+            <returns>是否允許客戶端連線</returns>
+        </member>
+        <member name="E:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.OnConnected">
+            <summary>
+            當WebSocket開啟連線時
+            </summary>
+        </member>
+        <member name="E:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.OnDisconnected">
+            <summary>
+            當WebSocket關閉連線時
+            </summary>
+        </member>
+        <member name="E:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.OnReceived">
+            <summary>
+            當WebSocket接收到訊息
+            </summary>
+        </member>
+        <member name="E:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.OnException">
+            <summary>
+            當WebSocket服務發生例外
+            </summary>
+        </member>
+        <member name="E:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.OnReceiving">
+            <summary>
+            當WebSocket正在接收訊息
+            </summary>
+        </member>
+        <member name="E:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.OnAcceptConnected">
+            <summary>
+            當符合連線條件時觸發
+            </summary>
+        </member>
+        <member name="E:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.OnDenyConnected">
+            <summary>
+            當不符合連線條件時觸發
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.AspNetCore.WebSockets.WebSocketHandler.Listen(Microsoft.AspNetCore.Http.HttpContext,System.Net.WebSockets.WebSocket)">
+            <summary>
+            WebSocket監聽主程序
+            </summary>
+            <param name="context">Http通訊內容</param>
+            <param name="socket">WebSocket物件</param>
+        </member>
+    </members>
+</doc>

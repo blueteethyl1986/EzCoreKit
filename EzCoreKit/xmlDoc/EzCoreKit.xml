@@ -4,678 +4,265 @@
         <name>EzCoreKit</name>
     </assembly>
     <members>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.Extensions.ConfigurationExtension.ToDynamicObject(Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:EzCoreKit.Cryptography.HashFactory.ToHash``1(System.String)">
             <summary>
-            將IConfiguration物件轉換為dynamic物件
+            將字串使用指定的雜湊演算法轉換為雜湊
             </summary>
-            <param name="configureation">擴充對象</param>
+            <typeparam name="Algorithm">雜湊演算法型別</typeparam>
+            <param name="value">值</param>
+            <returns>雜湊Binary</returns>
+        </member>
+        <member name="M:EzCoreKit.Cryptography.HashFactory.ToHashString``1(System.String,System.Boolean)">
+            <summary>
+            將字串使用指定的雜湊演算法轉換為雜湊後在轉換為16進位字串表示
+            </summary>
+            <typeparam name="Algorithm">雜湊演算法型別</typeparam>
+            <param name="value">值</param>
+            <param name="upper">是否轉換為大寫</param>
+            <returns>雜湊字串</returns>
+        </member>
+        <member name="M:EzCoreKit.Cryptography.StringHashExtension.ToHash``1(System.String)">
+            <summary>
+            將字串使用指定的雜湊演算法轉換為雜湊
+            </summary>
+            <typeparam name="Algorithm">雜湊演算法型別</typeparam>
+            <param name="value">值</param>
+            <returns>雜湊Binary</returns>
+        </member>
+        <member name="M:EzCoreKit.Cryptography.StringHashExtension.ToHashString``1(System.String,System.Boolean)">
+            <summary>
+            將字串使用指定的雜湊演算法轉換為雜湊後在轉換為16進位字串表示
+            </summary>
+            <typeparam name="Algorithm">雜湊演算法型別</typeparam>
+            <param name="value">值</param>
+            <param name="upper">是否轉換為大寫</param>
+            <returns>雜湊字串</returns>
+        </member>
+        <member name="M:EzCoreKit.Dynamic.ExpandoObjectFactory.ConvertToExpando(System.Object,System.Boolean)">
+            <summary>
+            將物件轉換為動態物件，僅欄位與屬性
+            </summary>
+            <param name="obj">目標物件</param>
+            <param name="publicOnly">僅為public屬性與欄位</param>
             <returns>動態物件</returns>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.AuthorityAttribute">
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.Full(System.Array,System.Object)">
             <summary>
-            存取權限設定
+            將輸入陣列填滿指定的值
             </summary>
+            <param name="Ary">目標陣列</param>
+            <param name="Value">指定數值</param>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.AuthorityAttribute.Minimum">
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.LCM(System.Int32[])">
             <summary>
-            能夠使用此操作的最低權限，必須為列舉類型
+            求陣列數值最小公倍數
             </summary>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.DisableAttribute">
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.LCM(System.Int32,System.Int32)">
             <summary>
-            標誌停用的控制器或方法
+            求兩數值之最小公倍數
             </summary>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.DisableInTimeAttribute">
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.GCD(System.Int32[])">
             <summary>
-            標誌控制器或方法在指定期間內停用，其餘時間啟用
+            求陣列數值之最大公因數
             </summary>
+            <param name="ary">輸入陣列</param>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.EnableInTimeAttribute">
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.GCD(System.Int32,System.Int32)">
             <summary>
-            標誌控制器或方法在指定期間內啟用，其餘時間停用
+            求兩數值之最大公因數
             </summary>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.EzAuthorityController`1">
+        <member name="M:EzCoreKit.Extensions.DateTimeExtension.ToJsTime(System.DateTime)">
             <summary>
-            支援權限管理的進階控制器
+            轉換為Js時間表示
             </summary>
-            <typeparam name="TAuthorityEnum"></typeparam>
+            <param name="datetime">時間</param>
+            <returns>Js時間表示</returns>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.EzAuthorityController`1.UserAuthority">
+        <member name="M:EzCoreKit.Extensions.DateTimeFactory.ConvertToJsTime(System.DateTime)">
             <summary>
-            取得目前使用者權限
+            轉換為Js時間表示
             </summary>
+            <param name="datetime">時間</param>
+            <returns>Js時間表示</returns>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.EzController">
+        <member name="M:EzCoreKit.Extensions.DateTimeFactory.ConvertFromJsTime(System.Int64)">
             <summary>
-            進階MVC控制器，支援OnException與執行前檢測的控制器
+            自Js時間表示轉換
             </summary>
+            <param name="jsTime">Js時間表示</param>
+            <returns>時間</returns>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.EzController.ExecutingCheckList">
+        <member name="M:EzCoreKit.Extensions.EnumFactory.GetEnumName(System.Type,System.Object)">
             <summary>
-            執行階段檢查表
+            取得指定列舉值之名稱
             </summary>
+            <param name="type">列舉類型</param>
+            <param name="value">值</param>
+            <returns>名稱</returns>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.Mvc.EzController.OnException(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext,System.Exception)">
+        <member name="M:EzCoreKit.Extensions.EnumFactory.GetEnumName``1(``0)">
             <summary>
-            執行Action時候發生的例外處理
+            取得指定列舉值名稱
             </summary>
-            <param name="executingContext">執行前發生例外</param>
-            <param name="executedContext">執行中發生例外</param>
-            <param name="exception">例外</param>
+            <typeparam name="T">列舉類型</typeparam>
+            <param name="value">值</param>
+            <returns>名稱</returns>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.SetTempDataAttribute">
+        <member name="M:EzCoreKit.Extensions.EnumFactory.GetCustomAttributes(System.Type,System.Object)">
             <summary>
-            執行Action前先行設定TempData
+            取得自訂列舉欄位之<see cref="T:System.Attribute"/>集合
             </summary>
+            <param name="type">列舉類型</param>
+            <param name="value">值</param>
+            <returns>Attribute集合</returns>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.SetTempDataAttribute.Key">
+        <member name="M:EzCoreKit.Extensions.EnumFactory.GetCustomAttribute(System.Type,System.Object)">
             <summary>
-            鍵值
+            取得自訂列舉欄位之<see cref="T:System.Attribute"/>
             </summary>
+            <param name="type">列舉類型</param>
+            <param name="value">值</param>
+            <returns>Attribute</returns>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.SetTempDataAttribute.Value">
+        <member name="M:EzCoreKit.Extensions.EnumFactory.GetCustomAttributes``1(System.Object)">
             <summary>
-            值
+            取得自訂列舉欄位之<see cref="T:System.Attribute"/>集合
             </summary>
+            <typeparam name="TAttribute">列舉類型</typeparam>
+            <param name="value">值</param>
+            <returns>Attribute集合</returns>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.SetViewBagAttribute">
+        <member name="M:EzCoreKit.Extensions.EnumFactory.GetCustomAttribute``1(System.Object)">
             <summary>
-            執行Action前先行設定ViewBag
+            取得自訂列舉欄位之<see cref="T:System.Attribute"/>
             </summary>
+            <typeparam name="TAttribute">列舉類型</typeparam>
+            <param name="value">值</param>
+            <returns>Attribute</returns>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.SetViewBagAttribute.Key">
+        <member name="M:EzCoreKit.Extensions.ObjectExtension.ToExpando(System.Object,System.Boolean)">
             <summary>
-            鍵值
+            將物件轉換為動態物件，僅欄位與屬性
             </summary>
+            <param name="obj">目標物件</param>
+            <param name="publicOnly">僅為public屬性與欄位</param>
+            <returns>動態物件</returns>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.SetViewBagAttribute.Value">
+        <member name="M:EzCoreKit.Extensions.ObjectExtension.ToBytes(System.Object)">
             <summary>
-            值
+            自物件轉換為byte[]
             </summary>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.Mvc.SetViewDataAttribute">
+        <member name="M:EzCoreKit.Extensions.ObjectExtension.ToObject``1(System.Byte[])">
             <summary>
-            執行Action前先行設定ViewData
+            自byte[]還原為目標型別參數
             </summary>
+            <param name="bytes">資料來源</param>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.SetViewDataAttribute.Key">
+        <member name="M:EzCoreKit.Extensions.RandomExtension.NextDouble(System.Random,System.Double,System.Double)">
             <summary>
-            鍵值
+            隨機取指定數值內的double值
             </summary>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.Mvc.SetViewDataAttribute.Value">
+        <member name="M:EzCoreKit.Extensions.RandomExtension.NextDouble(System.Random,System.Double)">
             <summary>
-            值
+            隨機取得0到指定數值內的double值
             </summary>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.StartupRoot.Configuration">
+        <member name="M:EzCoreKit.Extensions.RandomExtension.NextBool(System.Random)">
             <summary>
-            設定值
+            隨機取得bool值
             </summary>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ErrorPages">
+        <member name="M:EzCoreKit.Extensions.RandomExtension.NextEnum``1(System.Random)">
             <summary>
-            錯誤頁面與錯誤代碼對應
+            隨機自列舉型別中取得值
             </summary>
         </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ExceptionHttpStatusCode">
+        <member name="M:EzCoreKit.Extensions.RandomExtension.NextEnum(System.Random,System.Type)">
             <summary>
-            錯誤時是否傳送狀態碼
+            隨機自列舉型別中取得值
             </summary>
+            <param name="type">目標型別</param>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ConfigureDefaultFiles(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:EzCoreKit.Extensions.RandomExtension.NextString(System.Random,System.String[])">
             <summary>
-            此方法在執行階段被呼叫，使用此方法設定預設的檔案
+            隨機自字串陣列中取得值
             </summary>
+            <param name="data">目標字串</param>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ConfigureMvcRoute(Microsoft.AspNetCore.Routing.IRouteBuilder)">
+        <member name="M:EzCoreKit.Extensions.StreamExtension.ToBytes(System.IO.Stream)">
             <summary>
-            此方法在執行階段被呼叫，使用此方法設定MVC預設路由規則
+            串流轉換為byte[]
             </summary>
-            <param name="routes">路由建構器</param>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.StartupRoot.ConfigureErrorPages(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+        <member name="M:EzCoreKit.Extensions.StreamExtension.ToStream(System.Byte[])">
             <summary>
-            此方法在執行階段被呼叫，使用此方法設定錯誤頁面的檔案
+            byte[]轉換為串流
             </summary>
-            <param name="app"></param>
-            <param name="env"></param>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.IApplicationBuilderExtension">
+        <member name="M:EzCoreKit.Extensions.StringExtension.IsMatch(System.String,System.String)">
             <summary>
-            針對<see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>類型的擴充方法
+            檢查字串是否符合表示式
             </summary>
+            <param name="regexString">正規表示式</param>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.IApplicationBuilderExtension.UseWebSockets``1(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Builder.WebSocketOptions)">
+        <member name="M:EzCoreKit.Extensions.StringExtension.SplitByRegex(System.String,System.String)">
             <summary>
-            將WebSocket服務加入服務空間，使用指定的WebSocket處理容器
+            使用正規表示式切割字串
             </summary>
-            <typeparam name="Handler">處理容器型別，必須繼承自WebSocketHandler</typeparam>
-            <param name="builder">擴充對象</param>
-            <param name="options">WebSocket選項</param>
+            <param name="input">值</param>
+            <param name="pattern">模式</param>
+            <returns>切割結果</returns>
         </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Binary">
+        <member name="M:EzCoreKit.Extensions.StringExtension.SplitByRegex(System.String,System.String,System.Int32)">
             <summary>
-            針對<see cref="T:System.Net.WebSockets.WebSocket"/>類型的擴充方法
+            使用正規表示式切割字串
             </summary>
+            <param name="input">值</param>
+            <param name="pattern">模式</param>
+            <param name="count">數量</param>
+            <returns>切割結果</returns>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Binary.SendAsync(System.Net.WebSockets.WebSocket,System.Byte[],System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken,System.Int32,System.Int32)">
+        <member name="M:EzCoreKit.Extensions.StringExtension.SplitByRegex(System.String,System.String,System.Int32,System.Int32)">
             <summary>
-            透過WebSocket以非同步的方式傳送資料
+            使用正規表示式切割字串
             </summary>
-            <param name="obj">擴充對象</param>
-            <param name="buffer">要透過連線傳送的緩衝區</param>
-            <param name="messageType">表示應用程式正在傳送二進位或文字訊息</param>
-            <param name="endOfMessage">指示「緩衝區」中的資料是否為訊息的最後一部分</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
+            <param name="input">值</param>
+            <param name="pattern">模式</param>
+            <param name="count">數量</param>
+            <param name="startat">起始索引</param>
+            <returns>切割結果</returns>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Binary.SendAsync(System.Net.WebSockets.WebSocket,System.Byte[],System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Int32,System.Int32)">
+        <member name="M:EzCoreKit.Extensions.StringExtension.InnerString(System.String,System.String,System.String)">
             <summary>
-            透過WebSocket以非同步的方式傳送資料
+            取得指定字串間的字串
             </summary>
-            <param name="obj">擴充對象</param>
-            <param name="buffer">要透過連線傳送的緩衝區</param>
-            <param name="messageType">表示應用程式正在傳送二進位或文字訊息</param>
-            <param name="endOfMessage">指示「緩衝區」中的資料是否為訊息的最後一部分</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
+            <param name="input">值</param>
+            <param name="start">起始字串</param>
+            <param name="end">結束字串</param>
+            <returns>字串間的字串</returns>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Binary.ReceiveAsync(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken,System.Int32,System.Int32)">
+        <member name="M:EzCoreKit.Extensions.StringExtension.Spacing(System.String)">
             <summary>
-            非同步接收資料
+            字串中不同語系文字中插入空白字元
             </summary>
-            <param name="obj">擴充對象</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的位元組</returns>
+            <param name="str">字串</param>
+            <returns>自動加入空白後的字串</returns>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Binary.ReceiveAsync(System.Net.WebSockets.WebSocket,System.Int32,System.Int32)">
+        <member name="M:EzCoreKit.Extensions.TypeExtension.AllBaseTypes(System.Reflection.TypeInfo)">
             <summary>
-            非同步接收資料
+            取得指定的類別繼承鍊所有的基礎類別
             </summary>
-            <param name="obj">擴充對象</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的位元組</returns>
+            <param name="Type">指定類別</param>
         </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Binary.SendAndReceiveAsync(System.Net.WebSockets.WebSocket,System.Byte[],System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken,System.Int32,System.Int32)">
+        <member name="M:EzCoreKit.Extensions.TypeExtension.IsAnonymousType(System.Type)">
             <summary>
-            透過WebSocket以非同步的方式傳送資料並等候接收
+            確認目前類別是否為匿名型別
             </summary>
-            <param name="obj">擴充對象</param>
-            <param name="buffer">要透過連線傳送的緩衝區</param>
-            <param name="messageType">表示應用程式正在傳送二進位或文字訊息</param>
-            <param name="endOfMessage">指示「緩衝區」中的資料是否為訊息的最後一部分</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的位元組</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Binary.SendAndReceiveAsync(System.Net.WebSockets.WebSocket,System.Byte[],System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Int32,System.Int32)">
-            <summary>
-            透過WebSocket以非同步的方式傳送資料並等候接收
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="buffer">要透過連線傳送的緩衝區</param>
-            <param name="messageType">表示應用程式正在傳送二進位或文字訊息</param>
-            <param name="endOfMessage">指示「緩衝區」中的資料是否為訊息的最後一部分</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的位元組</returns>
-        </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json">
-            <summary>
-            針對<see cref="T:System.Net.WebSockets.WebSocket"/>類型的擴充方法
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.SendJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步送出Json
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">Json內容</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.SendJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步送出Json
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">Json內容</param>
-            <param name="encoding">文字編碼</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.SendJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Int32,System.Int32)">
-            <summary>
-            非同步送出Json(UTF8)
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">Json內容</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.ReceiveJsonAsync(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步接收Json資料
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的Json</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.ReceiveJsonAsync(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步接收Json資料(UTF8)
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的Json</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.ReceiveJsonAsync(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步接收Json資料
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="encoding">文字編碼</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的Json</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.ReceiveJsonAsync(System.Net.WebSockets.WebSocket,System.Int32,System.Int32)">
-            <summary>
-            非同步接收Json資料(UTF8)
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的Json</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.SendAndReceiveJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步送出Json並等候接收
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的Json</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.SendAndReceiveJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步送出Json並等候接收
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="encoding">文字編碼(</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的Json</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Json.SendAndReceiveJsonAsync(System.Net.WebSockets.WebSocket,Newtonsoft.Json.Linq.JToken,System.Int32,System.Int32)">
-            <summary>
-            非同步送出Json(UTF8)並等候接收
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的Json</returns>
-        </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object">
-            <summary>
-            針對<see cref="T:System.Net.WebSockets.WebSocket"/>類型的擴充方法
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.SendJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步送出物件
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="data">物件內容將轉換為Json</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.SendJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步送出物件
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="data">物件內容將轉換為Json</param>
-            <param name="encoding">文字編碼</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.SendJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Int32,System.Int32)">
-            <summary>
-            非同步送出物件
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="data">物件內容將轉換為Json</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.ReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步接收物件
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的物件</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.ReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步接收物件(UTF8)
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的物件</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.ReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步接收物件
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="encoding">文字編碼</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的物件</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.ReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,System.Int32,System.Int32)">
-            <summary>
-            非同步接收Json資料(UTF8)
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的Json</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.SendAndReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步送出物件並等候接收
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="data">內容</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的物件</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.SendAndReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步送出物件並等候接收
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="data">內容</param>
-            <param name="encoding">文字編碼(</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的物件</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Object.SendAndReceiveJsonAsync``1(System.Net.WebSockets.WebSocket,``0,System.Int32,System.Int32)">
-            <summary>
-            非同步送出物件(UTF8)並等候接收
-            </summary>
-            <typeparam name="T">類型</typeparam>
-            <param name="obj">擴充對象</param>
-            <param name="data">內容</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的物件</returns>
-        </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text">
-            <summary>
-            針對<see cref="T:System.Net.WebSockets.WebSocket"/>類型的擴充方法
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.SendTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步送出文字
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.SendTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步送出文字
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="encoding">文字編碼</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.SendTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Int32,System.Int32)">
-            <summary>
-            非同步送出文字(UTF8)
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.ReceiveTextAsync(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步接收字串資料
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的字串</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.ReceiveTextAsync(System.Net.WebSockets.WebSocket,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步接收字串資料(UTF8)
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的字串</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.ReceiveTextAsync(System.Net.WebSockets.WebSocket,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步接收字串資料
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="encoding">文字編碼</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的字串</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.ReceiveTextAsync(System.Net.WebSockets.WebSocket,System.Int32,System.Int32)">
-            <summary>
-            非同步接收字串資料(UTF8)
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的字串</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.SendAndReceiveTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Text.Encoding,System.Threading.CancellationToken,System.Int32,System.Int32)">
-            <summary>
-            非同步送出文字並等候接收
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="encoding">文字編碼</param>
-            <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的字串</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.SendAndReceiveTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Text.Encoding,System.Int32,System.Int32)">
-            <summary>
-            非同步送出文字並等候接收
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="encoding">文字編碼</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的字串</returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketExtension_Text.SendAndReceiveTextAsync(System.Net.WebSockets.WebSocket,System.String,System.Int32,System.Int32)">
-            <summary>
-            非同步送出文字(UTF8)並等候接收
-            </summary>
-            <param name="obj">擴充對象</param>
-            <param name="data">文字內容</param>
-            <param name="bufferSize">緩衝區大小</param>
-            <param name="millisecondsTimeout">逾時限制</param>
-            <returns>接收到的字串</returns>
-        </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler">
-            <summary>
-            為<see cref="!:IApplicationBuilderExtension.UseWebSockets&lt;Handler&gt;(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Builder.WebSocketOptions)"/>方法所參考的處理類型
-            </summary>
-        </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.WebSocketConnectionEvent">
-            <summary>
-            WebSocket連線狀態改變事件
-            </summary>
-            <param name="context">Http通訊內容</param>
-            <param name="socket">WebSocket物件</param>
-        </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.WebSocketReceivedEvent">
-            <summary>
-            WebSocket接收訊息事件
-            </summary>
-            <param name="socket">WebSocket物件</param>
-            <param name="messageType">訊息類型</param>
-            <param name="receiveMessage">接收到的訊息</param>
-        </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.WebSocketException">
-            <summary>
-            WebSocket服務發生例外
-            </summary>
-            <param name="socket">WebSocket物件</param>
-            <param name="exception">例外</param>
-        </member>
-        <member name="T:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.WebsocketReceivingEvent">
-            <summary>
-            WebSocket正在接收訊息事件
-            </summary>
-            <param name="socket">WebSocket物件</param>
-            <param name="messageType">訊息類型</param>
-            <param name="receiveMessage">接收到的訊息片段</param>
-            <param name="endOfMessage">是否接收結束</param>
-        </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.RequestPath">
-            <summary>
-            表示Request路徑
-            </summary>
-        </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.BufferSize">
-            <summary>
-            緩衝區大小
-            </summary>
-        </member>
-        <member name="P:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.SubProtocol">
-            <summary>
-            子通訊協定
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.#ctor(System.String,System.String)">
-            <summary>
-            Handler建構式，您必須至少聲明Request路徑
-            </summary>
-            <param name="requestPath">Request路徑</param>
-            <param name="subProtocol">子通訊協定</param>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.Start(Microsoft.AspNetCore.Http.HttpContext,System.Func{System.Threading.Tasks.Task})">
-            <summary>
-            Handler進入點
-            </summary>
-            <param name="context">Http通訊內容</param>
-            <param name="next">下一個連線工作</param>
-            <returns></returns>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.AcceptConditions(Microsoft.AspNetCore.Http.HttpContext)">
-            <summary>
-            允許WebSocket連線之條件
-            </summary>
-            <param name="context">Http通訊內容</param>
-            <returns>是否允許客戶端連線</returns>
-        </member>
-        <member name="E:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.OnConnected">
-            <summary>
-            當WebSocket開啟連線時
-            </summary>
-        </member>
-        <member name="E:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.OnDisconnected">
-            <summary>
-            當WebSocket關閉連線時
-            </summary>
-        </member>
-        <member name="E:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.OnReceived">
-            <summary>
-            當WebSocket接收到訊息
-            </summary>
-        </member>
-        <member name="E:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.OnException">
-            <summary>
-            當WebSocket服務發生例外
-            </summary>
-        </member>
-        <member name="E:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.OnReceiving">
-            <summary>
-            當WebSocket正在接收訊息
-            </summary>
-        </member>
-        <member name="E:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.OnAcceptConnected">
-            <summary>
-            當符合連線條件時觸發
-            </summary>
-        </member>
-        <member name="E:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.OnDenyConnected">
-            <summary>
-            當不符合連線條件時觸發
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.Microsoft.AspNetCore.WebSockets.WebSocketHandler.Listen(Microsoft.AspNetCore.Http.HttpContext,System.Net.WebSockets.WebSocket)">
-            <summary>
-            WebSocket監聽主程序
-            </summary>
-            <param name="context">Http通訊內容</param>
-            <param name="socket">WebSocket物件</param>
         </member>
         <member name="M:EzCoreKit.NodaTime.InstantFactory.ConvertToJsTime(NodaTime.Instant)">
             <summary>
@@ -691,233 +278,7 @@
             <param name="jsTime">Js時間表示</param>
             <returns>時間</returns>
         </member>
-        <member name="M:EzCoreKit.System.DateTimeFactory.ConvertToJsTime(System.DateTime)">
-            <summary>
-            轉換為Js時間表示
-            </summary>
-            <param name="datetime">時間</param>
-            <returns>Js時間表示</returns>
-        </member>
-        <member name="M:EzCoreKit.System.DateTimeFactory.ConvertFromJsTime(System.Int64)">
-            <summary>
-            自Js時間表示轉換
-            </summary>
-            <param name="jsTime">Js時間表示</param>
-            <returns>時間</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Dynamic.ExpandoObjectFactory.ConvertToExpando(System.Object,System.Boolean)">
-            <summary>
-            將物件轉換為動態物件，僅欄位與屬性
-            </summary>
-            <param name="obj">目標物件</param>
-            <param name="publicOnly">僅為public屬性與欄位</param>
-            <returns>動態物件</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.EnumFactory.GetEnumName(System.Type,System.Object)">
-            <summary>
-            取得指定列舉值之名稱
-            </summary>
-            <param name="type">列舉類型</param>
-            <param name="value">值</param>
-            <returns>名稱</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.EnumFactory.GetEnumName``1(``0)">
-            <summary>
-            取得指定列舉值名稱
-            </summary>
-            <typeparam name="T">列舉類型</typeparam>
-            <param name="value">值</param>
-            <returns>名稱</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.EnumFactory.GetCustomAttributes(System.Type,System.Object)">
-            <summary>
-            取得自訂列舉欄位之<see cref="T:System.Attribute"/>集合
-            </summary>
-            <param name="type">列舉類型</param>
-            <param name="value">值</param>
-            <returns>Attribute集合</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.EnumFactory.GetCustomAttribute(System.Type,System.Object)">
-            <summary>
-            取得自訂列舉欄位之<see cref="T:System.Attribute"/>
-            </summary>
-            <param name="type">列舉類型</param>
-            <param name="value">值</param>
-            <returns>Attribute</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.EnumFactory.GetCustomAttributes``1(System.Object)">
-            <summary>
-            取得自訂列舉欄位之<see cref="T:System.Attribute"/>集合
-            </summary>
-            <typeparam name="TAttribute">列舉類型</typeparam>
-            <param name="value">值</param>
-            <returns>Attribute集合</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.EnumFactory.GetCustomAttribute``1(System.Object)">
-            <summary>
-            取得自訂列舉欄位之<see cref="T:System.Attribute"/>
-            </summary>
-            <typeparam name="TAttribute">列舉類型</typeparam>
-            <param name="value">值</param>
-            <returns>Attribute</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.Full(System.Array,System.Object)">
-            <summary>
-            將輸入陣列填滿指定的值
-            </summary>
-            <param name="Ary">目標陣列</param>
-            <param name="Value">指定數值</param>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.LCM(System.Int32[])">
-            <summary>
-            求陣列數值最小公倍數
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.LCM(System.Int32,System.Int32)">
-            <summary>
-            求兩數值之最小公倍數
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.GCD(System.Int32[])">
-            <summary>
-            求陣列數值之最大公因數
-            </summary>
-            <param name="ary">輸入陣列</param>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.ArrayExtension.GCD(System.Int32,System.Int32)">
-            <summary>
-            求兩數值之最大公因數
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.DateTimeExtension.ToJsTime(System.DateTime)">
-            <summary>
-            轉換為Js時間表示
-            </summary>
-            <param name="datetime">時間</param>
-            <returns>Js時間表示</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.ObjectExtension.ToExpando(System.Object,System.Boolean)">
-            <summary>
-            將物件轉換為動態物件，僅欄位與屬性
-            </summary>
-            <param name="obj">目標物件</param>
-            <param name="publicOnly">僅為public屬性與欄位</param>
-            <returns>動態物件</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.ObjectExtension.ToBytes(System.Object)">
-            <summary>
-            自物件轉換為byte[]
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.ObjectExtension.ToObject``1(System.Byte[])">
-            <summary>
-            自byte[]還原為目標型別參數
-            </summary>
-            <param name="bytes">資料來源</param>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextDouble(System.Random,System.Double,System.Double)">
-            <summary>
-            隨機取指定數值內的double值
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextDouble(System.Random,System.Double)">
-            <summary>
-            隨機取得0到指定數值內的double值
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextBool(System.Random)">
-            <summary>
-            隨機取得bool值
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextEnum``1(System.Random)">
-            <summary>
-            隨機自列舉型別中取得值
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextEnum(System.Random,System.Type)">
-            <summary>
-            隨機自列舉型別中取得值
-            </summary>
-            <param name="type">目標型別</param>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.RandomExtension.NextString(System.Random,System.String[])">
-            <summary>
-            隨機自字串陣列中取得值
-            </summary>
-            <param name="data">目標字串</param>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.StringExtension.IsMatch(System.String,System.String)">
-            <summary>
-            檢查字串是否符合表示式
-            </summary>
-            <param name="regexString">正規表示式</param>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.StringExtension.SplitByRegex(System.String,System.String)">
-            <summary>
-            使用正規表示式切割字串
-            </summary>
-            <param name="input">值</param>
-            <param name="pattern">模式</param>
-            <returns>切割結果</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.StringExtension.SplitByRegex(System.String,System.String,System.Int32)">
-            <summary>
-            使用正規表示式切割字串
-            </summary>
-            <param name="input">值</param>
-            <param name="pattern">模式</param>
-            <param name="count">數量</param>
-            <returns>切割結果</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.StringExtension.SplitByRegex(System.String,System.String,System.Int32,System.Int32)">
-            <summary>
-            使用正規表示式切割字串
-            </summary>
-            <param name="input">值</param>
-            <param name="pattern">模式</param>
-            <param name="count">數量</param>
-            <param name="startat">起始索引</param>
-            <returns>切割結果</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.StringExtension.InnerString(System.String,System.String,System.String)">
-            <summary>
-            取得指定字串間的字串
-            </summary>
-            <param name="input">值</param>
-            <param name="start">起始字串</param>
-            <param name="end">結束字串</param>
-            <returns>字串間的字串</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.StringExtension.Spacing(System.String)">
-            <summary>
-            字串中不同語系文字中插入空白字元
-            </summary>
-            <param name="str">字串</param>
-            <returns>自動加入空白後的字串</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.TypeExtension.AllBaseTypes(System.Reflection.TypeInfo)">
-            <summary>
-            取得指定的類別繼承鍊所有的基礎類別
-            </summary>
-            <param name="Type">指定類別</param>
-        </member>
-        <member name="M:EzCoreKit.System.Extensions.TypeExtension.IsAnonymousType(System.Type)">
-            <summary>
-            確認目前類別是否為匿名型別
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.IO.StreamExtension.ToBytes(System.IO.Stream)">
-            <summary>
-            串流轉換為byte[]
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.IO.StreamExtension.ToStream(System.Byte[])">
-            <summary>
-            byte[]轉換為串流
-            </summary>
-        </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Action})">
+        <member name="M:EzCoreKit.Reflection.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Action})">
             <summary>
             取得指定成員資訊
             </summary>
@@ -926,7 +287,7 @@
             <param name="expression">Lambda運算式(建構子、無回傳值靜態方法)</param>
             <returns>成員資訊</returns>
         </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember(System.Type,System.Linq.Expressions.Expression{System.Action})">
+        <member name="M:EzCoreKit.Reflection.MemberInfoExtensions.GetMember(System.Type,System.Linq.Expressions.Expression{System.Action})">
             <summary>
             取得指定成員資訊
             </summary>
@@ -934,7 +295,7 @@
             <param name="expression">Lambda運算式(建構子、無回傳值靜態方法)</param>
             <returns>成員資訊</returns>
         </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Action{``0}})">
+        <member name="M:EzCoreKit.Reflection.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Action{``0}})">
             <summary>
             取得指定成員資訊
             </summary>
@@ -943,7 +304,7 @@
             <param name="expression">Lambda運算式(建構子、無回傳值方法)</param>
             <returns>成員資訊</returns>
         </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(System.Type,System.Linq.Expressions.Expression{System.Action{``0}})">
+        <member name="M:EzCoreKit.Reflection.MemberInfoExtensions.GetMember``1(System.Type,System.Linq.Expressions.Expression{System.Action{``0}})">
             <summary>
             取得指定成員資訊
             </summary>
@@ -952,7 +313,7 @@
             <param name="expression">Lambda運算式(建構子、無回傳值方法)</param>
             <returns>成員資訊</returns>
         </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+        <member name="M:EzCoreKit.Reflection.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
             <summary>
             取得指定成員資訊
             </summary>
@@ -961,7 +322,7 @@
             <param name="expression">Lambda運算式(建構子、屬性、欄位、索引子、方法)</param>
             <returns>成員資訊</returns>
         </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MemberInfoExtensions.GetMember``1(System.Type,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+        <member name="M:EzCoreKit.Reflection.MemberInfoExtensions.GetMember``1(System.Type,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
             <summary>
             取得指定成員資訊
             </summary>
@@ -970,7 +331,7 @@
             <param name="expression">Lambda運算式(建構子、屬性、欄位、索引子、方法)</param>
             <returns>成員資訊</returns>
         </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MethodInfoExtensions.Invoke(System.Reflection.MethodBase,System.Object[])">
+        <member name="M:EzCoreKit.Reflection.MethodInfoExtensions.Invoke(System.Reflection.MethodBase,System.Object[])">
             <summary>
             用指定的參數，叫用目前執行個體所表示的方法或建構函式。
             </summary>
@@ -978,7 +339,7 @@
             <param name="parameters">參數</param>
             <returns>結果</returns>
         </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MethodInfoExtensions.AsInvoke(System.Reflection.MemberInfo,System.Object,System.Object@,System.Object[])">
+        <member name="M:EzCoreKit.Reflection.MethodInfoExtensions.AsInvoke(System.Reflection.MemberInfo,System.Object,System.Object@,System.Object[])">
             <summary>
             嘗試將MemberInfo轉換為MethodInfo並用指定的參數，叫用目前執行個體所表示的方法或建構函式。
             </summary>
@@ -988,7 +349,7 @@
             <param name="parameters">參數</param>
             <returns>是否成功引動</returns>
         </member>
-        <member name="M:EzCoreKit.System.Reflection.Extensions.MethodInfoExtensions.ToDelegate(System.Reflection.MethodInfo,System.Object)">
+        <member name="M:EzCoreKit.Reflection.MethodInfoExtensions.ToDelegate(System.Reflection.MethodInfo,System.Object)">
             <summary>
             將目前執行個體所表示的方法或建構函式轉換為Func委派。
             </summary>
@@ -996,46 +357,12 @@
             <param name="instance">實體</param>
             <returns>結果</returns>
         </member>
-        <member name="M:EzCoreKit.System.Security.Cryptography.StringHashExtension.ToHash``1(System.String)">
-            <summary>
-            將字串使用指定的雜湊演算法轉換為雜湊
-            </summary>
-            <typeparam name="Algorithm">雜湊演算法型別</typeparam>
-            <param name="value">值</param>
-            <returns>雜湊Binary</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Security.Cryptography.StringHashExtension.ToHashString``1(System.String,System.Boolean)">
-            <summary>
-            將字串使用指定的雜湊演算法轉換為雜湊後在轉換為16進位字串表示
-            </summary>
-            <typeparam name="Algorithm">雜湊演算法型別</typeparam>
-            <param name="value">值</param>
-            <param name="upper">是否轉換為大寫</param>
-            <returns>雜湊字串</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Security.Cryptography.HashFactory.ToHash``1(System.String)">
-            <summary>
-            將字串使用指定的雜湊演算法轉換為雜湊
-            </summary>
-            <typeparam name="Algorithm">雜湊演算法型別</typeparam>
-            <param name="value">值</param>
-            <returns>雜湊Binary</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Security.Cryptography.HashFactory.ToHashString``1(System.String,System.Boolean)">
-            <summary>
-            將字串使用指定的雜湊演算法轉換為雜湊後在轉換為16進位字串表示
-            </summary>
-            <typeparam name="Algorithm">雜湊演算法型別</typeparam>
-            <param name="value">值</param>
-            <param name="upper">是否轉換為大寫</param>
-            <returns>雜湊字串</returns>
-        </member>
-        <member name="M:EzCoreKit.System.Threading.Tasks.TaskFactory.LimitedTask(System.Action,System.Int32)">
+        <member name="M:EzCoreKit.Threading.TaskFactory.LimitedTask(System.Action,System.Int32)">
             <summary>
             等待<see cref="T:System.Action"/>物件在指定的毫秒限制內完成執行，否則強制結束。
             </summary>
             <param name="action">要執行的動作委派</param>
-            <param name="millisecondsTimeout">要等候的毫秒數，如果要無限期等候，則為<see cref="!:System.Threading.Timeout.Infinite"/>(-1)。</param>
+            <param name="millisecondsTimeout">要等候的毫秒數，如果要無限期等候，則為<see cref="F:System.Threading.Timeout.Infinite"/>(-1)。</param>
             <returns>委派是否在指定的毫秒內完成執行</returns>
         </member>
     </members>
