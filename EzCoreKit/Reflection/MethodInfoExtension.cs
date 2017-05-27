@@ -16,6 +16,18 @@ namespace EzCoreKit.Reflection {
         }
 
         /// <summary>
+        /// 用指定的參數與泛型參數，叫用目前執行個體所表示的方法或建構函式。
+        /// </summary>
+        /// <param name="methodBase"></param>
+        /// <param name="genericTypes">泛型參數</param>
+        /// <param name="parameters">參數</param>
+        /// <returns>結果</returns>
+        public static object Invoke(this MethodInfo methodBase, Type[] genericTypes, params object[] parameters) {
+            return methodBase.MakeGenericMethod(genericTypes).Invoke(parameters);
+        }
+
+
+        /// <summary>
         /// 嘗試將MemberInfo轉換為MethodInfo並用指定的參數，叫用目前執行個體所表示的方法或建構函式。
         /// </summary>
         /// <param name="info"></param>
@@ -38,6 +50,7 @@ namespace EzCoreKit.Reflection {
             }
         }
 
+        
         /// <summary>
         /// 將目前執行個體所表示的方法或建構函式轉換為Func委派。
         /// </summary>

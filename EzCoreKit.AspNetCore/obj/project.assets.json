@@ -12652,7 +12652,7 @@
     "C:\\Users\\XuPeiYao\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "restore": {
       "projectUniqueName": "D:\\EzCoreKit\\EzCoreKit.AspNetCore\\EzCoreKit.AspNetCore.csproj",
       "projectName": "EzCoreKit.AspNetCore",

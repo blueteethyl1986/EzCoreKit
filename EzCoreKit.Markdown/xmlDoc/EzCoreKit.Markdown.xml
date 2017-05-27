@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EzCoreKit.Markdown</name>
+    </assembly>
+    <members>
+        <member name="T:EzCoreKit.Markdown.Area.Blockquotes">
+            <summary>
+            引言區域
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Area.CodeArea">
+            <summary>
+            程式碼區塊
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Area.CodeArea.Language">
+            <summary>
+            語言
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Area.CodeArea.Code">
+            <summary>
+            程式碼
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Area.List">
+            <summary>
+            清單
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Area.List.Type">
+            <summary>
+            類型
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Area.ListTypes">
+            <summary>
+            清單類型
+            </summary>
+        </member>
+        <member name="F:EzCoreKit.Markdown.Area.ListTypes.Number">
+            <summary>
+            數字編號
+            </summary>
+        </member>
+        <member name="F:EzCoreKit.Markdown.Area.ListTypes.Symbol">
+            <summary>
+            符號
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Area.Section">
+            <summary>
+            章節
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Area.Section.Header">
+            <summary>
+            標題
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Area.Section.HeaderText">
+            <summary>
+            標題文字
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Area.Section.IsEmpty">
+            <summary>
+            檢驗是否為空
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.Markdown.Area.Section.GetAllSubsections">
+            <summary>
+            取得所有子章節列表
+            </summary>
+            <returns>子章節列表</returns>
+        </member>
+        <member name="M:EzCoreKit.Markdown.Area.Section.FindTag(System.String)">
+            <summary>
+            找尋指定ID的參考標籤
+            </summary>
+            <param name="id">參考標籤ID</param>
+            <returns>Tag</returns>
+        </member>
+        <member name="M:EzCoreKit.Markdown.Area.Section.FindSection(System.String)">
+            <summary>
+            找尋指定名稱的章節
+            </summary>
+            <param name="header">章節名稱</param>
+            <returns>章節</returns>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Area.Section.MatchModes">
+            <summary>
+            結構檢驗方式
+            </summary>
+        </member>
+        <member name="F:EzCoreKit.Markdown.Area.Section.MatchModes.Basic">
+            <summary>
+            標準結構為基本需求(不檢查順序與多餘的項目)
+            </summary>
+        </member>
+        <member name="F:EzCoreKit.Markdown.Area.Section.MatchModes.Order">
+            <summary>
+            基於Base檢查後加上章節順序檢查(可多餘項目)
+            </summary>
+        </member>
+        <member name="F:EzCoreKit.Markdown.Area.Section.MatchModes.Full">
+            <summary>
+            結構與順序必須完全符合
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.Markdown.Area.Section.IsMatch(EzCoreKit.Markdown.Area.Section,EzCoreKit.Markdown.Area.Section.MatchModes)">
+            <summary>
+            檢查是否符合指定標準章節結構
+            </summary>
+            <param name="standard">標準結構</param>
+            <param name="mode">檢查模式</param>
+            <returns>是否符合結構</returns>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Inline.AutoLink">
+            <summary>
+            自動連結
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Inline.Bold">
+            <summary>
+            粗體
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Inline.Code">
+            <summary>
+            程式碼區塊
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Inline.Delete">
+            <summary>
+            刪除線
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Inline.Image">
+            <summary>
+            圖片
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Inline.Image.Text">
+            <summary>
+            文字
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Inline.Image.URL">
+            <summary>
+            連結
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Inline.Image.ReferenceTag">
+            <summary>
+            參考標籤
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Inline.Italic">
+            <summary>
+            斜體
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Inline.Link">
+            <summary>
+            連結
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Inline.Link.Text">
+            <summary>
+            文字
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Inline.Link.URL">
+            <summary>
+            連結
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Inline.Link.ReferenceTag">
+            <summary>
+            參考標籤
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Line.Divider">
+            <summary>
+            分隔線
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Line.Header">
+            <summary>
+            標題
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Line.Header.Level">
+            <summary>
+            階層
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Line.SetextHeader">
+            <summary>
+            Setext標題
+            </summary>
+        </member>
+        <member name="T:EzCoreKit.Markdown.Line.Tag">
+            <summary>
+            參考標籤
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Line.Tag.Id">
+            <summary>
+            唯一識別號
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Line.Tag.URL">
+            <summary>
+            超連結
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Line.Tag.Optional">
+            <summary>
+            選擇項目
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.Line.Tag.IsRef">
+            <summary>
+            是否為參考項目
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.Markdown.Markdown.Find``1(System.Func{``0,System.Boolean})">
+            <summary>
+            找尋指定的子節點
+            </summary>
+            <typeparam name="T">節點類型</typeparam>
+            <param name="func">條件方法</param>
+            <returns>找尋結果</returns>
+        </member>
+        <member name="M:EzCoreKit.Markdown.Markdown.ToSection">
+            <summary>
+            轉換為Section
+            </summary>
+            <returns>Section</returns>
+        </member>
+        <member name="M:EzCoreKit.Markdown.Markdown.FindSection(System.String)">
+            <summary>
+            找尋指定的章節並剖析
+            </summary>
+            <param name="name">名稱</param>
+            <returns>找尋結果</returns>
+        </member>
+        <member name="T:EzCoreKit.Markdown.MarkdownRaw">
+            <summary>
+            Markdown內容
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.MarkdownRaw.OuterMarkdown">
+            <summary>
+            完整Markdown片段
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.MarkdownRaw.OuterText">
+            <summary>
+            外顯文字內容
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.MarkdownRaw.InnerMarkdown">
+            <summary>
+            內部Markdown片段
+            </summary>
+        </member>
+        <member name="P:EzCoreKit.Markdown.MarkdownRaw.InnerText">
+            <summary>
+            外顯內部文字內容
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.Markdown.MarkdownRaw.op_Implicit(System.String)~EzCoreKit.Markdown.MarkdownRaw">
+            <summary>
+            隱含轉換<see cref="T:System.String"/>為<see cref="T:EzCoreKit.Markdown.MarkdownRaw"/>內容
+            </summary>
+            <param name="markdown">Markdown內容</param>
+        </member>
+        <member name="M:EzCoreKit.Markdown.MarkdownRaw.op_Explicit(EzCoreKit.Markdown.MarkdownRaw)~System.String">
+            <summary>
+            明確轉換<see cref="T:EzCoreKit.Markdown.MarkdownRaw"/>為<see cref="T:System.String"/>
+            </summary>
+            <param name="content">string本文</param>
+        </member>
+        <member name="F:EzCoreKit.Markdown.MarkdownRaw.InlineTypes">
+            <summary>
+            行內樣式
+            </summary>
+        </member>
+        <member name="F:EzCoreKit.Markdown.MarkdownRaw.LineTypes">
+            <summary>
+            行樣式
+            </summary>
+        </member>
+        <member name="F:EzCoreKit.Markdown.MarkdownRaw.AreaTypes">
+            <summary>
+            多行樣式
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.Markdown.MarkdownRaw.Parse(System.String,System.Boolean)">
+            <summary>
+            將Markdown字串轉換為Markdown Content
+            </summary>
+            <param name="text">Markdown本文</param>
+            <param name="inline">是否為單一行</param>
+            <returns>Markdown Content</returns>
+        </member>
+    </members>
+</doc>

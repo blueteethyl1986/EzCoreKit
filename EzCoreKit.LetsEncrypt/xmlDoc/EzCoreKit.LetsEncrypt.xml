@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EzCoreKit.LetsEncrypt</name>
+    </assembly>
+    <members>
+        <member name="P:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.PfxFilePath">
+            <summary>
+            憑證儲存路徑
+            </summary>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.UseLetsEncrypt(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.String[])">
+            <summary>
+            使用Let's Encrypt服務，並設定為Kestrel使用的憑證
+            </summary>
+            <param name="options">選項</param>
+            <param name="email">電子郵件</param>
+            <param name="mainDomain">主要域名</param>
+            <param name="domains">其他域名</param>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.UseLetsEncryptAsync(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.String[])">
+            <summary>
+            使用Let's Encrypt服務，並設定為Kestrel使用的憑證(可等候)
+            </summary>
+            <param name="options">選項</param>
+            <param name="email">電子郵件</param>
+            <param name="domains">其他域名</param>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.UseLetsEncryptAndSave(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.String,System.String[])">
+            <summary>
+            優先使用現有憑證，如憑證過期則使用Let's Encrypt服務，並設定為Kestrel使用的憑證與儲存憑證
+            </summary>
+            <param name="options">選項</param>
+            <param name="savePassword">憑證密碼</param>
+            <param name="email">電子郵件</param>
+            <param name="mainDomain">主要域名</param>
+            <param name="domains">其他域名</param>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.UseLetsEncryptAndSaveAsync(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.String,System.String[])">
+            <summary>
+            優先使用現有憑證，如憑證過期則使用Let's Encrypt服務，並設定為Kestrel使用的憑證與儲存憑證(可等候)
+            </summary>
+            <param name="options">選項</param>
+            <param name="savePassword">憑證密碼</param>
+            <param name="email">電子郵件</param>
+            <param name="mainDomain">主要域名</param>
+            <param name="domains">其他域名</param>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.CreateX509ByLetsEncrypt(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.String,System.String[])">
+            <summary>
+            使用Let's Encrypt服務產生X509憑證
+            </summary>
+            <param name="options">選項</param>
+            <param name="savePassword">憑證密碼</param>
+            <param name="email">電子郵件</param>
+            <param name="domains">域名</param>
+            <returns>X509憑證</returns>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.CreateX509ByLetsEncryptAsync(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.String,System.String[])">
+            <summary>
+            使用Let's Encrypt服務產生X509憑證(可等候)
+            </summary>
+            <param name="options">選項</param>
+            <param name="savePassword">憑證密碼</param>
+            <param name="email">電子郵件</param>
+            <param name="domains">域名</param>
+            <returns>X509憑證</returns>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.CreateX509BinaryByLetsEncrypt(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.String,System.String[])">
+            <summary>
+            使用Let's Encrypt服務產生X509憑證
+            </summary>
+            <param name="options">選項</param>
+            <param name="savePassword">憑證密碼</param>
+            <param name="email">電子郵件</param>
+            <param name="domains">域名</param>
+            <returns>X509憑證Binary</returns>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.CreateX509BinaryByLetsEncryptAsync(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.String,System.String[])">
+            <summary>
+            使用Let's Encrypt服務產生X509憑證(可等候)
+            </summary>
+            <param name="options">選項</param>
+            <param name="savePassword">憑證密碼</param>
+            <param name="email">電子郵件</param>
+            <param name="domains">域名</param>
+            <returns>X509憑證Binary</returns>
+        </member>
+        <member name="M:EzCoreKit.LetsEncrypt.KestrelLetsEncryptExtensions.CheckCertificateExpired(Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions,System.String,System.TimeSpan,System.Action)">
+            <summary>
+            當憑證即將或已過期時回調指定方法
+            </summary>
+            <param name="options">選項</param>
+            <param name="savePassword">憑證密碼</param>
+            <param name="frequency">檢查頻率</param>
+            <param name="action">回調方法</param>
+        </member>
+    </members>
+</doc>
