@@ -104,7 +104,7 @@ namespace EzCoreKit.AspNetCore {
                         //檢查是否存在指定的對應
                         if (ErrorPages.ContainsKey(code)) {
                             //寫出錯誤頁面內容
-                            byte[] Content = File.ReadAllBytes(env.WebRootPath + "/" + ErrorPages[handler.Response.StatusCode]);
+                            byte[] Content = System.IO.File.ReadAllBytes(env.WebRootPath + "/" + ErrorPages[handler.Response.StatusCode]);
                             handler.Response.ContentType = "text/html";
                             handler.Response.Body.WriteAsync(Content, 0, Content.Length);
                             return;

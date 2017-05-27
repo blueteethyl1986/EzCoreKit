@@ -53,7 +53,7 @@ namespace EzCoreKit.Extensions {
         public static object DeepClone(this object target) {
             Type TargetType = target.GetType();
 
-            if (TargetType.IsValueType || target is string) return target;//實質型別或字串
+            if (TargetType.GetTypeInfo().IsValueType || target is string) return target;//實質型別或字串
 
             object result = null;
             if (TargetType.IsArray) {//陣列型別

@@ -46,12 +46,42 @@
             <param name="publicOnly">僅為public屬性與欄位</param>
             <returns>動態物件</returns>
         </member>
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.GetLengths(System.Array)">
+            <summary>
+            取得代表 <see cref="T:System.Array"/> 所有維度之元素數目的 32 位元整數。
+            </summary>
+            <param name="target"></param>
+            <returns>32 位元的整數陣列，代表所有維度的元素數目。</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.GetAllIndexes(System.Array)">
+            <summary>
+            取得代表 <see cref="T:System.Array"/> 所有元素的索引。
+            </summary>
+            <param name="target"></param>
+            <returns>32 位元的整數陣列的物件清單，代表所有元素的索引。</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.SetValue(System.Array,System.Object,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            設定多維 System.Array 中指定位置之元素的值。索引已指定為 32 位元整數的List。
+            </summary>
+            <param name="obj"></param>
+            <param name="value">指定元素的新值。</param>
+            <param name="index">32 位元整數的List，代表指定要設定之元素位置的索引。</param>
+        </member>
+        <member name="M:EzCoreKit.Extensions.ArrayExtension.GetValue(System.Array,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            取得多維 System.Array 中位於指定位置的值。索引已指定為 32 位元整數的List。
+            </summary>
+            <param name="obj"></param>
+            <param name="index">32 位元整數的清單，代表索引，指定要取得的 System.Array 元素的位置。</param>
+            <returns></returns>
+        </member>
         <member name="M:EzCoreKit.Extensions.ArrayExtension.Full(System.Array,System.Object)">
             <summary>
             將輸入陣列填滿指定的值
             </summary>
-            <param name="Ary">目標陣列</param>
-            <param name="Value">指定數值</param>
+            <param name="ary">目標陣列</param>
+            <param name="value">指定數值</param>
         </member>
         <member name="M:EzCoreKit.Extensions.ArrayExtension.LCM(System.Int32[])">
             <summary>
@@ -162,6 +192,13 @@
             </summary>
             <param name="bytes">資料來源</param>
         </member>
+        <member name="M:EzCoreKit.Extensions.ObjectExtension.DeepClone(System.Object)">
+            <summary>
+            傳回這個物件的深層副本。
+            </summary>
+            <param name="target"></param>
+            <returns>深層副本</returns>
+        </member>
         <member name="M:EzCoreKit.Extensions.RandomExtension.NextDouble(System.Random,System.Double,System.Double)">
             <summary>
             隨機取指定數值內的double值
@@ -203,6 +240,13 @@
             <summary>
             byte[]轉換為串流
             </summary>
+        </member>
+        <member name="M:EzCoreKit.Extensions.StringAutoSpcesExtension.Spacing(System.String)">
+            <summary>
+            字串中不同語系文字中插入空白字元
+            </summary>
+            <param name="str">字串</param>
+            <returns>自動加入空白後的字串</returns>
         </member>
         <member name="M:EzCoreKit.Extensions.StringExtension.IsMatch(System.String,System.String)">
             <summary>
@@ -263,6 +307,13 @@
             <summary>
             確認目前類別是否為匿名型別
             </summary>
+        </member>
+        <member name="M:EzCoreKit.File.SecureDeleter.Delete(System.String,System.UInt32)">
+            <summary>
+            擦除內容後刪除檔案
+            </summary>
+            <param name="path">檔案路徑</param>
+            <param name="overWriteTime">內容擦除次數，預設為一次</param>
         </member>
         <member name="M:EzCoreKit.NodaTime.InstantFactory.ConvertToJsTime(NodaTime.Instant)">
             <summary>
@@ -336,6 +387,15 @@
             用指定的參數，叫用目前執行個體所表示的方法或建構函式。
             </summary>
             <param name="methodBase"></param>
+            <param name="parameters">參數</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:EzCoreKit.Reflection.MethodInfoExtensions.Invoke(System.Reflection.MethodInfo,System.Type[],System.Object[])">
+            <summary>
+            用指定的參數與泛型參數，叫用目前執行個體所表示的方法或建構函式。
+            </summary>
+            <param name="methodBase"></param>
+            <param name="genericTypes">泛型參數</param>
             <param name="parameters">參數</param>
             <returns>結果</returns>
         </member>
