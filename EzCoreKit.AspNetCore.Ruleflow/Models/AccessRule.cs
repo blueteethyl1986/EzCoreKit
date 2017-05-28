@@ -20,7 +20,7 @@ namespace EzCoreKit.AspNetCore.Ruleflow.Models {
             public string key;
             public List<string> executedRules;
         }
-        public static List<string> ImportNamespaces { get; set; }
+        public static List<string> Imports { get; set; }
             = new List<string>(new string[] {
                 "System",
                 "System.Linq",
@@ -67,25 +67,14 @@ namespace EzCoreKit.AspNetCore.Ruleflow.Models {
         /// <returns>執行結果，下一個規則Guid、null(未通過規則)、Guid.Empty(規則驗證結束端點)</returns>
         public async Task<string> Run(HttpContext httpContext, string id, string key,List<string> executedRules) {
             if (!Enable) return null;//斷路
-                                     // Add reference to mscorlib
-            var mscorlib = typeof(object).GetTypeInfo().Assembly;
-            var systemCore = typeof(global::System.Linq.Enumerable).GetTypeInfo().Assembly;
 
-            var references = new[] { mscorlib, systemCore };
-            var loader = new InteractiveAssemblyLoader();
-            foreach (var reference in references) {
-                loader.RegisterDependency(reference);
-            }
-
-            var options = ScriptOptions.Default;
-            foreach (var @namespace in AccessRule.ImportNamespaces) {
-                options = options.WithReferences(@namespace).WithImports(@namespace);
-            }
+            var options = ScriptOptions.Default
+                .AddReferences(References)
+                .AddImports(Imports);
             var script = CSharpScript.Create<string>(
                 code: Code,
                 globalsType: typeof(Params),
-                options: options,
-                assemblyLoader: loader);
+                options: options);
             return await script.CreateDelegate()(new Params() {
                 httpContext = httpContext,
                 id = id,
