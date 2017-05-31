@@ -20,19 +20,11 @@ namespace EzCoreKit.AspNetCore.Ruleflow.Models {
             public string key;
             public List<string> executedRules;
         }
-        public static List<string> Imports { get; set; }
+        public static List<string> ReferencesAndImports { get; set; }
             = new List<string>(new string[] {
                 "System",
                 "System.Linq",
                 "Microsoft.AspNetCore.Http",
-                "System.Collections",
-                "System.Collections.Generic"
-            });
-
-        public static List<string> References { get; set; }
-            = new List<string>(new string[]{
-                "System",
-                "System.Linq",
                 "System.Collections",
                 "System.Collections.Generic"
             });
@@ -69,8 +61,8 @@ namespace EzCoreKit.AspNetCore.Ruleflow.Models {
             if (!Enable) return null;//斷路
 
             var options = ScriptOptions.Default
-                .AddReferences(References)
-                .AddImports(Imports);
+                .AddReferences(ReferencesAndImports)
+                .AddImports(ReferencesAndImports);
             var script = CSharpScript.Create<string>(
                 code: Code,
                 globalsType: typeof(Params),

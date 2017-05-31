@@ -6,6 +6,14 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>XuPeiYao</Authors>
     <Company>XuPeiYao</Company>
+    <Description>針對ASP.net Core的規則引擎。</Description>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/License.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore.Ruleflow</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageIconUrl>http://i.imgur.com/f7w1DJ3.png</PackageIconUrl>
+    <Copyright>MIT</Copyright>
+    <PackageTags />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
