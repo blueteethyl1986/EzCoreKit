@@ -11,7 +11,7 @@ Simple converts document string into a Markdown object or structure.
 1. [Nuget](https://www.nuget.org/packages/EzCoreKit.Markdown)
 2. [MyGet](https://www.myget.org/feed/xpy/package/nuget/EzCoreKit.Markdown)
 ```
-PM> Install-Package SharpMarkdown
+PM> Install-Package EzCoreKit.Markdown
 ```
 
 ### Get Started(快速上手)
