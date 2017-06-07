@@ -28,12 +28,18 @@ namespace EzCoreKit.AspNetCore.Mvc {
             var controllerAttributes = context.Controller.GetType().GetTypeInfo().GetCustomAttributes<AuthorityAttribute>();
 
             var controllerActionDescriptor = context.ActionDescriptor as ControllerActionDescriptor;
-            if (controllerActionDescriptor == null) return;
+            if (controllerActionDescriptor == null) {
+                base.OnActionExecuting(context);
+                return;
+            }
 
             var methodInfo = controllerActionDescriptor.MethodInfo;
             var attributes = controllerAttributes.Concat(
                 methodInfo.GetCustomAttributes<AuthorityAttribute>());
-            if (attributes.Count() == 0) return;
+            if (attributes.Count() == 0) {
+                base.OnActionExecuting(context);
+                return;
+            }
             var now = DateTime.Now;
             foreach (var attribute in attributes) {
                 if (Convert.ToInt32(UserAuthority) < Convert.ToInt32(attribute.Minimum)) {
