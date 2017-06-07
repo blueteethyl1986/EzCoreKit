@@ -18,7 +18,7 @@ namespace EzCoreKit.AspNetCore.Mvc {
         /// <summary>
         /// 取得目前使用者權限
         /// </summary>
-        public TAuthorityEnum UserAuthority { get; }
+        public abstract TAuthorityEnum UserAuthority { get; }
 
         public EzAuthorityController() : base() {
             
