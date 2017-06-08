@@ -184,11 +184,12 @@ namespace EzCoreKit.AspNetCore.Mvc {
         /// <param name="executingContext">執行前發生例外</param>
         /// <param name="executedContext">執行中發生例外</param>
         /// <param name="exception">例外</param>
+        [NonAction]
         public virtual void OnException(
             ActionExecutingContext executingContext,
             ActionExecutedContext executedContext,
             Exception exception) {
-            if (executingContext.Result == null) executingContext.Result = new EmptyResult();
+            if (executingContext != null && executingContext.Result == null) executingContext.Result = new EmptyResult();
         }
     }
 }
