@@ -43,7 +43,8 @@ namespace EzCoreKit.AspNetCore.Mvc {
             var now = DateTime.Now;
             foreach (var attribute in attributes) {
                 if (Convert.ToInt32(UserAuthority) < Convert.ToInt32(attribute.Minimum)) {
-                    throw new Exception("authority problem");
+                    OnException(context,null, new Exception("authority problem"));
+                    return;
                 }
             }
 
