@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.Linq;
 
 namespace EzCoreKit.Extensions {
     public static class EnumFactory {
@@ -59,8 +60,8 @@ namespace EzCoreKit.Extensions {
         /// <typeparam name="TAttribute">列舉類型</typeparam>
         /// <param name="value">值</param>
         /// <returns>Attribute集合</returns>
-        public static IEnumerable<Attribute> GetCustomAttributes<TAttribute>(object value) where TAttribute : Attribute {
-            return GetCustomAttributes(typeof(TAttribute), value);
+        public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(object value) where TAttribute : Attribute {
+            return GetCustomAttributes(typeof(TAttribute), value).Select(x=>(TAttribute)x);
         }
 
         /// <summary>
@@ -69,8 +70,8 @@ namespace EzCoreKit.Extensions {
         /// <typeparam name="TAttribute">列舉類型</typeparam>
         /// <param name="value">值</param>
         /// <returns>Attribute</returns>
-        public static Attribute GetCustomAttribute<TAttribute>(object value) where TAttribute : Attribute {
-            return GetCustomAttribute(typeof(TAttribute), value);
+        public static TAttribute GetCustomAttribute<TAttribute>(object value) where TAttribute : Attribute {
+            return (TAttribute)GetCustomAttribute(typeof(TAttribute), value);
         }
     }
 }
