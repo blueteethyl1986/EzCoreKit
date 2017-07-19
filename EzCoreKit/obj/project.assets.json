@@ -2,7 +2,7 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
-      "BinaryFormatter/1.0.1": {
+      "BinaryFormatter/1.2.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -3739,16 +3739,16 @@
       }
     },
     ".NETFramework,Version=v4.6.1": {
-      "BinaryFormatter/1.0.1": {
+      "BinaryFormatter/1.2.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
         },
         "compile": {
-          "lib/net461/BinaryFormatter.dll": {}
+          "lib/netstandard1.1/BinaryFormatter.dll": {}
         },
         "runtime": {
-          "lib/net461/BinaryFormatter.dll": {}
+          "lib/netstandard1.1/BinaryFormatter.dll": {}
         }
       },
       "BouncyCastle.NetCore/1.8.1.2": {
@@ -5949,15 +5949,13 @@
     }
   },
   "libraries": {
-    "BinaryFormatter/1.0.1": {
-      "sha512": "hiSnkS95cXIqbIeBVNaViAv5kX+6BPT/5Le6BAVcLbrOGFSuKx4Kq+mh8Ihx9LhA8jIJYyR1t1AKFVSpJWrMeQ==",
+    "BinaryFormatter/1.2.0": {
+      "sha512": "Ck58Ce1gmI3QTiZvxtwpPecwQlZ7kxzlesnF4Ln1wX3nS3Pv66l97Vx8NPP3fptEys0lBCUpWNhzLUTgTPAOWQ==",
       "type": "package",
-      "path": "binaryformatter/1.0.1",
+      "path": "binaryformatter/1.2.0",
       "files": [
-        "binaryformatter.1.0.1.nupkg.sha512",
+        "binaryformatter.1.2.0.nupkg.sha512",
         "binaryformatter.nuspec",
-        "lib/net452/BinaryFormatter.dll",
-        "lib/net461/BinaryFormatter.dll",
         "lib/netstandard1.1/BinaryFormatter.dll"
       ]
     },
@@ -12585,7 +12583,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
-      "BinaryFormatter >= 1.0.1",
+      "BinaryFormatter >= 1.2.0",
       "BouncyCastle.NetCore >= 1.8.1.2",
       "Microsoft.AspNetCore >= 1.1.2",
       "Microsoft.AspNetCore.Http >= 1.1.2",
@@ -12601,7 +12599,7 @@
       "System.ValueTuple >= 4.3.1"
     ],
     ".NETFramework,Version=v4.6.1": [
-      "BinaryFormatter >= 1.0.1",
+      "BinaryFormatter >= 1.2.0",
       "BouncyCastle.NetCore >= 1.8.1.2",
       "Microsoft.AspNetCore >= 1.1.2",
       "Microsoft.AspNetCore.Http >= 1.1.2",
@@ -12666,7 +12664,7 @@
           },
           "BinaryFormatter": {
             "target": "Package",
-            "version": "1.0.1"
+            "version": "1.2.0"
           },
           "System.Security.Cryptography.X509Certificates": {
             "target": "Package",
@@ -12722,7 +12720,7 @@
           },
           "BinaryFormatter": {
             "target": "Package",
-            "version": "1.0.1"
+            "version": "1.2.0"
           },
           "System.Security.Cryptography.X509Certificates": {
             "target": "Package",
