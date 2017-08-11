@@ -173,6 +173,22 @@
             <param name="value">值</param>
             <returns>Attribute</returns>
         </member>
+        <member name="M:EzCoreKit.Extensions.HttpClientExtension.GetJsonAsync(System.Net.Http.HttpClient,System.String)">
+            <summary>
+            將 GET 要求傳送至指定的 URI，並透過非同步作業，以Json形式傳回回應內容
+            </summary>
+            <param name="client"></param>
+            <param name="requestUri">傳送要求的目標 URI</param>
+            <returns>操作結果</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.HttpClientExtension.GetJsonAsync(System.Net.Http.HttpClient,System.Uri)">
+            <summary>
+            將 GET 要求傳送至指定的 URI，並透過非同步作業，以Json形式傳回回應內容
+            </summary>
+            <param name="client"></param>
+            <param name="requestUri">傳送要求的目標 URI</param>
+            <returns>操作結果</returns>
+        </member>
         <member name="M:EzCoreKit.Extensions.ObjectExtension.ToExpando(System.Object,System.Boolean)">
             <summary>
             將物件轉換為動態物件，僅欄位與屬性

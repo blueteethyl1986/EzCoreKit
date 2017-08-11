@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.1",
-    "signature": "0599911714ce86c1bb16405843d6cdfd62ba5fb3"
+    "signature": "8988cc860d10a8da7d883a3030ec2fbc0603513e"
   },
   "compilationOptions": {},
   "targets": {
@@ -20,7 +20,7 @@
           "EzCoreKit.AspNetCore.dll": {}
         }
       },
-      "binaryformatter/1.0.1": {
+      "binaryformatter/1.2.0": {
         "runtime": {
           "lib/netstandard1.1/BinaryFormatter.dll": {}
         }
@@ -109,7 +109,6 @@
           "Microsoft.Extensions.FileProviders.Physical": "1.1.1",
           "Microsoft.Extensions.Logging.Abstractions": "1.1.2",
           "Microsoft.Extensions.Options": "1.1.2",
-          "System.Diagnostics.DiagnosticSource": "4.3.1",
           "System.Diagnostics.StackTrace": "4.3.0"
         },
         "runtime": {
@@ -134,7 +133,6 @@
           "Microsoft.Extensions.Logging": "1.1.2",
           "Microsoft.Extensions.Options": "1.1.2",
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
-          "System.Diagnostics.DiagnosticSource": "4.3.1",
           "System.Diagnostics.StackTrace": "4.3.0"
         },
         "runtime": {
@@ -287,8 +285,7 @@
           "Microsoft.Extensions.DependencyModel": "1.1.2",
           "Microsoft.Extensions.FileProviders.Abstractions": "1.1.1",
           "Microsoft.Extensions.Logging.Abstractions": "1.1.2",
-          "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
-          "System.Diagnostics.DiagnosticSource": "4.3.1"
+          "Microsoft.Extensions.PlatformAbstractions": "1.1.0"
         },
         "runtime": {
           "lib/netstandard1.6/Microsoft.AspNetCore.Mvc.Core.dll": {}
@@ -771,11 +768,6 @@
           "lib/netstandard1.0/System.Diagnostics.Contracts.dll": {}
         }
       },
-      "system.diagnostics.diagnosticsource/4.3.1": {
-        "runtime": {
-          "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
-        }
-      },
       "system.diagnostics.stacktrace/4.3.0": {
         "runtime": {
           "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
@@ -836,7 +828,7 @@
       },
       "ezcorekit/2.0.0": {
         "dependencies": {
-          "BinaryFormatter": "1.0.1",
+          "BinaryFormatter": "1.2.0",
           "BouncyCastle.NetCore": "1.8.1.2",
           "Microsoft.AspNetCore": "1.1.2",
           "Microsoft.AspNetCore.Http": "1.1.2",
@@ -860,12 +852,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "binaryformatter/1.0.1": {
+    "binaryformatter/1.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hiSnkS95cXIqbIeBVNaViAv5kX+6BPT/5Le6BAVcLbrOGFSuKx4Kq+mh8Ihx9LhA8jIJYyR1t1AKFVSpJWrMeQ==",
-      "path": "binaryformatter/1.0.1",
-      "hashPath": "binaryformatter.1.0.1.nupkg.sha512"
+      "sha512": "sha512-Ck58Ce1gmI3QTiZvxtwpPecwQlZ7kxzlesnF4Ln1wX3nS3Pv66l97Vx8NPP3fptEys0lBCUpWNhzLUTgTPAOWQ==",
+      "path": "binaryformatter/1.2.0",
+      "hashPath": "binaryformatter.1.2.0.nupkg.sha512"
     },
     "bouncycastle.netcore/1.8.1.2": {
       "type": "package",
@@ -1433,13 +1425,6 @@
       "sha512": "sha512-eelRRbnm+OloiQvp9CXS0ixjNQldjjkHO4iIkR5XH2VIP8sUB/SIpa1TdUW6/+HDcQ+MlhP3pNa1u5SbzYuWGA==",
       "path": "system.diagnostics.contracts/4.3.0",
       "hashPath": "system.diagnostics.contracts.4.3.0.nupkg.sha512"
-    },
-    "system.diagnostics.diagnosticsource/4.3.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-j72A3mwamUXPgDIU1TWyzea7yqz59+iO2cmXuyzvcfuszWGq9JRbWify1k33lLQophaXOIyhPkEevfP0k4M3wg==",
-      "path": "system.diagnostics.diagnosticsource/4.3.1",
-      "hashPath": "system.diagnostics.diagnosticsource.4.3.1.nupkg.sha512"
     },
     "system.diagnostics.stacktrace/4.3.0": {
       "type": "package",

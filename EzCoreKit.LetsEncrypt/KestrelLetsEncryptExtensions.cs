@@ -27,7 +27,6 @@ namespace EzCoreKit.LetsEncrypt {
         /// </summary>
         /// <param name="options">選項</param>
         /// <param name="email">電子郵件</param>
-        /// <param name="mainDomain">主要域名</param>
         /// <param name="domains">其他域名</param>
         [Obsolete("請使用UseLetsEncryptAndSave方法")]
         public static void UseLetsEncrypt(this KestrelServerOptions options, string email, params string[] domains) {
@@ -42,7 +41,7 @@ namespace EzCoreKit.LetsEncrypt {
         /// <param name="domains">其他域名</param>
         [Obsolete("請使用UseLetsEncryptAndSaveAsync方法")]
         public static async Task UseLetsEncryptAsync(this KestrelServerOptions options, string email, params string[] domains) {
-            await options.UseLetsEncryptAsyncBase(null,email, domains);
+            await options.UseLetsEncryptAsyncBase(null, email, domains);
         }
 
         /// <summary>
@@ -84,7 +83,7 @@ namespace EzCoreKit.LetsEncrypt {
             var pfxBinary = await options.CreateX509BinaryByLetsEncryptAsync(savePassword, email, domains);
             if (savePassword == null) {
                 options.UseHttps(new X509Certificate2(pfxBinary));
-            } else {                
+            } else {
                 File.WriteAllBytes(PfxFilePath, pfxBinary);
                 options.UseHttps(PfxFilePath, savePassword);
             }
@@ -99,7 +98,7 @@ namespace EzCoreKit.LetsEncrypt {
         /// <param name="domains">域名</param>
         /// <returns>X509憑證</returns>
         public static X509Certificate2 CreateX509ByLetsEncrypt(this KestrelServerOptions options, string savePassword, string email, params string[] domains) {
-            return options.CreateX509ByLetsEncryptAsync(savePassword,email, domains).GetAwaiter().GetResult();
+            return options.CreateX509ByLetsEncryptAsync(savePassword, email, domains).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -111,7 +110,7 @@ namespace EzCoreKit.LetsEncrypt {
         /// <param name="domains">域名</param>
         /// <returns>X509憑證</returns>
         public static async Task<X509Certificate2> CreateX509ByLetsEncryptAsync(this KestrelServerOptions options, string savePassword, string email, params string[] domains) {
-            return new X509Certificate2(await options.CreateX509BinaryByLetsEncryptAsync(savePassword,email, domains),savePassword);
+            return new X509Certificate2(await options.CreateX509BinaryByLetsEncryptAsync(savePassword, email, domains), savePassword);
         }
 
         /// <summary>
@@ -134,7 +133,7 @@ namespace EzCoreKit.LetsEncrypt {
         /// <param name="email">電子郵件</param>
         /// <param name="domains">域名</param>
         /// <returns>X509憑證Binary</returns>
-        public static async Task<byte[]> CreateX509BinaryByLetsEncryptAsync(this KestrelServerOptions options,string savePassword, string email, params string[] domains) {
+        public static async Task<byte[]> CreateX509BinaryByLetsEncryptAsync(this KestrelServerOptions options, string savePassword, string email, params string[] domains) {
             using (var client = new AcmeClient(WellKnownServers.LetsEncrypt)) {
                 // Create new registration
                 var account = await client.NewRegistraton("mailto:" + email);
