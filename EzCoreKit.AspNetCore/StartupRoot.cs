@@ -31,7 +31,7 @@ namespace EzCoreKit.AspNetCore {
         /// </summary>
         public void ConfigureDefaultFiles(IApplicationBuilder app) {
             //讀取設定檔中預設檔案設定
-            var defaultFiles = Configuration.GetSection("defaultFiles")?.GetChildren();
+            var defaultFiles = Configuration.GetSection("DefaultFiles")?.GetChildren();
 
             //未設定則跳脫
             if (defaultFiles == null) return;
@@ -51,7 +51,7 @@ namespace EzCoreKit.AspNetCore {
         /// <param name="routes">路由建構器</param>
         public void ConfigureMvcRoute(IRouteBuilder routes) {
             //取得所有路由規則
-            var rules = Configuration.GetSection("mvcRoutingRules")?.GetChildren();
+            var rules = Configuration.GetSection("MvcRoutingRules")?.GetChildren();
 
             //未設定則跳脫
             if (rules == null) return;
@@ -80,7 +80,7 @@ namespace EzCoreKit.AspNetCore {
         /// <param name="env"></param>
         public void ConfigureErrorPages(IApplicationBuilder app, IHostingEnvironment env) {
             //取得所有錯誤頁面設定
-            var pages = Configuration.GetSection("errorPages")?.GetChildren();
+            var pages = Configuration.GetSection("ErrorPages")?.GetChildren();
 
             //未設定則跳脫
             if (pages == null) return;
