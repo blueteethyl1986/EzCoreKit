@@ -2,12 +2,13 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
-      "Certes/1.0.6.202": {
+      "Certes/1.0.7": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "9.0.1",
-          "Portable.BouncyCastle": "1.8.1.2"
+          "Portable.BouncyCastle": "1.8.1.2",
+          "System.ValueTuple": "4.3.1"
         },
         "compile": {
           "lib/netstandard1.3/Certes.dll": {}
@@ -2926,6 +2927,20 @@
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
         }
       },
+      "System.ValueTuple/4.3.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3038,12 +3053,13 @@
       }
     },
     ".NETFramework,Version=v4.6.1": {
-      "Certes/1.0.6.202": {
+      "Certes/1.0.7": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "9.0.1",
           "Portable.BouncyCastle": "1.8.1.2",
-          "System.Net.Http": "4.3.1"
+          "System.Net.Http": "4.3.2",
+          "System.ValueTuple": "4.3.1"
         },
         "compile": {
           "lib/net45/Certes.dll": {}
@@ -4009,7 +4025,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Net.Http/4.3.1": {
+      "System.Net.Http/4.3.2": {
         "type": "package",
         "dependencies": {
           "System.Security.Cryptography.X509Certificates": "4.3.0"
@@ -4384,6 +4400,15 @@
           "lib/net451/_._": {}
         }
       },
+      "System.ValueTuple/4.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ValueTuple.dll": {}
+        }
+      },
       "System.Xml.ReaderWriter/4.3.0": {
         "type": "package",
         "frameworkAssemblies": [
@@ -4412,12 +4437,12 @@
     }
   },
   "libraries": {
-    "Certes/1.0.6.202": {
-      "sha512": "lItGZUaSg+ymLMMtrXAg6SHDwEXhvmUSvPAIx4nWMZes71/A3XrT3zuKCD9JasKQDK7P9UOepvC35NAvjUjhNA==",
+    "Certes/1.0.7": {
+      "sha512": "RtaXsP0fgP/qtvUj+cHErV63dmOI3yDbq9aDLcJ7O8UyidOd3aPSOY8YrvsHtUVObkYW+7AHe62DxoT/L10kvQ==",
       "type": "package",
-      "path": "certes/1.0.6.202",
+      "path": "certes/1.0.7",
       "files": [
-        "certes.1.0.6.202.nupkg.sha512",
+        "certes.1.0.7.nupkg.sha512",
         "certes.nuspec",
         "lib/net45/Certes.dll",
         "lib/net45/Certes.xml",
@@ -7332,86 +7357,6 @@
         "system.linq.queryable.nuspec"
       ]
     },
-    "System.Net.Http/4.3.1": {
-      "sha512": "UrTyRczM3ZvNk6oetBuwlu67MFKKRva+r7bw4JDVZ6Y2IukyZ24td5ppsieu/4yZlogVAIuZul9GIQ3hoiz0yA==",
-      "type": "package",
-      "path": "system.net.http/4.3.1",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/Xamarinmac20/_._",
-        "lib/monoandroid10/_._",
-        "lib/monotouch10/_._",
-        "lib/net45/_._",
-        "lib/net46/System.Net.Http.dll",
-        "lib/portable-net45+win8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/Xamarinmac20/_._",
-        "ref/monoandroid10/_._",
-        "ref/monotouch10/_._",
-        "ref/net45/_._",
-        "ref/net46/System.Net.Http.dll",
-        "ref/net46/System.Net.Http.xml",
-        "ref/net46/de/System.Net.Http.xml",
-        "ref/net46/es/System.Net.Http.xml",
-        "ref/net46/fr/System.Net.Http.xml",
-        "ref/net46/it/System.Net.Http.xml",
-        "ref/net46/ja/System.Net.Http.xml",
-        "ref/net46/ko/System.Net.Http.xml",
-        "ref/net46/ru/System.Net.Http.xml",
-        "ref/net46/zh-hans/System.Net.Http.xml",
-        "ref/net46/zh-hant/System.Net.Http.xml",
-        "ref/netcore50/System.Net.Http.dll",
-        "ref/netcore50/System.Net.Http.xml",
-        "ref/netcore50/de/System.Net.Http.xml",
-        "ref/netcore50/es/System.Net.Http.xml",
-        "ref/netcore50/fr/System.Net.Http.xml",
-        "ref/netcore50/it/System.Net.Http.xml",
-        "ref/netcore50/ja/System.Net.Http.xml",
-        "ref/netcore50/ko/System.Net.Http.xml",
-        "ref/netcore50/ru/System.Net.Http.xml",
-        "ref/netcore50/zh-hans/System.Net.Http.xml",
-        "ref/netcore50/zh-hant/System.Net.Http.xml",
-        "ref/netstandard1.1/System.Net.Http.dll",
-        "ref/netstandard1.1/System.Net.Http.xml",
-        "ref/netstandard1.1/de/System.Net.Http.xml",
-        "ref/netstandard1.1/es/System.Net.Http.xml",
-        "ref/netstandard1.1/fr/System.Net.Http.xml",
-        "ref/netstandard1.1/it/System.Net.Http.xml",
-        "ref/netstandard1.1/ja/System.Net.Http.xml",
-        "ref/netstandard1.1/ko/System.Net.Http.xml",
-        "ref/netstandard1.1/ru/System.Net.Http.xml",
-        "ref/netstandard1.1/zh-hans/System.Net.Http.xml",
-        "ref/netstandard1.1/zh-hant/System.Net.Http.xml",
-        "ref/netstandard1.3/System.Net.Http.dll",
-        "ref/netstandard1.3/System.Net.Http.xml",
-        "ref/netstandard1.3/de/System.Net.Http.xml",
-        "ref/netstandard1.3/es/System.Net.Http.xml",
-        "ref/netstandard1.3/fr/System.Net.Http.xml",
-        "ref/netstandard1.3/it/System.Net.Http.xml",
-        "ref/netstandard1.3/ja/System.Net.Http.xml",
-        "ref/netstandard1.3/ko/System.Net.Http.xml",
-        "ref/netstandard1.3/ru/System.Net.Http.xml",
-        "ref/netstandard1.3/zh-hans/System.Net.Http.xml",
-        "ref/netstandard1.3/zh-hant/System.Net.Http.xml",
-        "ref/portable-net45+win8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "runtimes/unix/lib/netstandard1.6/System.Net.Http.dll",
-        "runtimes/win/lib/net46/System.Net.Http.dll",
-        "runtimes/win/lib/netcore50/System.Net.Http.dll",
-        "runtimes/win/lib/netstandard1.3/System.Net.Http.dll",
-        "system.net.http.4.3.1.nupkg.sha512",
-        "system.net.http.nuspec"
-      ]
-    },
     "System.Net.Http/4.3.2": {
       "sha512": "y7hv0o0weI0j0mvEcBOdt1F3CAADiWlcw3e54m8TfYiRmBPDIsHElx8QUPDlY4x6yWXKPGN0Z2TuXCTPgkm5WQ==",
       "type": "package",
@@ -9871,6 +9816,33 @@
         "system.threading.timer.nuspec"
       ]
     },
+    "System.ValueTuple/4.3.1": {
+      "sha512": "xzDmg26Wb2x2rFDjwziaMYQJqxhrK+b4OUC008o7CnZhUMb2p5XfwgOgAQ/WlKhqxMUSDWRUm5/lNTKdh27pJA==",
+      "type": "package",
+      "path": "system.valuetuple/4.3.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/netstandard1.0/.xml",
+        "lib/netstandard1.0/System.ValueTuple.dll",
+        "lib/portable-net40+sl4+win8+wp8/.xml",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.3.1.nupkg.sha512",
+        "system.valuetuple.nuspec"
+      ]
+    },
     "System.Xml.ReaderWriter/4.3.0": {
       "sha512": "GrprA+Z0RUXaR4N7/eW71j1rgMnEnEVlgii49GZyAjTH7uliMnrOU3HNFBr6fEDBCJCIdlVNq9hHbaDR621XBA==",
       "type": "package",
@@ -10123,13 +10095,13 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
-      "Certes >= 1.0.6.202",
+      "Certes >= 1.0.7",
       "Microsoft.AspNetCore >= 1.1.2",
       "Microsoft.AspNetCore.Server.Kestrel.Https >= 1.1.2",
       "Microsoft.NETCore.App >= 1.1.2"
     ],
     ".NETFramework,Version=v4.6.1": [
-      "Certes >= 1.0.6.202",
+      "Certes >= 1.0.7",
       "Microsoft.AspNetCore >= 1.1.2",
       "Microsoft.AspNetCore.Server.Kestrel.Https >= 1.1.2"
     ]
@@ -10168,7 +10140,7 @@
           },
           "Certes": {
             "target": "Package",
-            "version": "1.0.6.202"
+            "version": "[1.0.7, )"
           },
           "Microsoft.AspNetCore.Server.Kestrel.Https": {
             "target": "Package",
@@ -10184,7 +10156,7 @@
           },
           "Certes": {
             "target": "Package",
-            "version": "1.0.6.202"
+            "version": "[1.0.7, )"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
