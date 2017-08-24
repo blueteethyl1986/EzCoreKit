@@ -7,6 +7,8 @@ D:\EzCoreKit\EzCoreKit.AspNetCore\bin\Debug\netcoreapp1.1\netcoreapp1.1\EzCoreKi
 D:\EzCoreKit\EzCoreKit.AspNetCore\bin\Debug\netcoreapp1.1\netcoreapp1.1\EzCoreKit.dll
 D:\EzCoreKit\EzCoreKit.AspNetCore\bin\Debug\netcoreapp1.1\netcoreapp1.1\EzCoreKit.pdb
 D:\EzCoreKit\EzCoreKit.AspNetCore\obj\Debug\netcoreapp1.1\EzCoreKit.AspNetCore.csprojResolveAssemblyReference.cache
+D:\EzCoreKit\EzCoreKit.AspNetCore\obj\Debug\netcoreapp1.1\EzCoreKit.AspNetCore.csproj.CoreCompileInputs.cache
+D:\EzCoreKit\EzCoreKit.AspNetCore\obj\Debug\netcoreapp1.1\EzCoreKit.AspNetCore.AssemblyInfoInputs.cache
 D:\EzCoreKit\EzCoreKit.AspNetCore\obj\Debug\netcoreapp1.1\EzCoreKit.AspNetCore.AssemblyInfo.cs
 D:\EzCoreKit\EzCoreKit.AspNetCore\obj\Debug\netcoreapp1.1\EzCoreKit.AspNetCore.dll
 D:\EzCoreKit\EzCoreKit.AspNetCore\obj\Debug\netcoreapp1.1\EzCoreKit.AspNetCore.pdb

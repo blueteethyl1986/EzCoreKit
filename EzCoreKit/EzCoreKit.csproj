@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp1.1;net461</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0;netcoreapp1.1;net461</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <Authors>XuPeiYao</Authors>
@@ -21,7 +21,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>XmlDoc\EzCoreKit.xml</DocumentationFile>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="BinaryFormatter" Version="1.2.0" />
     <PackageReference Include="BouncyCastle.NetCore" Version="1.8.1.2" />
