@@ -7,6 +7,19 @@ using System.Text.RegularExpressions;
 namespace EzCoreKit.Extensions {
     public static class StringExtension {
         /// <summary>
+        /// 安全的從這個執行個體擷取子字串。子字串會在指定的字元開始並繼續到字串結尾
+        /// </summary>
+        /// <param name="startIndex">起始索引</param>
+        /// <param name="length">擷取子字串最長長度</param>
+        /// <returns>子字串</returns>
+        public static string SafeSubstring(this string target, int startIndex, int length) {
+            if (target.Length >= startIndex) return string.Empty;
+            string result = target.Substring(startIndex);
+            length = Math.Min(result.Length, length);
+            return result.Substring(0, length);
+        }
+
+        /// <summary>
         /// 檢查字串是否符合表示式
         /// </summary>
         /// <param name="regexString">正規表示式</param>
@@ -32,8 +45,8 @@ namespace EzCoreKit.Extensions {
         /// <param name="pattern">模式</param>
         /// <param name="count">數量</param>
         /// <returns>切割結果</returns>
-        public static string[] SplitByRegex(this string input, string pattern,int count) {
-            return new Regex(pattern).Split(input,count);
+        public static string[] SplitByRegex(this string input, string pattern, int count) {
+            return new Regex(pattern).Split(input, count);
         }
 
         /// <summary>
@@ -44,8 +57,8 @@ namespace EzCoreKit.Extensions {
         /// <param name="count">數量</param>
         /// <param name="startat">起始索引</param>
         /// <returns>切割結果</returns>
-        public static string[] SplitByRegex(this string input, string pattern,int count,int startat) {
-            return new Regex(pattern).Split(input,count,startat);
+        public static string[] SplitByRegex(this string input, string pattern, int count, int startat) {
+            return new Regex(pattern).Split(input, count, startat);
         }
 
         /// <summary>
