@@ -16,6 +16,17 @@ namespace EzCoreKit.Reflection {
         }
 
         /// <summary>
+        /// 產生存取Func
+        /// </summary>
+        /// <typeparam name="T">存取目標型別</typeparam>
+        /// <typeparam name="R">存取結果型別</typeparam>
+        /// <param name="name">屬性名稱</param>
+        /// <returns>存取Func</returns>
+        public static Func<T, R> CreateAccessFunc<T, R>(string name) {
+            return CreateAccessExpressionFunc<T, R>(name).Compile();
+        }
+
+        /// <summary>
         /// 產生存取Expression Func
         /// </summary>
         /// <typeparam name="T">存取目標型別</typeparam>
@@ -24,6 +35,18 @@ namespace EzCoreKit.Reflection {
         public static Expression<Func<T, object>> CreateAccessExpressionFunc<T>(string name) {
             var p = Expression.Parameter(typeof(T), "x");
             return Expression.Lambda<Func<T, object>>(Expression.Property(p, name), p);
+        }
+
+        /// <summary>
+        /// 產生存取Expression Func
+        /// </summary>
+        /// <typeparam name="T">存取目標型別</typeparam>
+        /// <typeparam name="R">存取結果型別</typeparam>
+        /// <param name="name">屬性名稱</param>
+        /// <returns>存取Expression Func</returns>
+        public static Expression<Func<T, R>> CreateAccessExpressionFunc<T, R>(string name) {
+            var p = Expression.Parameter(typeof(T), "x");
+            return Expression.Lambda<Func<T, R>>(Expression.Property(p, name), p);
         }
     }
 }
