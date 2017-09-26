@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using EzCoreKit.Reflection;
 
 namespace EzCoreKit.Extensions {
     public static class LinqExtension {
@@ -101,6 +102,11 @@ namespace EzCoreKit.Extensions {
         /// <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
         public static IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey>[] keySelectors) {
             return source.OrderBy(keySelectors.Select(x => (isDec: true, selector: x)).ToArray());
+        }
+
+
+        public static IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(this IEnumerable<TSource> source, string key) {
+            return source.GroupBy(AccessExpressionFactory.CreateAccessFunc<TSource, TKey>(key));
         }
     }
 }

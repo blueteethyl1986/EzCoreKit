@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EzCoreKit.Spider\EzCoreKit.Spider.csproj" />
+    <ProjectReference Include="..\EzCoreKit\EzCoreKit.csproj" />
   </ItemGroup>
 
 </Project>

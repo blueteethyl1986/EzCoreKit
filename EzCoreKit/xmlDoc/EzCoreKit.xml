@@ -189,6 +189,80 @@
             <param name="requestUri">傳送要求的目標 URI</param>
             <returns>操作結果</returns>
         </member>
+        <member name="M:EzCoreKit.Extensions.IEnumerableExtension.IsEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            檢查元素數量是否為0
+            </summary>
+            <param name="obj"></param>
+            <returns>檢查元素數量是否為0</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.IEnumerableExtension.IsNotEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            檢查元素數量是否不為0
+            </summary>
+            <param name="obj"></param>
+            <returns>檢查元素數量是否不為0</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.LinqExtension.OrderBy``2(System.Collections.Generic.IEnumerable{``0},System.ValueTuple{System.Boolean,System.Func{``0,``1}}[])">
+            <summary>
+            Sorts the elements of a sequence in ascending order according to a key.
+            </summary>
+            <typeparam name="TSource">A sequence of values to order.</typeparam>
+            <typeparam name="TKey">A function to extract a key from an element.</typeparam>
+            <param name="source">The type of the elements of source.</param>
+            <param name="keySelectors">The type of the key returned by keySelector.</param>
+            <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.LinqExtension.OrderBy``2(System.Collections.Generic.IEnumerable{``0},System.ValueTuple{System.String,System.String}[])">
+            <summary>
+            Sorts the elements of a sequence in ascending order according to a key.
+            </summary>
+            <typeparam name="TSource">A sequence of values to order.</typeparam>
+            <typeparam name="TKey">A function to extract a key from an element.</typeparam>
+            <param name="source">The type of the elements of source.</param>
+            <param name="keyNames">The type of the key returned by keySelector.</param>
+            <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.LinqExtension.OrderBy``2(System.Collections.Generic.IEnumerable{``0},System.String[])">
+            <summary>
+            Sorts the elements of a sequence in ascending order according to a key.
+            </summary>
+            <typeparam name="TSource">A sequence of values to order.</typeparam>
+            <typeparam name="TKey">A function to extract a key from an element.</typeparam>
+            <param name="source">The type of the elements of source.</param>
+            <param name="keyNames">The type of the key returned by keySelector.</param>
+            <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.LinqExtension.OrderByDescending``2(System.Collections.Generic.IEnumerable{``0},System.String[])">
+            <summary>
+            Sorts the elements of a sequence in descending order according to a key.
+            </summary>
+            <typeparam name="TSource">A sequence of values to order.</typeparam>
+            <typeparam name="TKey">A function to extract a key from an element.</typeparam>
+            <param name="source">The type of the elements of source.</param>
+            <param name="keyNames">The type of the key returned by keySelector.</param>
+            <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.LinqExtension.OrderBy``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1}[])">
+            <summary>
+            Sorts the elements of a sequence in ascending order according to a key.
+            </summary>
+            <typeparam name="TSource">A sequence of values to order.</typeparam>
+            <typeparam name="TKey">A function to extract a key from an element.</typeparam>
+            <param name="source">The type of the elements of source.</param>
+            <param name="keySelectors">The type of the key returned by keySelector.</param>
+            <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
+        </member>
+        <member name="M:EzCoreKit.Extensions.LinqExtension.OrderByDescending``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1}[])">
+            <summary>
+            Sorts the elements of a sequence in ascending order according to a key.
+            </summary>
+            <typeparam name="TSource">A sequence of values to order.</typeparam>
+            <typeparam name="TKey">A function to extract a key from an element.</typeparam>
+            <param name="source">The type of the elements of source.</param>
+            <param name="keySelectors">The type of the key returned by keySelector.</param>
+            <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
+        </member>
         <member name="M:EzCoreKit.Extensions.ObjectExtension.ToExpando(System.Object,System.Boolean)">
             <summary>
             將物件轉換為動態物件，僅欄位與屬性
@@ -257,12 +331,13 @@
             byte[]轉換為串流
             </summary>
         </member>
-        <member name="M:EzCoreKit.Extensions.StringAutoSpcesExtension.Spacing(System.String)">
+        <member name="M:EzCoreKit.Extensions.StringExtension.SafeSubstring(System.String,System.Int32,System.Int32)">
             <summary>
-            字串中不同語系文字中插入空白字元
+            安全的從這個執行個體擷取子字串。子字串會在指定的字元開始並繼續到字串結尾
             </summary>
-            <param name="str">字串</param>
-            <returns>自動加入空白後的字串</returns>
+            <param name="startIndex">起始索引</param>
+            <param name="length">擷取子字串最長長度</param>
+            <returns>子字串</returns>
         </member>
         <member name="M:EzCoreKit.Extensions.StringExtension.IsMatch(System.String,System.String)">
             <summary>
@@ -344,6 +419,40 @@
             </summary>
             <param name="jsTime">Js時間表示</param>
             <returns>時間</returns>
+        </member>
+        <member name="M:EzCoreKit.Reflection.AccessExpressionFactory.CreateAccessFunc``1(System.String)">
+            <summary>
+            產生存取Func
+            </summary>
+            <typeparam name="T">存取目標型別</typeparam>
+            <param name="name">屬性名稱</param>
+            <returns>存取Func</returns>
+        </member>
+        <member name="M:EzCoreKit.Reflection.AccessExpressionFactory.CreateAccessFunc``2(System.String)">
+            <summary>
+            產生存取Func
+            </summary>
+            <typeparam name="T">存取目標型別</typeparam>
+            <typeparam name="R">存取結果型別</typeparam>
+            <param name="name">屬性名稱</param>
+            <returns>存取Func</returns>
+        </member>
+        <member name="M:EzCoreKit.Reflection.AccessExpressionFactory.CreateAccessExpressionFunc``1(System.String)">
+            <summary>
+            產生存取Expression Func
+            </summary>
+            <typeparam name="T">存取目標型別</typeparam>
+            <param name="name">屬性名稱</param>
+            <returns>存取Expression Func</returns>
+        </member>
+        <member name="M:EzCoreKit.Reflection.AccessExpressionFactory.CreateAccessExpressionFunc``2(System.String)">
+            <summary>
+            產生存取Expression Func
+            </summary>
+            <typeparam name="T">存取目標型別</typeparam>
+            <typeparam name="R">存取結果型別</typeparam>
+            <param name="name">屬性名稱</param>
+            <returns>存取Expression Func</returns>
         </member>
         <member name="M:EzCoreKit.Reflection.MemberInfoExtensions.GetMember``1(``0,System.Linq.Expressions.Expression{System.Action})">
             <summary>
