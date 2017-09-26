@@ -53,6 +53,38 @@ namespace EzCoreKit.Extensions {
         /// <typeparam name="TSource">A sequence of values to order.</typeparam>
         /// <typeparam name="TKey">A function to extract a key from an element.</typeparam>
         /// <param name="source">The type of the elements of source.</param>
+        /// <param name="keyNames">The type of the key returned by keySelector.</param>
+        /// <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
+        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, params string[] keyNames) {
+            if (keyNames.Length == 0) throw new ArgumentNullException($"{nameof(keyNames)}不該為空");
+
+            var keySelectors = keyNames.Select(x => (isDec: false, selector: EzCoreKit.Reflection.AccessExpressionFactory.CreateAccessFunc<TSource>(x)));
+
+            return source.OrderBy(keySelectors.ToArray());
+        }
+
+        /// <summary>
+        /// Sorts the elements of a sequence in descending order according to a key.
+        /// </summary>
+        /// <typeparam name="TSource">A sequence of values to order.</typeparam>
+        /// <typeparam name="TKey">A function to extract a key from an element.</typeparam>
+        /// <param name="source">The type of the elements of source.</param>
+        /// <param name="keyNames">The type of the key returned by keySelector.</param>
+        /// <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
+        public static IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this IEnumerable<TSource> source, params string[] keyNames) {
+            if (keyNames.Length == 0) throw new ArgumentNullException($"{nameof(keyNames)}不該為空");
+
+            var keySelectors = keyNames.Select(x => (isDec: true, selector: EzCoreKit.Reflection.AccessExpressionFactory.CreateAccessFunc<TSource>(x)));
+
+            return source.OrderBy(keySelectors.ToArray());
+        }
+
+        /// <summary>
+        /// Sorts the elements of a sequence in ascending order according to a key.
+        /// </summary>
+        /// <typeparam name="TSource">A sequence of values to order.</typeparam>
+        /// <typeparam name="TKey">A function to extract a key from an element.</typeparam>
+        /// <param name="source">The type of the elements of source.</param>
         /// <param name="keySelectors">The type of the key returned by keySelector.</param>
         /// <returns>An System.Linq.IOrderedEnumerable`1 whose elements are sorted according to a key.</returns>
         public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey>[] keySelectors) {
