@@ -33,6 +33,8 @@ namespace EzCoreKit.Extensions {
                     propertyType,
                     null);
 
+                FieldBuilder field = tempTypeBuilder.DefineField("_" + keyvalue.Key, propertyType, FieldAttributes.Private);
+
                 MethodAttributes getSetAttr = MethodAttributes.Public |
                     MethodAttributes.SpecialName | MethodAttributes.HideBySig;
 
@@ -43,9 +45,24 @@ namespace EzCoreKit.Extensions {
                     Type.EmptyTypes);
 
                 ILGenerator numberGetIL = mbNumberGetAccessor.GetILGenerator();
-                numberGetIL.Emit(OpCodes.Ldnull);
+                numberGetIL.Emit(OpCodes.Ldarg_0);
+                numberGetIL.Emit(OpCodes.Ldfld, field);
                 numberGetIL.Emit(OpCodes.Ret);
 
+
+                MethodBuilder mbNumberSetAccessor = tempTypeBuilder.DefineMethod(
+                    "set_" + keyvalue.Key,
+                    getSetAttr,
+                    propertyType,
+                    Type.EmptyTypes);
+
+                ILGenerator numberGetIL2 = mbNumberSetAccessor.GetILGenerator();
+                numberGetIL2.Emit(OpCodes.Ldarg_0);
+                numberGetIL2.Emit(OpCodes.Ldarg_1);
+                numberGetIL2.Emit(OpCodes.Stfld, field);
+                numberGetIL2.Emit(OpCodes.Ret);
+
+                property.SetSetMethod(mbNumberSetAccessor);
                 property.SetGetMethod(mbNumberGetAccessor);
             }
 

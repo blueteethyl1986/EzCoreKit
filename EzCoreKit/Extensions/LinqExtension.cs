@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using EzCoreKit.Reflection;
+using System.Dynamic;
 
 namespace EzCoreKit.Extensions {
     public static class LinqExtension {
@@ -108,5 +109,26 @@ namespace EzCoreKit.Extensions {
         public static IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(this IEnumerable<TSource> source, string key) {
             return source.GroupBy(AccessExpressionFactory.CreateAccessFunc<TSource, TKey>(key));
         }
+
+        /*
+        public static IEnumerable<IGrouping<object, TSource>> GroupBy<TSource, Object>(this IEnumerable<TSource> source, string[] keys) {
+            if (keys.Length == 1) return source.GroupBy<TSource, object>(keys.First());
+
+            dynamic obj = new ExpandoObject();
+            var dobj = obj as IDictionary<string, object>;
+            foreach (var key in keys) {
+                dobj[key] = null;
+            }
+            var type = (obj as ExpandoObject).CreateAnonymousType();
+
+            return source.GroupBy<TSource, object>(x => {
+                var result = Activator.CreateInstance(type);
+                foreach (var property in type.GetProperties()) {
+                    property.SetValue(obj, x.GetType().GetProperty(property.Name).GetValue(x));
+                }
+                return result;
+            });
+        }
+        */
     }
 }

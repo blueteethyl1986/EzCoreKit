@@ -45,7 +45,7 @@ namespace TestConsole {
 
             var type = (obj as ExpandoObject).CreateAnonymousType();
 
-            var k = LinqExtension.GroupBy<Student, string>(list, "Class");
+            //var k = LinqExtension.GroupBy<Student, string>(list, new string[] { "Class", "Name" });
 
 
 
