@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 using System.Text;
 
 namespace EzCoreKit.Extensions {
-#if NETCOREAPP2_0
+#if NETCOREAPP2_0 || IsNetFramework
     public static class ExpandoObjectExtension {
         public static Type CreateAnonymousType(this ExpandoObject obj) {
             //建構組件

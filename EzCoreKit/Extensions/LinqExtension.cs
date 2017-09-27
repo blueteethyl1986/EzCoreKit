@@ -111,7 +111,7 @@ namespace EzCoreKit.Extensions {
             return source.GroupBy(AccessExpressionFactory.CreateAccessFunc<TSource, TKey>(key));
         }
 
-#if NETCOREAPP2_0
+#if NETCOREAPP2_0 || IsNetFramework
         public static IEnumerable<IGrouping<object, TSource>> GroupBy<TSource>(this IEnumerable<TSource> source, string[] keys) {
             if (keys.Length == 1) return source.GroupBy<TSource, object>(keys.First());
 
