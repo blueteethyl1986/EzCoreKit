@@ -38,17 +38,13 @@ namespace TestConsole {
                 Score = 100
             });
 
-            dynamic obj = new ExpandoObject();
-            var dobj = obj as IDictionary<string, object>;
-            dobj["Class"] = 0;
-            dobj["User"] = "";
+            var k = LinqExtension.GroupBy<Student>(
+                    list, new string[] { "Class", "Name" }
+                ).ToList();
 
-            var type = (obj as ExpandoObject).CreateAnonymousType();
+            Console.ReadKey();
 
-            //var k = LinqExtension.GroupBy<Student, string>(list, new string[] { "Class", "Name" });
-
-
-
+            /*
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             Console.InputEncoding = Encoding.GetEncoding(0);
@@ -62,7 +58,7 @@ namespace TestConsole {
                     Console.WriteLine(news.ContentText);
                 }
                 Console.WriteLine("==========");
-            }
+            }*/
         }
     }
 }

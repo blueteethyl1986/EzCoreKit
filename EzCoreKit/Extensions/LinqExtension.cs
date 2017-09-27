@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using EzCoreKit.Reflection;
 using System.Dynamic;
+using System.Reflection;
 
 namespace EzCoreKit.Extensions {
     public static class LinqExtension {
@@ -110,8 +111,8 @@ namespace EzCoreKit.Extensions {
             return source.GroupBy(AccessExpressionFactory.CreateAccessFunc<TSource, TKey>(key));
         }
 
-        /*
-        public static IEnumerable<IGrouping<object, TSource>> GroupBy<TSource, Object>(this IEnumerable<TSource> source, string[] keys) {
+#if NETCOREAPP2_0
+        public static IEnumerable<IGrouping<object, TSource>> GroupBy<TSource>(this IEnumerable<TSource> source, string[] keys) {
             if (keys.Length == 1) return source.GroupBy<TSource, object>(keys.First());
 
             dynamic obj = new ExpandoObject();
@@ -124,11 +125,11 @@ namespace EzCoreKit.Extensions {
             return source.GroupBy<TSource, object>(x => {
                 var result = Activator.CreateInstance(type);
                 foreach (var property in type.GetProperties()) {
-                    property.SetValue(obj, x.GetType().GetProperty(property.Name).GetValue(x));
+                    property.SetValue(result, x.GetType().GetProperty(property.Name).GetValue(x));
                 }
                 return result;
             });
         }
-        */
+#endif
     }
 }
