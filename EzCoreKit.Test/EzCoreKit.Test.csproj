@@ -13,8 +13,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EzCoreKit.AspNetCore.All\EzCoreKit.AspNetCore.All.csproj" />
+    <ProjectReference Include="..\EzCoreKit.AspNetCore.Mvc\EzCoreKit.AspNetCore.Mvc.csproj" />
+    <ProjectReference Include="..\EzCoreKit.AspNetCore.WebSockets\EzCoreKit.AspNetCore.WebSockets.csproj" />
+    <ProjectReference Include="..\EzCoreKit.AspNetCore\EzCoreKit.AspNetCore.csproj" />
     <ProjectReference Include="..\EzCoreKit.Cryptography\EzCoreKit.Cryptography.csproj" />
     <ProjectReference Include="..\EzCoreKit.Extensions\EzCoreKit.Extensions.csproj" />
+    <ProjectReference Include="..\EzCoreKit.File\EzCoreKit.File.csproj" />
+    <ProjectReference Include="..\EzCoreKit.LetsEncrypt\EzCoreKit.LetsEncrypt.csproj" />
+    <ProjectReference Include="..\EzCoreKit.Linq\EzCoreKit.Linq.csproj" />
+    <ProjectReference Include="..\EzCoreKit.Markdown\EzCoreKit.Markdown.csproj" />
+    <ProjectReference Include="..\EzCoreKit.Reflection\EzCoreKit.Reflection.csproj" />
     <ProjectReference Include="..\EzCoreKit.Threading\EzCoreKit.Threading.csproj" />
   </ItemGroup>
 
