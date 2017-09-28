@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EzCoreKit.Cryptography\EzCoreKit.Cryptography.csproj" />
     <ProjectReference Include="..\EzCoreKit.Extensions\EzCoreKit.Extensions.csproj" />
   </ItemGroup>
 
