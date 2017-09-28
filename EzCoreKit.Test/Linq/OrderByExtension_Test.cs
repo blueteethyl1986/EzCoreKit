@@ -8,7 +8,7 @@ using Xunit;
 using EzCoreKit.Extensions;
 
 namespace EzCoreKit.Test.Linq {
-    public class OrderByExtension_Test {
+    public class OrderByAndGroupByExtension_Test {
         public List<Student> InitList() {
             List<Student> result = new List<Student>();
             result.Add(new Student() {
