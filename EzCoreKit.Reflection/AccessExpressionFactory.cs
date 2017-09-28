@@ -37,7 +37,7 @@ namespace EzCoreKit.Reflection {
         /// <returns>存取Expression Func</returns>
         public static Expression<Func<T, object>> CreateAccessExpressionFunc<T>(string name) {
             var p = Expression.Parameter(typeof(T), "x");
-            return Expression.Lambda<Func<T, object>>(Expression.Property(p, name), p);
+            return Expression.Lambda<Func<T, object>>(Expression.TypeAs(Expression.Property(p, name), typeof(object)), p);
         }
 
         /// <summary>
