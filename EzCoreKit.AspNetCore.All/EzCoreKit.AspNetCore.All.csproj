@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>3.0.0</Version>
+    <Authors>XuPeiYao</Authors>
+    <Company>XuPeiYao</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\EzCoreKit.AspNetCore.All.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EzCoreKit.AspNetCore.Mvc\EzCoreKit.AspNetCore.Mvc.csproj" />
+    <ProjectReference Include="..\EzCoreKit.AspNetCore.WebSockets\EzCoreKit.AspNetCore.WebSockets.csproj" />
+    <ProjectReference Include="..\EzCoreKit.AspNetCore\EzCoreKit.AspNetCore.csproj" />
+  </ItemGroup>
+
+</Project>
