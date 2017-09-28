@@ -9,7 +9,7 @@ namespace EzCoreKit.Reflection {
     /// </summary>
     public static class MethodInfoExtension {
         /// <summary>
-        /// 用指定的參數，叫用目前執行個體所表示的方法或建構函式。
+        /// 用指定的參數，叫用目前執行個體所表示的方法或建構函式
         /// </summary>
         /// <param name="methodBase">目前實例</param>
         /// <param name="parameters">參數</param>
@@ -19,7 +19,7 @@ namespace EzCoreKit.Reflection {
         }
 
         /// <summary>
-        /// 用指定的參數與泛型參數，叫用目前執行個體所表示的方法或建構函式。
+        /// 用指定的參數與泛型參數，叫用目前執行個體所表示的方法或建構函式
         /// </summary>
         /// <param name="methodBase">目前實例</param>
         /// <param name="genericTypes">泛型參數</param>
@@ -30,7 +30,7 @@ namespace EzCoreKit.Reflection {
         }
 
         /// <summary>
-        /// 嘗試將MemberInfo轉換為MethodInfo並用指定的參數，叫用目前執行個體所表示的方法或建構函式。
+        /// 嘗試將MemberInfo轉換為MethodInfo並用指定的參數，叫用目前執行個體所表示的方法或建構函式
         /// </summary>
         /// <param name="info">目前實例</param>
         /// <param name="instance">實例</param>
