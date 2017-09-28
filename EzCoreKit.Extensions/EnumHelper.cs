@@ -64,11 +64,7 @@ namespace EzCoreKit.Extensions {
         /// <returns>Attribute集合</returns>
         public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(object value)
             where TAttribute : Attribute {
-            var isEnum = value.GetType().GetTypeInfo().IsValueType;
-            if (!isEnum) throw new NotSupportedException("value is not Enum");
-            var typeinfo = value.GetType().GetTypeInfo();
-            var fieldInfo = typeinfo.GetField(GetEnumName(value));
-            return fieldInfo.GetCustomAttributes<TAttribute>();
+            return GetCustomAttributes(typeof(TAttribute), value).Cast<TAttribute>();
         }
 
         /// <summary>
@@ -79,11 +75,7 @@ namespace EzCoreKit.Extensions {
         /// <returns>Attribute</returns>
         public static TAttribute GetCustomAttribute<TAttribute>(object value)
             where TAttribute : Attribute {
-            var isEnum = value.GetType().GetTypeInfo().IsValueType;
-            if (!isEnum) throw new NotSupportedException("value is not Enum");
-            var typeinfo = value.GetType().GetTypeInfo();
-            var fieldInfo = typeinfo.GetField(GetEnumName(value));
-            return fieldInfo.GetCustomAttribute<TAttribute>();
+            return (TAttribute)GetCustomAttribute(typeof(TAttribute), value);
         }
     }
 }
