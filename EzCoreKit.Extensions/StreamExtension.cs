@@ -18,8 +18,8 @@ namespace EzCoreKit.Extensions {
 
                 byte[] bytes = new byte[obj.Length];
 
-                obj.Read(bytes, 0, bytes.Length);
                 obj.Seek(0, SeekOrigin.Begin);
+                obj.Read(bytes, 0, bytes.Length);
 
                 return bytes;
             } else {
