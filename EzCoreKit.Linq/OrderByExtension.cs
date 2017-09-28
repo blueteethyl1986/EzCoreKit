@@ -39,14 +39,13 @@ namespace EzCoreKit.Linq {
         /// 使用元素指定排序主鍵進行遞增或遞減排列
         /// </summary>
         /// <typeparam name="TSource">元素類別</typeparam>
-        /// <typeparam name="TKey">排序主鍵類別</typeparam>
         /// <param name="source">目前實例</param>
-        /// <param name="keySelectors">主鍵選擇器與排序方式</param>
+        /// <param name="keyNames">主鍵選擇器與排序方式</param>
         /// <returns>使用指定KeySelectors排序結果</returns>
-        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, params (string isDec, string name)[] keyNames) {
+        public static IOrderedEnumerable<TSource> OrderBy<TSource>(this IEnumerable<TSource> source, (bool isDec, string name)[] keyNames) {
             if (keyNames.Length == 0) throw new ArgumentNullException($"{nameof(keyNames)}不該為空");
 
-            var keySelectors = keyNames.Select(x => (isDec: true, selector: AccessExpressionFactory.CreateAccessFunc<TSource>(x.name)));
+            var keySelectors = keyNames.Select(x => (isDec: x.isDec, selector: AccessExpressionFactory.CreateAccessFunc<TSource>(x.name)));
 
             return source.OrderBy(keySelectors.ToArray());
         }
