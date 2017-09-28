@@ -5,17 +5,29 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Extensions", "EzCoreKit.Extensions\EzCoreKit.Extensions.csproj", "{85DCB2C6-8742-4862-9885-E35F55BB15C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Test", "EzCoreKit.Test\EzCoreKit.Test.csproj", "{68506F44-173C-4193-B482-342E146E2D85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Test", "EzCoreKit.Test\EzCoreKit.Test.csproj", "{68506F44-173C-4193-B482-342E146E2D85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Cryptography", "EzCoreKit.Cryptography\EzCoreKit.Cryptography.csproj", "{66D4176A-D76C-4F41-AA61-3EC89C9AD7D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Cryptography", "EzCoreKit.Cryptography\EzCoreKit.Cryptography.csproj", "{66D4176A-D76C-4F41-AA61-3EC89C9AD7D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Threading", "EzCoreKit.Threading\EzCoreKit.Threading.csproj", "{7816516F-F3A6-4AB3-87BD-768F5E8D3746}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Threading", "EzCoreKit.Threading\EzCoreKit.Threading.csproj", "{7816516F-F3A6-4AB3-87BD-768F5E8D3746}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.File", "EzCoreKit.File\EzCoreKit.File.csproj", "{1E87DD94-B8F5-4F5C-8BC7-173EB2700075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.File", "EzCoreKit.File\EzCoreKit.File.csproj", "{1E87DD94-B8F5-4F5C-8BC7-173EB2700075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Reflection", "EzCoreKit.Reflection\EzCoreKit.Reflection.csproj", "{7E2EAE94-23CF-46D5-A90D-78C4CE085CA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Reflection", "EzCoreKit.Reflection\EzCoreKit.Reflection.csproj", "{7E2EAE94-23CF-46D5-A90D-78C4CE085CA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Linq", "EzCoreKit.Linq\EzCoreKit.Linq.csproj", "{9D5D3184-498D-446C-A3B1-8C4B981FB45D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Linq", "EzCoreKit.Linq\EzCoreKit.Linq.csproj", "{9D5D3184-498D-446C-A3B1-8C4B981FB45D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Markdown", "EzCoreKit.Markdown\EzCoreKit.Markdown.csproj", "{C1A10E47-4BA5-47C4-AB87-BE1B1DA91E76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.LetsEncrypt", "EzCoreKit.LetsEncrypt\EzCoreKit.LetsEncrypt.csproj", "{0FF021E7-9D50-4D64-9F4F-3BB7E57DBB77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.AspNetCore", "EzCoreKit.AspNetCore\EzCoreKit.AspNetCore.csproj", "{A527D8F5-8827-4662-B88A-EC89E0B7C382}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.AspNetCore.WebSockets", "EzCoreKit.AspNetCore.WebSockets\EzCoreKit.AspNetCore.WebSockets.csproj", "{B17CFEEF-0B21-494A-A8C2-3F4BCEB67E5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.AspNetCore.Mvc", "EzCoreKit.AspNetCore.Mvc\EzCoreKit.AspNetCore.Mvc.csproj", "{15C7FFE7-9A9F-42A1-A019-73103B60ECC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.AspNetCore.All", "EzCoreKit.AspNetCore.All\EzCoreKit.AspNetCore.All.csproj", "{522485E9-D030-44C4-B7FE-03EDA2879FA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +63,30 @@ Global
 		{9D5D3184-498D-446C-A3B1-8C4B981FB45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D5D3184-498D-446C-A3B1-8C4B981FB45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D5D3184-498D-446C-A3B1-8C4B981FB45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1A10E47-4BA5-47C4-AB87-BE1B1DA91E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1A10E47-4BA5-47C4-AB87-BE1B1DA91E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1A10E47-4BA5-47C4-AB87-BE1B1DA91E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1A10E47-4BA5-47C4-AB87-BE1B1DA91E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF021E7-9D50-4D64-9F4F-3BB7E57DBB77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF021E7-9D50-4D64-9F4F-3BB7E57DBB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF021E7-9D50-4D64-9F4F-3BB7E57DBB77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF021E7-9D50-4D64-9F4F-3BB7E57DBB77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A527D8F5-8827-4662-B88A-EC89E0B7C382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A527D8F5-8827-4662-B88A-EC89E0B7C382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A527D8F5-8827-4662-B88A-EC89E0B7C382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A527D8F5-8827-4662-B88A-EC89E0B7C382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B17CFEEF-0B21-494A-A8C2-3F4BCEB67E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B17CFEEF-0B21-494A-A8C2-3F4BCEB67E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B17CFEEF-0B21-494A-A8C2-3F4BCEB67E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B17CFEEF-0B21-494A-A8C2-3F4BCEB67E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C7FFE7-9A9F-42A1-A019-73103B60ECC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C7FFE7-9A9F-42A1-A019-73103B60ECC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C7FFE7-9A9F-42A1-A019-73103B60ECC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C7FFE7-9A9F-42A1-A019-73103B60ECC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{522485E9-D030-44C4-B7FE-03EDA2879FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{522485E9-D030-44C4-B7FE-03EDA2879FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{522485E9-D030-44C4-B7FE-03EDA2879FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{522485E9-D030-44C4-B7FE-03EDA2879FA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
