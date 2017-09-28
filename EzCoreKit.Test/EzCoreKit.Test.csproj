@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EzCoreKit.Cryptography\EzCoreKit.Cryptography.csproj" />
     <ProjectReference Include="..\EzCoreKit.Extensions\EzCoreKit.Extensions.csproj" />
+    <ProjectReference Include="..\EzCoreKit.Threading\EzCoreKit.Threading.csproj" />
   </ItemGroup>
 
 </Project>
