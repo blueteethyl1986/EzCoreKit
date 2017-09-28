@@ -9,4 +9,8 @@
     <Description />
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\EzCoreKit.Cryptography.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>
