@@ -35,8 +35,10 @@ namespace EzCoreKit.Extensions {
         /// <returns>最大公因數</returns>
         public static int GCD(this int[] obj) {
             int result = obj[0];
-            foreach (int value in obj)
+            foreach (int value in obj) {
                 result = GCD(result, value);
+                if (result == 1) return 1;
+            }
             return result;
         }
 
