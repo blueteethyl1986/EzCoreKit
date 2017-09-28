@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Extensions", "EzC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Test", "EzCoreKit.Test\EzCoreKit.Test.csproj", "{68506F44-173C-4193-B482-342E146E2D85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Cryptography", "EzCoreKit.Cryptography\EzCoreKit.Cryptography.csproj", "{66D4176A-D76C-4F41-AA61-3EC89C9AD7D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{68506F44-173C-4193-B482-342E146E2D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68506F44-173C-4193-B482-342E146E2D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68506F44-173C-4193-B482-342E146E2D85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66D4176A-D76C-4F41-AA61-3EC89C9AD7D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66D4176A-D76C-4F41-AA61-3EC89C9AD7D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66D4176A-D76C-4F41-AA61-3EC89C9AD7D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66D4176A-D76C-4F41-AA61-3EC89C9AD7D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
