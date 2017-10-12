@@ -8,7 +8,7 @@ namespace EzCoreKit.Rest {
     public class RestClientBuilder<T> {
         private string baseUri { get; set; }
 
-        public RestClienBuilder() {
+        public RestClientBuilder() {
             if (!typeof(T).IsInterface) {//必須是interface
                 throw new ArgumentException($"{nameof(T)}應為interface");
             }
@@ -19,7 +19,7 @@ namespace EzCoreKit.Rest {
         /// </summary>
         /// <param name="uriString">Uri實例</param>
         /// <returns>為RESTful Web API Client建構器</returns>
-        public RestClienBuilder<T> SetBaseUri(Uri uri) {
+        public RestClientBuilder<T> SetBaseUri(Uri uri) {
             throw new NotImplementedException();
         }
 
@@ -28,7 +28,7 @@ namespace EzCoreKit.Rest {
         /// </summary>
         /// <param name="uriString">Uri字串</param>
         /// <returns>為RESTful Web API Client建構器</returns>
-        public RestClienBuilder<T> SetBaseUri(string uriString) {
+        public RestClientBuilder<T> SetBaseUri(string uriString) {
             return SetBaseUri(new Uri(uriString));
         }
 
