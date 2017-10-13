@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using EzCoreKit.Rest.Attributes;
+using RestSharp;
 
 namespace EzCoreKit.Rest {
     /// <summary>
@@ -10,6 +11,9 @@ namespace EzCoreKit.Rest {
     public partial class RestClientBuilder<T> {
         ///目前Builder的uri
         private string baseUri { get; set; }
+        private string auth_username { get; set; }
+        private string auth_password { get; set; }
+        private DataFormat requestFormat { get; set; }
 
         /// <summary>
         /// 建立並初始化針對<see cref="T"/>類別的RESTful Web API Client建構器
@@ -24,6 +28,28 @@ namespace EzCoreKit.Rest {
             if (baseUri != null) {
                 baseUri = baseUriSetting.BaseUri;
             }
+        }
+
+        /// <summary>
+        /// 設定Request格式
+        /// </summary>
+        /// <param name="format">格式</param>
+        /// <returns>為RESTful Web API Client建構器</returns>
+        public RestClientBuilder<T> SetRequestFormat(DataFormat format) {
+            requestFormat = format;
+            return this;
+        }
+
+        /// <summary>
+        /// 設定HTTP基本驗證
+        /// </summary>
+        /// <param name="username">帳號</param>
+        /// <param name="password">密碼</param>
+        /// <returns>為RESTful Web API Client建構器</returns>
+        public RestClientBuilder<T> SetBasicAuthenticator(string username, string password) {
+            auth_username = username;
+            auth_password = password;
+            return this;
         }
 
         /// <summary>

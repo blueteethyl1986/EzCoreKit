@@ -45,19 +45,35 @@ namespace EzCoreKit.Rest {
             //實作介面類別
             tempTypeBuilder.AddInterfaceImplementation(interfaceType);
 
-            //建立baseUri儲存欄位
-            FieldBuilder tempFieldBuilder = tempTypeBuilder.DefineField("baseUri", typeof(string), FieldAttributes.Private);
-
+            //建立儲存欄位
+            FieldBuilder tempFieldBuilder_baseUri = tempTypeBuilder.DefineField("baseUri", typeof(string), FieldAttributes.Private);
+            FieldBuilder tempFieldBuilder_auth_username = tempTypeBuilder.DefineField("auth_username", typeof(string), FieldAttributes.Private);
+            FieldBuilder tempFieldBuilder_auth_password = tempTypeBuilder.DefineField("auth_password", typeof(string), FieldAttributes.Private);
+            FieldBuilder tempFieldBuilder_requestFormat = tempTypeBuilder.DefineField("requestFormat", typeof(string), FieldAttributes.Private);
             //建構子
             ConstructorBuilder tempConstructorBuilder = tempTypeBuilder.DefineConstructor(MethodAttributes.Public, CallingConventions.HasThis, Type.EmptyTypes);
 
-            //設定baseUri欄位內容
+            //設定欄位內容
             var ctorIL = tempConstructorBuilder.GetILGenerator();
             if (baseUri != null) {
                 ctorIL.Emit(OpCodes.Ldarg_0);
                 ctorIL.Emit(OpCodes.Ldstr, baseUri);
-                ctorIL.Emit(OpCodes.Stfld, tempFieldBuilder);
+                ctorIL.Emit(OpCodes.Stfld, tempFieldBuilder_baseUri);
             }
+            if (auth_username != null) {
+                ctorIL.Emit(OpCodes.Ldarg_0);
+                ctorIL.Emit(OpCodes.Ldstr, auth_username);
+                ctorIL.Emit(OpCodes.Stfld, tempFieldBuilder_auth_username);
+            }
+            if (auth_password != null) {
+                ctorIL.Emit(OpCodes.Ldarg_0);
+                ctorIL.Emit(OpCodes.Ldstr, auth_password);
+                ctorIL.Emit(OpCodes.Stfld, tempFieldBuilder_auth_password);
+            }
+            ctorIL.Emit(OpCodes.Ldarg_0);
+            ctorIL.Emit(OpCodes.Ldstr, (int)requestFormat);
+            ctorIL.Emit(OpCodes.Stfld, tempFieldBuilder_requestFormat);
+
             ctorIL.Emit(OpCodes.Ret);
 
             //取得interfaceType的所有Methods
