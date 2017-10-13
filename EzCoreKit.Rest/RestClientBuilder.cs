@@ -7,7 +7,7 @@ namespace EzCoreKit.Rest {
     /// <summary>
     /// 為RESTful Web API Client建構器
     /// </summary>
-    public class RestClientBuilder<T> {
+    public partial class RestClientBuilder<T> {
         ///目前Builder的uri
         private Uri baseUri { get; set; }
 
@@ -47,7 +47,7 @@ namespace EzCoreKit.Rest {
         /// </summary>
         /// <returns>RESTful Web API Client實例</returns>
         public T Build() {
-            throw new NotImplementedException();
+            return (T)Activator.CreateInstance(ImplementInterface());
         }
     }
 }
