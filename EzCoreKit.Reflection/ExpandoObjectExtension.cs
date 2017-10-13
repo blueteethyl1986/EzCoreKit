@@ -5,13 +5,31 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
+using System.Threading.Tasks;
+using EzCoreKit.Extensions;
 
 namespace EzCoreKit.Reflection {
     /// <summary>
     /// 針對<see cref="ExpandoObject"/>相關擴充方法
     /// </summary>
     public static class ExpandoObjectExtension {
-        public static Type CreateAnonymousType(this ExpandoObject obj) {
+        /// <summary>
+        /// 使用目標實例建立類別物件並繼承指定介面類別
+        /// </summary>
+        /// <typeparam name="T">指定介面類別</typeparam>
+        /// <param name="obj">目標實例</param>
+        /// <returns>類別物件</returns>
+        public static Type CreateAnonymousType<T>(this ExpandoObject obj) {
+            return CreateAnonymousType(obj,typeof(T));
+        }
+
+        /// <summary>
+        /// 使用目標實例建立類別物件並繼承指定介面類別。值得注意的是，obj內為iType的方法成員者，方法第一個參數為this
+        /// </summary>
+        /// <param name="obj">目標實例</param>
+        /// <param name="iType">指定介面類別</param>
+        /// <returns>類別物件</returns>
+        public static Type CreateAnonymousType(this ExpandoObject obj, Type iType) {
             //建構組件
             AssemblyBuilder tempAssemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName() {
                 Name = "TempAssembly"
@@ -25,49 +43,119 @@ namespace EzCoreKit.Reflection {
                 $"Anon_{Guid.NewGuid().ToString().Replace("-", "_")}",
                 TypeAttributes.Class,
                 typeof(object), Type.EmptyTypes);
+            
+            //實作介面
+            if(iType != null){
+                tempTypeBuilder.AddInterfaceImplementation(iType);
+            }
 
             var dict = obj as IDictionary<string, object>;
             if (dict == null) return null;
 
+            //取得iType的所有Methods
+            var methods = iType?.GetMethods() ?? new MethodInfo[0];
+            
+            Dictionary<FieldInfo, object> settingStaticValues = new Dictionary<FieldInfo,object>();
+            
             foreach (var keyvalue in dict) {
                 var propertyType = keyvalue.Value?.GetType() ?? typeof(object);
-                PropertyBuilder property = tempTypeBuilder.DefineProperty(
-                    keyvalue.Key,
-                    PropertyAttributes.HasDefault,
-                    propertyType,
-                    null);
+                
+                var method = methods.SingleOrDefault(x=>x.Name == keyvalue.Key);
 
-                FieldBuilder field = tempTypeBuilder.DefineField("_" + keyvalue.Key, propertyType, FieldAttributes.Private);
+                if (method != null) {//method body (delegate)
+                    FieldBuilder delegateField = tempTypeBuilder.DefineField(
+                        "_" + keyvalue.Key,
+                        typeof(Delegate),
+                        FieldAttributes.Private | FieldAttributes.Static);
 
-                MethodAttributes getSetAttr = MethodAttributes.Public |
-                    MethodAttributes.SpecialName | MethodAttributes.HideBySig;
+                    //加入靜態欄位值，以便建立型別後重新寫入
+                    settingStaticValues.Add(delegateField,keyvalue.Value);
 
-                MethodBuilder mbNumberGetAccessor = tempTypeBuilder.DefineMethod(
-                    "get_" + keyvalue.Key,
-                    getSetAttr,
-                    propertyType,
-                    Type.EmptyTypes);
+                    //取得interface Method參數
+                    var parameters = method.GetParameters();
 
-                ILGenerator numberGetIL = mbNumberGetAccessor.GetILGenerator();
-                numberGetIL.Emit(OpCodes.Ldarg_0);
-                numberGetIL.Emit(OpCodes.Ldfld, field);
-                numberGetIL.Emit(OpCodes.Ret);
+                    //建構方法
+                    MethodBuilder tempMethodBuilder =
+                        tempTypeBuilder.DefineMethod(method.Name,
+                        MethodAttributes.Public | MethodAttributes.Virtual,
+                        method.ReturnType, 
+                        //第一個參數為this
+                        typeof(object).BoxingToArray().Concat(parameters.Select(x => x.ParameterType)).ToArray());
 
+                    //使用IL產生器
+                    ILGenerator il = tempMethodBuilder.GetILGenerator();
 
-                MethodBuilder mbNumberSetAccessor = tempTypeBuilder.DefineMethod(
-                    "set_" + keyvalue.Key,
-                    getSetAttr,
-                    typeof(void),
-                    new Type[] { typeof(object) });
+                    //Load Delegate Field To Stack
+                    il.Emit(OpCodes.Ldfld, delegateField);
 
-                ILGenerator numberGetIL2 = mbNumberSetAccessor.GetILGenerator();
-                numberGetIL2.Emit(OpCodes.Ldarg_0);
-                numberGetIL2.Emit(OpCodes.Ldarg_1);
-                numberGetIL2.Emit(OpCodes.Stfld, field);
-                numberGetIL2.Emit(OpCodes.Ret);
+                    //Parameter 1: This
+                    il.Emit(OpCodes.Ldarg, 0);//Instance self
+                    
+                    //Parameter 2: Caller
+                    il.Emit(OpCodes.Call, typeof(MethodBase).GetMethod(nameof(MethodBase.GetCurrentMethod), BindingFlags.Public | BindingFlags.Static));
+                    
+                    #region Parameter 3: Method Invoke Parameters Array
+                    il.Emit(OpCodes.Ldc_I4, parameters.Length);
+                    il.Emit(OpCodes.Newarr, typeof(object));
 
-                property.SetSetMethod(mbNumberSetAccessor);
-                property.SetGetMethod(mbNumberGetAccessor);
+                    for (int i = 0; i < parameters.Length; i++) {
+                        il.Emit(OpCodes.Dup);
+                        il.Emit(OpCodes.Ldc_I4, i);
+                        il.Emit(OpCodes.Ldarg, i + 1);
+                        il.Emit(OpCodes.Box, parameters[i].ParameterType);
+                        il.Emit(OpCodes.Stelem_Ref);
+                    }
+                    #endregion
+
+                    //Call Method And Push Result To Stack Top             
+                    il.Emit(OpCodes.Callvirt, typeof(Delegate).GetMember("DynamicInvoke")?.First() as MethodInfo);
+
+                    //Return Stack Top
+                    il.Emit(OpCodes.Ret);
+
+                    tempTypeBuilder.DefineMethodOverride(//Override Interface Define Method
+                        tempMethodBuilder,
+                        method
+                    );                
+                } else {//普通的值轉換為屬性
+                    PropertyBuilder property = tempTypeBuilder.DefineProperty(
+                        keyvalue.Key,
+                        PropertyAttributes.HasDefault,
+                        propertyType,
+                        null);
+
+                    FieldBuilder field = tempTypeBuilder.DefineField("_" + keyvalue.Key, propertyType, FieldAttributes.Private);
+
+                    MethodAttributes getSetAttr = MethodAttributes.Public |
+                        MethodAttributes.SpecialName | MethodAttributes.HideBySig;
+
+                    MethodBuilder mbNumberGetAccessor = tempTypeBuilder.DefineMethod(
+                        "get_" + keyvalue.Key,
+                        getSetAttr,
+                        propertyType,
+                        Type.EmptyTypes);
+
+                    ILGenerator numberGetIL = mbNumberGetAccessor.GetILGenerator();
+                    numberGetIL.Emit(OpCodes.Ldarg_0);
+                    numberGetIL.Emit(OpCodes.Ldfld, field);
+                    numberGetIL.Emit(OpCodes.Ret);
+                    
+
+                    MethodBuilder mbNumberSetAccessor = tempTypeBuilder.DefineMethod(
+                        "set_" + keyvalue.Key,
+                        getSetAttr,
+                        typeof(void),
+                        new Type[] { typeof(object) });
+
+                    ILGenerator numberGetIL2 = mbNumberSetAccessor.GetILGenerator();
+                    numberGetIL2.Emit(OpCodes.Ldarg_0);
+                    numberGetIL2.Emit(OpCodes.Ldarg_1);
+                    numberGetIL2.Emit(OpCodes.Stfld, field);
+                    numberGetIL2.Emit(OpCodes.Ret);
+
+                    property.SetSetMethod(mbNumberSetAccessor);
+                    property.SetGetMethod(mbNumberGetAccessor);
+                }
             }
 
 
@@ -91,7 +179,23 @@ namespace EzCoreKit.Reflection {
 
             tempTypeBuilder.DefineMethodOverride(hashMethod, hashObject);
 
-            return tempTypeBuilder.CreateTypeInfo();
+            var resultType = tempTypeBuilder.CreateTypeInfo();
+            
+            //delegateSetting  Method Body Setting
+            foreach(var settingkv in settingStaticValues){
+                settingkv.Key.SetValue(null,settingkv.Value);
+            }
+
+            return resultType;
+        }
+
+        /// <summary>
+        /// 使用目標實例建立類別物件
+        /// </summary>
+        /// <param name="obj">目標實例</param>
+        /// <returns>類別物件</returns>
+        public static Type CreateAnonymousType(this ExpandoObject obj) {
+            return CreateAnonymousType(obj,null);
         }
 
         public static int GetHashCode(object obj) {
