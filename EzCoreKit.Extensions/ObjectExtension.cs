@@ -30,6 +30,16 @@ namespace EzCoreKit.Extensions {
         }
 
         /// <summary>
+        /// 將實例包裝為Lazy類別
+        /// </summary>
+        /// <typeparam name="T">目標實例類別</typeparam>
+        /// <param name="obj">目標實例</param>
+        /// <returns>Lazy包裝實例</returns>
+        public static Lazy<T> BoxingToLazy<T>(this T obj) {
+            return new Lazy<T>(new Func<T>(() => obj));
+        }
+
+        /// <summary>
         /// 將Binary結果轉換為目標類別實例
         /// </summary>
         /// <param name="bytes">Binary結果</param>
