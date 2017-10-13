@@ -10,6 +10,17 @@ namespace EzCoreKit.Extensions {
     /// </summary>
     public static partial class EnumHelper {
         /// <summary>
+        /// 剖析字串至指定列舉類型值
+        /// </summary>
+        /// <typeparam name="T">列舉類型</typeparam>
+        /// <param name="enumName">列舉值名稱</param>
+        /// <param name="ignoreCase">忽略大小寫</param>
+        /// <returns>列舉值</returns>
+        public static T Parse<T>(string enumName, bool ignoreCase = true) where T : struct{
+            return (T)Enum.Parse(typeof(T), enumName, ignoreCase);
+        }
+
+        /// <summary>
         /// 取得目標列舉值之名稱
         /// </summary>
         /// <param name="value">列舉值</param>
@@ -24,7 +35,7 @@ namespace EzCoreKit.Extensions {
         /// <typeparam name="T">列舉類型</typeparam>
         /// <param name="value">列舉值</param>
         /// <returns>目標列舉值名稱</returns>
-        public static string GetEnumName<T>(T value) where T : struct {
+        public static string GetEnumName<T>(this T value) where T : struct {
             return Enum.GetName(typeof(T), value);
         }
 

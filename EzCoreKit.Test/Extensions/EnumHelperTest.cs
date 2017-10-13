@@ -38,5 +38,21 @@ namespace EzCoreKit.Test.Extensions {
             Assert.Equal("C", EnumHelper.GetCustomAttribute<TestAttribute>(TestEnum.C).Tag);
             Assert.Equal("D", EnumHelper.GetCustomAttribute<TestAttribute>(TestEnum.D).Tag);
         }
+
+        [Fact(DisplayName = "Extensions.Enum.Parse")]
+        public void Parse_Test() {
+            Assert.Equal(TestEnum.A, EnumHelper.Parse<TestEnum>("A"));
+            Assert.Equal(TestEnum.B, EnumHelper.Parse<TestEnum>("B"));
+            Assert.Equal(TestEnum.C, EnumHelper.Parse<TestEnum>("C"));
+            Assert.Equal(TestEnum.D, EnumHelper.Parse<TestEnum>("D"));
+        }
+
+        [Fact(DisplayName = "Extensions.Enum.GetEnumName_Extensions")]
+        public void GetEnumNameExtension_Test() {
+            Assert.Equal("A", TestEnum.A.GetEnumName());
+            Assert.Equal("B", TestEnum.B.GetEnumName());
+            Assert.Equal("C", TestEnum.C.GetEnumName());
+            Assert.Equal("D", TestEnum.D.GetEnumName());
+        }
     }
 }
