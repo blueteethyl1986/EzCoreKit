@@ -5,6 +5,7 @@ using System.Text;
 using EzCoreKit.Reflection;
 using Xunit;
 using System.Linq;
+using System.Diagnostics;
 
 namespace EzCoreKit.Test.Reflection {
     public class ExpandoObjectExtension_Test {
@@ -20,6 +21,22 @@ namespace EzCoreKit.Test.Reflection {
             Assert.Equal(
                 expObj.CreateAnonymousType().GetProperties().Select(x => x.Name).ToArray(),
                 new string[] { "Id", "Name", "Class" });
+        }
+        public interface IEcho{
+            string Echo(string str);
+        }
+
+        [Fact(DisplayName = "Extensions.Reflection.CreateAnonymousType_Interface")]
+        public void CreateAnonymousType_Interface_Test() {
+            dynamic obj1 = new ExpandoObject();
+            obj1.Echo = new Func<object,string,string>((THIS,x)=>x);
+
+            var expObj = (ExpandoObject)obj1;
+            var anonType = expObj.CreateAnonymousType<IEcho>();
+            var obj2 = (IEcho)Activator.CreateInstance(anonType);
+            Console.WriteLine(">>>>>>" + string.Join(",",anonType.GetMethods().Select(X=>X.Name)));
+
+            Assert.Equal(obj2.Echo("G"),"G");
         }
     }
 }

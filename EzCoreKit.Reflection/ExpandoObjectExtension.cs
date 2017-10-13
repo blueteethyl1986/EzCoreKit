@@ -55,7 +55,7 @@ namespace EzCoreKit.Reflection {
             //取得iType的所有Methods
             var methods = iType?.GetMethods() ?? new MethodInfo[0];
             
-            Dictionary<FieldInfo, object> settingStaticValues = new Dictionary<FieldInfo,object>();
+            Dictionary<string, object> settingStaticValues = new Dictionary<string,object>();
             
             foreach (var keyvalue in dict) {
                 var propertyType = keyvalue.Value?.GetType() ?? typeof(object);
@@ -69,7 +69,7 @@ namespace EzCoreKit.Reflection {
                         FieldAttributes.Private | FieldAttributes.Static);
 
                     //加入靜態欄位值，以便建立型別後重新寫入
-                    settingStaticValues.Add(delegateField,keyvalue.Value);
+                    settingStaticValues.Add(delegateField.Name,keyvalue.Value);
 
                     //取得interface Method參數
                     var parameters = method.GetParameters();
@@ -79,30 +79,23 @@ namespace EzCoreKit.Reflection {
                         tempTypeBuilder.DefineMethod(method.Name,
                         MethodAttributes.Public | MethodAttributes.Virtual,
                         method.ReturnType, 
-                        //第一個參數為this
-                        typeof(object).BoxingToArray().Concat(parameters.Select(x => x.ParameterType)).ToArray());
+                        parameters.Select(x => x.ParameterType).ToArray());
 
                     //使用IL產生器
                     ILGenerator il = tempMethodBuilder.GetILGenerator();
 
                     //Load Delegate Field To Stack
-                    il.Emit(OpCodes.Ldfld, delegateField);
-
-                    //Parameter 1: This
-                    il.Emit(OpCodes.Ldarg, 0);//Instance self
+                    il.Emit(OpCodes.Ldsfld, delegateField);
                     
-                    //Parameter 2: Caller
-                    il.Emit(OpCodes.Call, typeof(MethodBase).GetMethod(nameof(MethodBase.GetCurrentMethod), BindingFlags.Public | BindingFlags.Static));
-                    
-                    #region Parameter 3: Method Invoke Parameters Array
-                    il.Emit(OpCodes.Ldc_I4, parameters.Length);
+                    #region Method Invoke Parameters Array
+                    il.Emit(OpCodes.Ldc_I4, parameters.Length + 1);
                     il.Emit(OpCodes.Newarr, typeof(object));
 
-                    for (int i = 0; i < parameters.Length; i++) {
+                    for (int i = 0; i <= parameters.Length; i++) {
                         il.Emit(OpCodes.Dup);
                         il.Emit(OpCodes.Ldc_I4, i);
-                        il.Emit(OpCodes.Ldarg, i + 1);
-                        il.Emit(OpCodes.Box, parameters[i].ParameterType);
+                        il.Emit(OpCodes.Ldarg, i);
+                        il.Emit(OpCodes.Box, typeof(object));
                         il.Emit(OpCodes.Stelem_Ref);
                     }
                     #endregion
@@ -140,7 +133,6 @@ namespace EzCoreKit.Reflection {
                     numberGetIL.Emit(OpCodes.Ldfld, field);
                     numberGetIL.Emit(OpCodes.Ret);
                     
-
                     MethodBuilder mbNumberSetAccessor = tempTypeBuilder.DefineMethod(
                         "set_" + keyvalue.Key,
                         getSetAttr,
@@ -183,7 +175,7 @@ namespace EzCoreKit.Reflection {
             
             //delegateSetting  Method Body Setting
             foreach(var settingkv in settingStaticValues){
-                settingkv.Key.SetValue(null,settingkv.Value);
+                resultType.GetField(settingkv.Key, BindingFlags.Static | BindingFlags.NonPublic).SetValue(null,settingkv.Value);
             }
 
             return resultType;
