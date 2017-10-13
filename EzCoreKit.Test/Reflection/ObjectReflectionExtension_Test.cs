@@ -7,7 +7,7 @@ using Xunit;
 
 namespace EzCoreKit.Test.Reflection {
     public class ObjectReflectionExtension_Test {
-        [Fact(DisplayName = "Extensions.Reflection.GetPrivateFieldValue")]
+        [Fact(DisplayName = "Reflection.GetPrivateFieldValue")]
         public void GetPrivateFieldValue() {
             Assert.Equal(
                 new Student().GetPrivateFieldValue<string>("TestPrivateField"),

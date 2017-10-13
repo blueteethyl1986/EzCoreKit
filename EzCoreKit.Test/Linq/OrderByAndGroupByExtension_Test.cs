@@ -45,7 +45,7 @@ namespace EzCoreKit.Test.Linq {
             return result;
         }
 
-        [Fact(DisplayName = "Extensions.Linq.OrderBy")]
+        [Fact(DisplayName = "Linq.OrderBy")]
         public void OrderBy_Test() {
             var list = InitList();
             var orderedList = list.OrderBy(new(bool isDec, string name)[] {
@@ -56,7 +56,7 @@ namespace EzCoreKit.Test.Linq {
             Assert.Equal(orderedList, list.OrderByDescending(x => x.Class).ThenBy(x => x.Id));
         }
 
-        [Fact(DisplayName = "Extensions.Linq.GroupBy")]
+        [Fact(DisplayName = "Linq.GroupBy")]
         public void GroupBy_Test() {
             var list = InitList();
             var groupedList = list.GroupBy("Class".BoxingToArray());

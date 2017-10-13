@@ -6,7 +6,7 @@ using Xunit;
 
 namespace EzCoreKit.Test.Reflection {
     public class MemberInfoExtension_Test {
-        [Fact(DisplayName = "Extensions.Reflection.GetMember")]
+        [Fact(DisplayName = "Reflection.GetMember")]
         public void GetMember_Test() {
             var member1 = new object().GetMember(x => x.ToString());
             var member2 = typeof(object).GetMember("ToString")[0];

@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace EzCoreKit.Test.Reflection {
     public class MethodInfoExtension_Test {
-        [Fact(DisplayName = "Extensions.Reflection.MethodInfo_InvokeAndDelegate")]
+        [Fact(DisplayName = "Reflection.MethodInfo_InvokeAndDelegate")]
         public void MethodInfo_InvokeAndDelegate_Test() {
             var obj = new Student() {
                 Id = 8,

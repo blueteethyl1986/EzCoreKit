@@ -24,6 +24,7 @@
     <ProjectReference Include="..\EzCoreKit.Linq\EzCoreKit.Linq.csproj" />
     <ProjectReference Include="..\EzCoreKit.Markdown\EzCoreKit.Markdown.csproj" />
     <ProjectReference Include="..\EzCoreKit.Reflection\EzCoreKit.Reflection.csproj" />
+    <ProjectReference Include="..\EzCoreKit.Rest\EzCoreKit.Rest.csproj" />
     <ProjectReference Include="..\EzCoreKit.Threading\EzCoreKit.Threading.csproj" />
   </ItemGroup>
 

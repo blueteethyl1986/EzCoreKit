@@ -8,7 +8,7 @@ using Xunit;
 
 namespace EzCoreKit.Test.Reflection {
     public class ExpandoObjectConvert_Test {
-        [Fact(DisplayName = "Extensions.Reflection.ConvertToExpando")]
+        [Fact(DisplayName = "Reflection.ConvertToExpando")]
         public void ConvertToExpando_Test() {
             dynamic obj1 = new ExpandoObject();
             obj1.Id = 12;

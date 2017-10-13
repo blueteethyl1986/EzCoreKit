@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace EzCoreKit.Test.Reflection {
     public class ExpandoObjectExtension_Test {
-        [Fact(DisplayName = "Extensions.Reflection.CreateAnonymousType")]
+        [Fact(DisplayName = "Reflection.CreateAnonymousType")]
         public void CreateAnonymousType_Test() {
             dynamic obj1 = new ExpandoObject();
             obj1.Id = 12;
@@ -22,21 +22,21 @@ namespace EzCoreKit.Test.Reflection {
                 expObj.CreateAnonymousType().GetProperties().Select(x => x.Name).ToArray(),
                 new string[] { "Id", "Name", "Class" });
         }
-        public interface IEcho{
+        public interface IEcho {
             string Echo(string str);
         }
 
-        [Fact(DisplayName = "Extensions.Reflection.CreateAnonymousType_Interface")]
+        [Fact(DisplayName = "Reflection.CreateAnonymousType_Interface")]
         public void CreateAnonymousType_Interface_Test() {
             dynamic obj1 = new ExpandoObject();
-            obj1.Echo = new Func<object,string,string>((THIS,x)=>x);
+            obj1.Echo = new Func<object, string, string>((THIS, x) => x);
 
             var expObj = (ExpandoObject)obj1;
             var anonType = expObj.CreateAnonymousType<IEcho>();
             var obj2 = (IEcho)Activator.CreateInstance(anonType);
-            Console.WriteLine(">>>>>>" + string.Join(",",anonType.GetMethods().Select(X=>X.Name)));
+            Console.WriteLine(">>>>>>" + string.Join(",", anonType.GetMethods().Select(X => X.Name)));
 
-            Assert.Equal(obj2.Echo("G"),"G");
+            Assert.Equal(obj2.Echo("G"), "G");
         }
     }
 }

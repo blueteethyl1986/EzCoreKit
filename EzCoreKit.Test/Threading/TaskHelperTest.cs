@@ -7,7 +7,7 @@ using Xunit;
 
 namespace EzCoreKit.Test.Threading {
     public class TaskHelperTest {
-        [Fact(DisplayName = "Extensions.Threading.LimitedTask")]
+        [Fact(DisplayName = "Threading.LimitedTask")]
         public void LimitedTask_Test() {
             Assert.Equal(TaskHelper.LimitedTask(() => {
 
