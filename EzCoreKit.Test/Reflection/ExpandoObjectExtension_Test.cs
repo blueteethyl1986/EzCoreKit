@@ -34,7 +34,6 @@ namespace EzCoreKit.Test.Reflection {
             var expObj = (ExpandoObject)obj1;
             var anonType = expObj.CreateAnonymousType<IEcho>();
             var obj2 = (IEcho)Activator.CreateInstance(anonType);
-            Console.WriteLine(">>>>>>" + string.Join(",", anonType.GetMethods().Select(X => X.Name)));
 
             Assert.Equal(obj2.Echo("G"), "G");
         }
