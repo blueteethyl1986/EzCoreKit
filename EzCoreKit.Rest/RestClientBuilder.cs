@@ -8,6 +8,7 @@ namespace EzCoreKit.Rest {
     /// 為RESTful Web API Client建構器
     /// </summary>
     public class RestClientBuilder<T> {
+        ///目前Builder的uri
         private Uri baseUri { get; set; }
 
         public RestClientBuilder() {
