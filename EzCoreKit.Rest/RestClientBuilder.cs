@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using EzCoreKit.Rest.Attributes;
 
 namespace EzCoreKit.Rest {
     /// <summary>
     /// 為RESTful Web API Client建構器
     /// </summary>
     public class RestClientBuilder<T> {
-        private string baseUri { get; set; }
+        private Uri baseUri { get; set; }
 
         public RestClientBuilder() {
             if (!typeof(T).IsInterface) {//必須是interface
                 throw new ArgumentException($"{nameof(T)}應為interface");
+            }
+
+            //自Attribute中取得BaseUri預設值
+            RestBaseUriAttribute baseUriSetting = typeof(T).GetCustomAttribute<RestBaseUriAttribute>();
+            if(baseUri != null){
+                baseUri = new Uri(baseUriSetting.BaseUriString);
             }
         }
 
@@ -20,7 +28,8 @@ namespace EzCoreKit.Rest {
         /// <param name="uriString">Uri實例</param>
         /// <returns>為RESTful Web API Client建構器</returns>
         public RestClientBuilder<T> SetBaseUri(Uri uri) {
-            throw new NotImplementedException();
+            baseUri = uri;
+            return this;
         }
 
         /// <summary>
