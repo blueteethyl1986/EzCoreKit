@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EzCoreKit.AspNetCore.WebSockets {
     /// <summary>
-    /// 針對<see cref="IApplicationBuilder"/>類型的擴充方法
+    /// 針對<see cref="IApplicationBuilder"/>類別的擴充方法
     /// </summary>
     public static class IApplicationBuilderWebSocketsExtension {
         /// <summary>

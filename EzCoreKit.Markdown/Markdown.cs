@@ -48,7 +48,7 @@ namespace EzCoreKit.Markdown {
         /// <summary>
         /// 找尋指定的子節點
         /// </summary>
-        /// <typeparam name="T">節點類型</typeparam>
+        /// <typeparam name="T">節點類別</typeparam>
         /// <param name="func">條件方法</param>
         /// <returns>找尋結果</returns>
         public T Find<T>(Func<T, bool> func) where T : MarkdownRaw {

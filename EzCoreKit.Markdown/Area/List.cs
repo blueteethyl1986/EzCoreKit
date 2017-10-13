@@ -16,7 +16,7 @@ namespace EzCoreKit.Markdown.Area {
     [Match(Regex = @"^(\s*\-\s+.+((\r?\n)|$))+")]
     public class List : Markdown {
         /// <summary>
-        /// 類型
+        /// 類別
         /// </summary>
         public ListTypes Type { get; set; }
 

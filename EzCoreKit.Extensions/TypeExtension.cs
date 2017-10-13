@@ -32,10 +32,10 @@ namespace EzCoreKit.Extensions {
         }
 
         /// <summary>
-        /// 確認目前類別是否為匿名類型
+        /// 確認目前類別是否為匿名類別
         /// </summary>
         /// <param name="type">目前類別</param>
-        /// <returns>是否為匿名類型</returns>
+        /// <returns>是否為匿名類別</returns>
         public static bool IsAnonymousType(this Type type) {
             if (type == null) return false;
             return type.Namespace == null;

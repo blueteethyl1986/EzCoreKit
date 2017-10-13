@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EzCoreKit.AspNetCore.WebSockets {
     /// <summary>
-    /// 為<see cref="IApplicationBuilderWebSocketsExtension.UseWebSockets{Handler}(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Builder.WebSocketOptions)"/>方法所參考的處理類型
+    /// 為<see cref="IApplicationBuilderWebSocketsExtension.UseWebSockets{Handler}(Microsoft.AspNetCore.Builder.IApplicationBuilder, Microsoft.AspNetCore.Builder.WebSocketOptions)"/>方法所參考的處理類別
     /// </summary>
     public abstract class WebSocketHandler {
         /// <summary>
@@ -22,7 +22,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// WebSocket接收訊息事件
         /// </summary>
         /// <param name="socket">WebSocket物件</param>
-        /// <param name="messageType">訊息類型</param>
+        /// <param name="messageType">訊息類別</param>
         /// <param name="receiveMessage">接收到的訊息</param>
         public delegate void WebSocketReceivedEvent(WebSocket socket, WebSocketMessageType messageType, byte[] receiveMessage);
 
@@ -37,7 +37,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// WebSocket正在接收訊息事件
         /// </summary>
         /// <param name="socket">WebSocket物件</param>
-        /// <param name="messageType">訊息類型</param>
+        /// <param name="messageType">訊息類別</param>
         /// <param name="receiveMessage">接收到的訊息片段</param>
         /// <param name="endOfMessage">是否接收結束</param>
         public delegate void WebsocketReceivingEvent(WebSocket socket, WebSocketMessageType messageType, byte[] receiveMessage, bool endOfMessage);

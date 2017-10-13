@@ -16,7 +16,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步送出物件
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="data">物件內容將轉換為Json</param>
         /// <param name="encoding">文字編碼</param>
@@ -30,7 +30,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步送出物件
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="data">物件內容將轉換為Json</param>
         /// <param name="encoding">文字編碼</param>
@@ -43,7 +43,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步送出物件
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="data">物件內容將轉換為Json</param>
         /// <param name="bufferSize">緩衝區大小</param>
@@ -55,7 +55,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步接收物件
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="encoding">文字編碼</param>
         /// <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
@@ -69,7 +69,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步接收物件(UTF8)
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="cancellationToken">散佈通知的語彙基元，該通知表示不應取消作業</param>
         /// <param name="bufferSize">緩衝區大小</param>
@@ -82,7 +82,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步接收物件
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="encoding">文字編碼</param>
         /// <param name="bufferSize">緩衝區大小</param>
@@ -95,7 +95,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步接收Json資料(UTF8)
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="bufferSize">緩衝區大小</param>
         /// <param name="millisecondsTimeout">逾時限制</param>
@@ -107,7 +107,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步送出物件並等候接收
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="data">內容</param>
         /// <param name="encoding">文字編碼</param>
@@ -128,7 +128,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步送出物件並等候接收
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="data">內容</param>
         /// <param name="encoding">文字編碼(</param>
@@ -142,7 +142,7 @@ namespace EzCoreKit.AspNetCore.WebSockets {
         /// <summary>
         /// 非同步送出物件(UTF8)並等候接收
         /// </summary>
-        /// <typeparam name="T">類型</typeparam>
+        /// <typeparam name="T">類別</typeparam>
         /// <param name="obj">擴充對象</param>
         /// <param name="data">內容</param>
         /// <param name="bufferSize">緩衝區大小</param>

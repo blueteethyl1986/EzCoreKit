@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EzCoreKit.Extensions {
     /// <summary>
-    /// 針對集合相關類型擴充方法
+    /// 針對集合相關類別擴充方法
     /// </summary>
     public static partial class IEnumerableExtension {
         /// <summary>

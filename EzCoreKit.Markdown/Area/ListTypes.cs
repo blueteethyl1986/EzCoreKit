@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EzCoreKit.Markdown.Area {
     /// <summary>
-    /// 清單類型
+    /// 清單類別
     /// </summary>
     public enum ListTypes {
         /// <summary>

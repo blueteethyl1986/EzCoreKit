@@ -20,16 +20,16 @@ namespace EzCoreKit.Reflection {
         /// <param name="obj">目標實例</param>
         /// <returns>類別物件</returns>
         public static Type CreateAnonymousType<T>(this ExpandoObject obj) {
-            return CreateAnonymousType(obj,typeof(T));
+            return CreateAnonymousType(obj, typeof(T));
         }
 
         /// <summary>
         /// 使用目標實例建立類別物件並繼承指定介面類別。值得注意的是，obj內為iType的方法成員者，方法第一個參數為this
         /// </summary>
         /// <param name="obj">目標實例</param>
-        /// <param name="iType">指定介面類別</param>
+        /// <param name="interfaceType">指定介面類別</param>
         /// <returns>類別物件</returns>
-        public static Type CreateAnonymousType(this ExpandoObject obj, Type iType) {
+        public static Type CreateAnonymousType(this ExpandoObject obj, Type interfaceType) {
             //建構組件
             AssemblyBuilder tempAssemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName() {
                 Name = "TempAssembly"
@@ -38,29 +38,29 @@ namespace EzCoreKit.Reflection {
             //建構模組
             ModuleBuilder tempModuleBuilder = tempAssemblyBuilder.DefineDynamicModule("TempModule");
 
-            //建構實作介面類型
+            //建構實作介面類別
             TypeBuilder tempTypeBuilder = tempModuleBuilder.DefineType(
                 $"Anon_{Guid.NewGuid().ToString().Replace("-", "_")}",
                 TypeAttributes.Class,
                 typeof(object), Type.EmptyTypes);
-            
+
             //實作介面
-            if(iType != null){
-                tempTypeBuilder.AddInterfaceImplementation(iType);
+            if (interfaceType != null) {
+                tempTypeBuilder.AddInterfaceImplementation(interfaceType);
             }
 
             var dict = obj as IDictionary<string, object>;
             if (dict == null) return null;
 
             //取得iType的所有Methods
-            var methods = iType?.GetMethods() ?? new MethodInfo[0];
-            
-            Dictionary<string, object> settingStaticValues = new Dictionary<string,object>();
-            
+            var methods = interfaceType?.GetMethods() ?? new MethodInfo[0];
+
+            Dictionary<string, object> settingStaticValues = new Dictionary<string, object>();
+
             foreach (var keyvalue in dict) {
                 var propertyType = keyvalue.Value?.GetType() ?? typeof(object);
-                
-                var method = methods.SingleOrDefault(x=>x.Name == keyvalue.Key);
+
+                var method = methods.SingleOrDefault(x => x.Name == keyvalue.Key);
 
                 if (method != null) {//method body (delegate)
                     FieldBuilder delegateField = tempTypeBuilder.DefineField(
@@ -69,7 +69,7 @@ namespace EzCoreKit.Reflection {
                         FieldAttributes.Private | FieldAttributes.Static);
 
                     //加入靜態欄位值，以便建立型別後重新寫入
-                    settingStaticValues.Add(delegateField.Name,keyvalue.Value);
+                    settingStaticValues.Add(delegateField.Name, keyvalue.Value);
 
                     //取得interface Method參數
                     var parameters = method.GetParameters();
@@ -78,7 +78,7 @@ namespace EzCoreKit.Reflection {
                     MethodBuilder tempMethodBuilder =
                         tempTypeBuilder.DefineMethod(method.Name,
                         MethodAttributes.Public | MethodAttributes.Virtual,
-                        method.ReturnType, 
+                        method.ReturnType,
                         parameters.Select(x => x.ParameterType).ToArray());
 
                     //使用IL產生器
@@ -86,7 +86,7 @@ namespace EzCoreKit.Reflection {
 
                     //Load Delegate Field To Stack
                     il.Emit(OpCodes.Ldsfld, delegateField);
-                    
+
                     #region Method Invoke Parameters Array
                     il.Emit(OpCodes.Ldc_I4, parameters.Length + 1);
                     il.Emit(OpCodes.Newarr, typeof(object));
@@ -109,7 +109,7 @@ namespace EzCoreKit.Reflection {
                     tempTypeBuilder.DefineMethodOverride(//Override Interface Define Method
                         tempMethodBuilder,
                         method
-                    );                
+                    );
                 } else {//普通的值轉換為屬性
                     PropertyBuilder property = tempTypeBuilder.DefineProperty(
                         keyvalue.Key,
@@ -132,7 +132,7 @@ namespace EzCoreKit.Reflection {
                     numberGetIL.Emit(OpCodes.Ldarg_0);
                     numberGetIL.Emit(OpCodes.Ldfld, field);
                     numberGetIL.Emit(OpCodes.Ret);
-                    
+
                     MethodBuilder mbNumberSetAccessor = tempTypeBuilder.DefineMethod(
                         "set_" + keyvalue.Key,
                         getSetAttr,
@@ -172,10 +172,10 @@ namespace EzCoreKit.Reflection {
             tempTypeBuilder.DefineMethodOverride(hashMethod, hashObject);
 
             var resultType = tempTypeBuilder.CreateTypeInfo();
-            
+
             //delegateSetting  Method Body Setting
-            foreach(var settingkv in settingStaticValues){
-                resultType.GetField(settingkv.Key, BindingFlags.Static | BindingFlags.NonPublic).SetValue(null,settingkv.Value);
+            foreach (var settingkv in settingStaticValues) {
+                resultType.GetField(settingkv.Key, BindingFlags.Static | BindingFlags.NonPublic).SetValue(null, settingkv.Value);
             }
 
             return resultType;
@@ -187,7 +187,7 @@ namespace EzCoreKit.Reflection {
         /// <param name="obj">目標實例</param>
         /// <returns>類別物件</returns>
         public static Type CreateAnonymousType(this ExpandoObject obj) {
-            return CreateAnonymousType(obj,null);
+            return CreateAnonymousType(obj, null);
         }
 
         public static int GetHashCode(object obj) {

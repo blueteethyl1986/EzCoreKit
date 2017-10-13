@@ -10,9 +10,9 @@ namespace EzCoreKit.Extensions {
     /// </summary>
     public static partial class EnumHelper {
         /// <summary>
-        /// 剖析字串至指定列舉類型值
+        /// 剖析字串至指定列舉類別值
         /// </summary>
-        /// <typeparam name="T">列舉類型</typeparam>
+        /// <typeparam name="T">列舉類別</typeparam>
         /// <param name="enumName">列舉值名稱</param>
         /// <param name="ignoreCase">忽略大小寫</param>
         /// <returns>列舉值</returns>
@@ -32,7 +32,7 @@ namespace EzCoreKit.Extensions {
         /// <summary>
         /// 取得目標列舉值之名稱
         /// </summary>
-        /// <typeparam name="T">列舉類型</typeparam>
+        /// <typeparam name="T">列舉類別</typeparam>
         /// <param name="value">列舉值</param>
         /// <returns>目標列舉值名稱</returns>
         public static string GetEnumName<T>(this T value) where T : struct {
