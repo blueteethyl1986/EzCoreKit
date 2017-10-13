@@ -9,8 +9,11 @@ namespace EzCoreKit.Rest {
     /// </summary>
     public partial class RestClientBuilder<T> {
         ///目前Builder的uri
-        private Uri baseUri { get; set; }
+        private string baseUri { get; set; }
 
+        /// <summary>
+        /// 建立並初始化針對<see cref="T"/>類別的RESTful Web API Client建構器
+        /// </summary>
         public RestClientBuilder() {
             if (!typeof(T).IsInterface) {//必須是interface
                 throw new ArgumentException($"{nameof(T)}應為interface");
@@ -18,8 +21,8 @@ namespace EzCoreKit.Rest {
 
             //自Attribute中取得BaseUri預設值
             RestBaseUriAttribute baseUriSetting = typeof(T).GetCustomAttribute<RestBaseUriAttribute>();
-            if(baseUri != null){
-                baseUri = new Uri(baseUriSetting.BaseUriString);
+            if (baseUri != null) {
+                baseUri = baseUriSetting.BaseUri;
             }
         }
 
@@ -29,7 +32,7 @@ namespace EzCoreKit.Rest {
         /// <param name="uriString">Uri實例</param>
         /// <returns>為RESTful Web API Client建構器</returns>
         public RestClientBuilder<T> SetBaseUri(Uri uri) {
-            baseUri = uri;
+            baseUri = uri.OriginalString;
             return this;
         }
 

@@ -6,10 +6,10 @@ namespace EzCoreKit.Rest.Attributes {
     /// 標註與設定Rest Client方法
     /// </summar>
     [AttributeUsage(AttributeTargets.Method)]
-    public class RestMethodAttribute: Attribute{
+    public class RestMethodAttribute : Attribute {
         /// <summary>
         /// 設定或取得該REST API Uri
         /// </summar>
-        public string UriString{ get; set; }
+        public string Uri { get; set; }
     }
 }
