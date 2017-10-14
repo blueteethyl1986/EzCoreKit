@@ -25,9 +25,7 @@ namespace EzCoreKit.Rest {
 
             //自Attribute中取得BaseUri預設值
             RestBaseUriAttribute baseUriSetting = typeof(T).GetCustomAttribute<RestBaseUriAttribute>();
-            if (baseUri != null) {
-                baseUri = baseUriSetting.BaseUri;
-            }
+            baseUri = baseUriSetting?.BaseUri;
         }
 
         /// <summary>

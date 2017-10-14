@@ -12,5 +12,12 @@ namespace EzCoreKit.Test.Rest {
             var obj = builder.Build();
             Assert.NotNull(obj);
         }
+
+        [Fact(DisplayName = "Rest.CallInstanceMethod")]
+        public async void RestClientBuilder_CallInstanceMethodTest() {
+            RestClientBuilder<IFakeAPI> builder = new RestClientBuilder<IFakeAPI>();
+            var obj = builder.Build();
+            var result = await obj.GetEarthquakesLocation();
+        }
     }
 }

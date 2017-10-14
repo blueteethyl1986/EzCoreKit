@@ -5,6 +5,7 @@ using EzCoreKit.Rest.Attributes;
 using System.Reflection.Emit;
 using System.Linq;
 using System.Threading.Tasks;
+using RestSharp;
 
 namespace EzCoreKit.Rest {
     //這個部分類別用以實作interface類別，並串接至RestClientBuilder.RestMethods
@@ -49,7 +50,7 @@ namespace EzCoreKit.Rest {
             FieldBuilder tempFieldBuilder_baseUri = tempTypeBuilder.DefineField("baseUri", typeof(string), FieldAttributes.Private);
             FieldBuilder tempFieldBuilder_auth_username = tempTypeBuilder.DefineField("auth_username", typeof(string), FieldAttributes.Private);
             FieldBuilder tempFieldBuilder_auth_password = tempTypeBuilder.DefineField("auth_password", typeof(string), FieldAttributes.Private);
-            FieldBuilder tempFieldBuilder_requestFormat = tempTypeBuilder.DefineField("requestFormat", typeof(string), FieldAttributes.Private);
+            FieldBuilder tempFieldBuilder_requestFormat = tempTypeBuilder.DefineField("requestFormat", typeof(DataFormat), FieldAttributes.Private);
             //建構子
             ConstructorBuilder tempConstructorBuilder = tempTypeBuilder.DefineConstructor(MethodAttributes.Public, CallingConventions.HasThis, Type.EmptyTypes);
 
@@ -71,7 +72,7 @@ namespace EzCoreKit.Rest {
                 ctorIL.Emit(OpCodes.Stfld, tempFieldBuilder_auth_password);
             }
             ctorIL.Emit(OpCodes.Ldarg_0);
-            ctorIL.Emit(OpCodes.Ldstr, (int)requestFormat);
+            ctorIL.Emit(OpCodes.Ldc_I4, (int)requestFormat);
             ctorIL.Emit(OpCodes.Stfld, tempFieldBuilder_requestFormat);
 
             ctorIL.Emit(OpCodes.Ret);

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EzCoreKit.Test.Rest {
-    [RestBaseUri("https://jsonplaceholder.typicode.com/")]
+    [RestBaseUri("http://opendata.cwb.gov.tw/")]
     public interface IFakeAPI {
         [RestMethod(
-            Uri = "http://opendata.cwb.gov.tw/govdownload?dataid=E-A0015-001R&authorizationkey=rdec-key-123-45678-011121314")]
+            Uri = "govdownload?dataid=E-A0015-001R&authorizationkey=rdec-key-123-45678-011121314")]
         Task<string> GetEarthquakesLocation();
     }
 }

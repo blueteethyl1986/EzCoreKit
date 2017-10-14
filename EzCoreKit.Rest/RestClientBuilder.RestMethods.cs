@@ -32,13 +32,18 @@ namespace EzCoreKit.Rest {
         /// <param name="parameters">呼叫來源參數陣列</param>
         /// <returns>REST方法執行結果</returns>
         public static async Task<object> RestRequestProcessAsync(object instance, MethodBase caller, object[] parameters) {
+            var interfaceType = caller.DeclaringType.GetInterfaces().First();
+            caller = interfaceType.GetMethod(caller.Name, BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, caller.GetParameters().Select(x => x.ParameterType).ToArray(), null);
+
             var client = new RestClient();
             // 取得目標REST BASE API網址
             var callUri = instance.GetPrivateFieldValue<string>("baseUri");
             var auth_username = instance.GetPrivateFieldValue<string>("auth_username");
             var auth_password = instance.GetPrivateFieldValue<string>("auth_password");
 
-            if (callUri != null) client.BaseUrl = new Uri(callUri);
+            if (callUri == null) throw new InvalidOperationException("必須設定BaseUri");
+
+            client.BaseUrl = new Uri(callUri);
             if (auth_username != null || auth_password != null) {
                 client.Authenticator = new HttpBasicAuthenticator(auth_username, auth_password);
             }
@@ -52,7 +57,15 @@ namespace EzCoreKit.Rest {
 
             SettingRestRequestParameters(request, instance, caller, parameters);
 
-            throw new NotImplementedException();
+            var task = new TaskCompletionSource<object>();
+            var t = client.ExecuteAsync(request, response => {
+                task.SetResult(ConvertType(caller, response));
+            });
+            return await task.Task;
+        }
+
+        private static object ConvertType(MethodBase caller, IRestResponse response) {
+            return response;
         }
 
         private static void SettingRestRequestParameters(RestRequest request, object instance, MethodBase caller, object[] parameters) {
