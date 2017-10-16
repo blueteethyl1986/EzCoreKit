@@ -9,6 +9,19 @@ namespace EzCoreKit.Reflection {
     /// </summary>
     public static class MethodInfoExtension {
         /// <summary>
+        /// 用指定的參數與泛型參數，叫用目前執行個體所表示的方法或建構函式
+        /// </summary>
+        /// <param name="methodBase">目前實例</param>
+        /// <param name="genericTypes">泛型參數</param>
+        /// <param name="parameters">參數</param>
+        /// <returns>引動結果</returns>
+        public static object InvokeGeneric(this MethodBase methodBase, Type[] genericTypes, object[] parameters) {
+            if (!methodBase.IsGenericMethod) throw new NotSupportedException("必須為泛型方法");
+            var methodInfo = methodBase as MethodInfo;
+            return methodInfo.MakeGenericMethod(genericTypes).Invoke(parameters);
+        }
+
+        /// <summary>
         /// 用指定的參數，叫用目前執行個體所表示的方法或建構函式
         /// </summary>
         /// <param name="methodBase">目前實例</param>
