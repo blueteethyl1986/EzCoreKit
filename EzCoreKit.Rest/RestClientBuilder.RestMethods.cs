@@ -8,7 +8,7 @@ using EzCoreKit.Extensions;
 using RestSharp;
 using RestSharp.Authenticators;
 using System.Linq;
-using EzCoreKit.Rest.Attributes.Paramters;
+using EzCoreKit.Rest.Attributes.Parameters;
 using Newtonsoft.Json.Linq;
 
 namespace EzCoreKit.Rest {
@@ -52,7 +52,7 @@ namespace EzCoreKit.Rest {
             var methodSetting = caller.GetCustomAttribute<RestMethodAttribute>() ?? new RestMethodAttribute();
 
             var request = new RestRequest();
-            if(methodSetting.Uri.IsMatch("^https?://.*")){
+            if (methodSetting.Uri.IsMatch("^https?://.*")) {
                 client.BaseUrl = new Uri(methodSetting.Uri);
                 request.Resource = "";
             } else {
@@ -65,9 +65,9 @@ namespace EzCoreKit.Rest {
 
             var task = new TaskCompletionSource<object>();
             var t = client.ExecuteAsync(request, response => {
-                try{
+                try {
                     task.SetResult(ConvertType(caller, response));
-                }catch(Exception e){
+                } catch (Exception e) {
                     task.SetException(e);
                 }
             });
@@ -77,120 +77,33 @@ namespace EzCoreKit.Rest {
         private static void SettingRestRequestParameters(RestRequest request, object instance, MethodBase caller, object[] parameters) {
             var instanceType = instance.GetType();
 
-            #region Header設定
-            foreach (var interfaceHeader in instanceType.GetCustomAttributes<RestHeaderParameterAttribute>()) {
-                request.AddHeader(interfaceHeader.Name, interfaceHeader.Value);
-            }
-            foreach (var methodHeader in caller.GetCustomAttributes<RestHeaderParameterAttribute>()) {
-                request.AddHeader(methodHeader.Name, methodHeader.Value);
-            }
-            foreach (var parameterHeader in caller.GetParameters().Select(x => new {
-                paramter = x,
-                attribute = x.GetCustomAttribute<RestHeaderParameterAttribute>()
-            })) {
-                var name = parameterHeader.attribute?.Name;
-                if (name == null) {
-                    name = parameterHeader.paramter.Name;
+            void setRequestVars(Type parameterType) {
+                foreach (RestParameterAttribute parameter in instanceType.GetCustomAttributes(parameterType)) {
+                    request.AddCookie(parameter.Name, parameter.Value);
                 }
-                var value = parameterHeader.attribute?.Value;
-                if (value == null) {
-                    value = parameters[parameterHeader.paramter.Position]?.ToString();
+                foreach (RestParameterAttribute parameter in caller.GetCustomAttributes(parameterType)) {
+                    request.AddCookie(parameter.Name, parameter.Value);
                 }
-                if(value != null)request.AddHeader(name, value);
+                foreach (var parameter in caller.GetParameters().Select(x => new {
+                    paramter = x,
+                    attribute = x.GetCustomAttribute(parameterType) as RestParameterAttribute
+                })) {
+                    var name = parameter.attribute?.Name;
+                    if (name == null) {
+                        name = parameter.paramter.Name;
+                    }
+                    var value = parameter.attribute?.Value;
+                    if (value == null) {
+                        value = parameters[parameter.paramter.Position]?.ToString();
+                    }
+                    if (value != null) request.AddUrlSegment(name, value);
+                }
             }
-            #endregion
 
-            #region Cookie設定
-            foreach (var interfaceCookie in instanceType.GetCustomAttributes<RestCookieParameterAttribute>()) {
-                request.AddCookie(interfaceCookie.Name, interfaceCookie.Value);
+            foreach (var type in TypeHelper.GetNamespaceTypes(typeof(RestParameterAttribute).Namespace)
+                .Where(x => x != typeof(RestParameterAttribute))) {
+                setRequestVars(type);
             }
-            foreach (var methodCookie in caller.GetCustomAttributes<RestCookieParameterAttribute>()) {
-                request.AddCookie(methodCookie.Name, methodCookie.Value);
-            }
-            foreach (var parameterCookie in caller.GetParameters().Select(x => new {
-                paramter = x,
-                attribute = x.GetCustomAttribute<RestCookieParameterAttribute>()
-            })) {
-                var name = parameterCookie.attribute?.Name;
-                if (name == null) {
-                    name = parameterCookie.paramter.Name;
-                }
-                var value = parameterCookie.attribute?.Value;
-                if (value == null) {
-                    value = parameters[parameterCookie.paramter.Position]?.ToString();
-                }
-                if(value != null)request.AddCookie(name, value);
-            }
-            #endregion
-
-            #region Parameter設定
-            foreach (var interfaceParameter in instanceType.GetCustomAttributes<RestFormParameterAttribute>()) {
-                request.AddCookie(interfaceParameter.Name, interfaceParameter.Value);
-            }
-            foreach (var methodParameter in caller.GetCustomAttributes<RestFormParameterAttribute>()) {
-                request.AddCookie(methodParameter.Name, methodParameter.Value);
-            }
-            foreach (var parameterParameter in caller.GetParameters().Select(x => new {
-                paramter = x,
-                attribute = x.GetCustomAttribute<RestFormParameterAttribute>()
-            })) {
-                var name = parameterParameter.attribute?.Name;
-                if (name == null) {
-                    name = parameterParameter.paramter.Name;
-                }
-                var value = parameterParameter.attribute?.Value;
-                if (value == null) {
-                    value = parameters[parameterParameter.paramter.Position]?.ToString();
-                }
-                if(value != null)request.AddParameter(name, value);
-            }
-            #endregion
-
-            #region QueryParameter設定
-            foreach (var interfaceQueryParameter in instanceType.GetCustomAttributes<RestQueryParameterAttribute>()) {
-                request.AddCookie(interfaceQueryParameter.Name, interfaceQueryParameter.Value);
-            }
-            foreach (var methodQueryParameter in caller.GetCustomAttributes<RestQueryParameterAttribute>()) {
-                request.AddCookie(methodQueryParameter.Name, methodQueryParameter.Value);
-            }
-            foreach (var parameterQueryParameter in caller.GetParameters().Select(x => new {
-                paramter = x,
-                attribute = x.GetCustomAttribute<RestQueryParameterAttribute>()
-            })) {
-                var name = parameterQueryParameter.attribute?.Name;
-                if (name == null) {
-                    name = parameterQueryParameter.paramter.Name;
-                }
-                var value = parameterQueryParameter.attribute?.Value;
-                if (value == null) {
-                    value = parameters[parameterQueryParameter.paramter.Position]?.ToString();
-                }
-                if(value != null)request.AddQueryParameter(name, value);
-            }
-            #endregion
-
-            #region UrlParameter設定
-            foreach (var interfaceUrlParameter in instanceType.GetCustomAttributes<RestUrlParameterAttribute>()) {
-                request.AddCookie(interfaceUrlParameter.Name, interfaceUrlParameter.Value);
-            }
-            foreach (var methodUrlParameter in caller.GetCustomAttributes<RestUrlParameterAttribute>()) {
-                request.AddCookie(methodUrlParameter.Name, methodUrlParameter.Value);
-            }
-            foreach (var parameterUrlParameter in caller.GetParameters().Select(x => new {
-                paramter = x,
-                attribute = x.GetCustomAttribute<RestUrlParameterAttribute>()
-            })) {
-                var name = parameterUrlParameter.attribute?.Name;
-                if (name == null) {
-                    name = parameterUrlParameter.paramter.Name;
-                }
-                var value = parameterUrlParameter.attribute?.Value;
-                if (value == null) {
-                    value = parameters[parameterUrlParameter.paramter.Position]?.ToString();
-                }
-                if(value != null)request.AddUrlSegment(name, value);
-            }
-            #endregion
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
-using EzCoreKit.Rest.Attributes.Paramters;
+using EzCoreKit.Rest.Attributes.Parameters;
 
 namespace EzCoreKit.Test.TestModels {
     [RestBaseUri("https://jsonplaceholder.typicode.com/")]

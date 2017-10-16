@@ -8,7 +8,7 @@ using EzCoreKit.Extensions;
 using RestSharp;
 using RestSharp.Authenticators;
 using System.Linq;
-using EzCoreKit.Rest.Attributes.Paramters;
+using EzCoreKit.Rest.Attributes.Parameters;
 using Newtonsoft.Json.Linq;
 using System.Xml;
 using System.Xml.Serialization;
@@ -20,14 +20,14 @@ namespace EzCoreKit.Rest {
     public partial class RestClientBuilder<T> {
         private static object ConvertType(MethodBase caller, IRestResponse response) {
             var returnType = ((MethodInfo)caller).ReturnType;
-            if(returnType == typeof(void)) return null;
+            if (returnType == typeof(void)) return null;
 
-            if(returnType.BaseType == typeof(Task)){
+            if (returnType.BaseType == typeof(Task)) {
                 returnType = returnType.GenericTypeArguments.First();
             }
 
             var methodSetting = caller.GetCustomAttribute<RestMethodAttribute>() ?? new RestMethodAttribute();
-            switch(methodSetting.ResponseFormat) {
+            switch (methodSetting.ResponseFormat) {
                 case DataFormat.Json:
                     return ConvertJson(returnType, response.Content, methodSetting.Path);
                 case DataFormat.Xml:
@@ -37,7 +37,7 @@ namespace EzCoreKit.Rest {
             }
         }
 
-        private static object ConvertJson(Type returnType, string content, string path){
+        private static object ConvertJson(Type returnType, string content, string path) {
             var json = JToken.Parse(content);
 
             if (path != null &&
@@ -67,7 +67,7 @@ namespace EzCoreKit.Rest {
             return Convert.ChangeType(json.ToObject(returnType), returnType);
         }
 
-        private static object ConvertXml(Type returnType, string content, string path){
+        private static object ConvertXml(Type returnType, string content, string path) {
             object deserialize(Type type, XmlNode xmlobj) {
                 if (xmlobj.NodeType == XmlNodeType.Text && (type.GetTypeInfo().IsPrimitive || type == typeof(string))) {
                     return Convert.ChangeType(xmlobj.Value, type);

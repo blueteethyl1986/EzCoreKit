@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EzCoreKit.Rest.Attributes.Paramters {
+namespace EzCoreKit.Rest.Attributes.Parameters {
     [AttributeUsage(
         AttributeTargets.Method | AttributeTargets.Interface | AttributeTargets.Parameter)]
-    public class RestCookieParameterAttribute : Attribute {
-        public string Name { get; set; }
-        public string Value { get; set; }
+    public class RestCookieParameterAttribute : RestParameterAttribute {
+
     }
 }
