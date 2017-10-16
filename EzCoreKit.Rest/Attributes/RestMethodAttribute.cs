@@ -13,6 +13,8 @@ namespace EzCoreKit.Rest.Attributes {
         /// </summar>
         public string Uri { get; set; }
 
+        public string Path{ get; set; }
+
         /// <summary>
         /// HTTP請求方法
         /// </summary>

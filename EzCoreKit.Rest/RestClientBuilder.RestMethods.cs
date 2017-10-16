@@ -9,6 +9,7 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System.Linq;
 using EzCoreKit.Rest.Attributes.Paramters;
+using Newtonsoft.Json.Linq;
 
 namespace EzCoreKit.Rest {
     //這個部分類別用以接受interface實例產生的方法引動，用以執行REST Request與返回結果
@@ -51,7 +52,12 @@ namespace EzCoreKit.Rest {
             var methodSetting = caller.GetCustomAttribute<RestMethodAttribute>() ?? new RestMethodAttribute();
 
             var request = new RestRequest();
-            request.Resource = methodSetting.Uri ?? "";
+            if(methodSetting.Uri.IsMatch("^https?://.*")){
+                client.BaseUrl = new Uri(methodSetting.Uri);
+                request.Resource = "";
+            } else {
+                request.Resource = methodSetting.Uri ?? "";
+            }
             request.Method = methodSetting.Method;
             request.RequestFormat = instance.GetPrivateFieldValue<DataFormat>("requestFormat");
 
@@ -59,28 +65,28 @@ namespace EzCoreKit.Rest {
 
             var task = new TaskCompletionSource<object>();
             var t = client.ExecuteAsync(request, response => {
-                task.SetResult(ConvertType(caller, response));
+                try{
+                    task.SetResult(ConvertType(caller, response));
+                }catch(Exception e){
+                    task.SetException(e);
+                }
             });
             return await task.Task;
-        }
-
-        private static object ConvertType(MethodBase caller, IRestResponse response) {
-            return response;
         }
 
         private static void SettingRestRequestParameters(RestRequest request, object instance, MethodBase caller, object[] parameters) {
             var instanceType = instance.GetType();
 
             #region Header設定
-            foreach (var interfaceHeader in instanceType.GetCustomAttributes<HeaderParameterAttribute>()) {
+            foreach (var interfaceHeader in instanceType.GetCustomAttributes<RestHeaderParameterAttribute>()) {
                 request.AddHeader(interfaceHeader.Name, interfaceHeader.Value);
             }
-            foreach (var methodHeader in caller.GetCustomAttributes<HeaderParameterAttribute>()) {
+            foreach (var methodHeader in caller.GetCustomAttributes<RestHeaderParameterAttribute>()) {
                 request.AddHeader(methodHeader.Name, methodHeader.Value);
             }
             foreach (var parameterHeader in caller.GetParameters().Select(x => new {
                 paramter = x,
-                attribute = x.GetCustomAttribute<HeaderParameterAttribute>()
+                attribute = x.GetCustomAttribute<RestHeaderParameterAttribute>()
             })) {
                 var name = parameterHeader.attribute.Name;
                 if (parameterHeader.attribute.Name == null) {
@@ -90,20 +96,20 @@ namespace EzCoreKit.Rest {
                 if (parameterHeader.attribute.Value == null) {
                     value = parameters[parameterHeader.paramter.Position] as string;
                 }
-                request.AddHeader(name, value);
+                if(value != null)request.AddHeader(name, value);
             }
             #endregion
 
             #region Cookie設定
-            foreach (var interfaceCookie in instanceType.GetCustomAttributes<CookieParameterAttribute>()) {
+            foreach (var interfaceCookie in instanceType.GetCustomAttributes<RestCookieParameterAttribute>()) {
                 request.AddCookie(interfaceCookie.Name, interfaceCookie.Value);
             }
-            foreach (var methodCookie in caller.GetCustomAttributes<CookieParameterAttribute>()) {
+            foreach (var methodCookie in caller.GetCustomAttributes<RestCookieParameterAttribute>()) {
                 request.AddCookie(methodCookie.Name, methodCookie.Value);
             }
             foreach (var parameterCookie in caller.GetParameters().Select(x => new {
                 paramter = x,
-                attribute = x.GetCustomAttribute<CookieParameterAttribute>()
+                attribute = x.GetCustomAttribute<RestCookieParameterAttribute>()
             })) {
                 var name = parameterCookie.attribute.Name;
                 if (parameterCookie.attribute.Name == null) {
@@ -113,20 +119,20 @@ namespace EzCoreKit.Rest {
                 if (parameterCookie.attribute.Value == null) {
                     value = parameters[parameterCookie.paramter.Position] as string;
                 }
-                request.AddCookie(name, value);
+                if(value != null)request.AddCookie(name, value);
             }
             #endregion
 
             #region Parameter設定
-            foreach (var interfaceParameter in instanceType.GetCustomAttributes<FormParameterAttribute>()) {
+            foreach (var interfaceParameter in instanceType.GetCustomAttributes<RestFormParameterAttribute>()) {
                 request.AddCookie(interfaceParameter.Name, interfaceParameter.Value);
             }
-            foreach (var methodParameter in caller.GetCustomAttributes<FormParameterAttribute>()) {
+            foreach (var methodParameter in caller.GetCustomAttributes<RestFormParameterAttribute>()) {
                 request.AddCookie(methodParameter.Name, methodParameter.Value);
             }
             foreach (var parameterParameter in caller.GetParameters().Select(x => new {
                 paramter = x,
-                attribute = x.GetCustomAttribute<FormParameterAttribute>()
+                attribute = x.GetCustomAttribute<RestFormParameterAttribute>()
             })) {
                 var name = parameterParameter.attribute.Name;
                 if (parameterParameter.attribute.Name == null) {
@@ -136,20 +142,20 @@ namespace EzCoreKit.Rest {
                 if (parameterParameter.attribute.Value == null) {
                     value = parameters[parameterParameter.paramter.Position] as string;
                 }
-                request.AddParameter(name, value);
+                if(value != null)request.AddParameter(name, value);
             }
             #endregion
 
             #region QueryParameter設定
-            foreach (var interfaceQueryParameter in instanceType.GetCustomAttributes<QueryParameterAttribute>()) {
+            foreach (var interfaceQueryParameter in instanceType.GetCustomAttributes<RestQueryParameterAttribute>()) {
                 request.AddCookie(interfaceQueryParameter.Name, interfaceQueryParameter.Value);
             }
-            foreach (var methodQueryParameter in caller.GetCustomAttributes<QueryParameterAttribute>()) {
+            foreach (var methodQueryParameter in caller.GetCustomAttributes<RestQueryParameterAttribute>()) {
                 request.AddCookie(methodQueryParameter.Name, methodQueryParameter.Value);
             }
             foreach (var parameterQueryParameter in caller.GetParameters().Select(x => new {
                 paramter = x,
-                attribute = x.GetCustomAttribute<QueryParameterAttribute>()
+                attribute = x.GetCustomAttribute<RestQueryParameterAttribute>()
             })) {
                 var name = parameterQueryParameter.attribute.Name;
                 if (parameterQueryParameter.attribute.Name == null) {
@@ -159,20 +165,20 @@ namespace EzCoreKit.Rest {
                 if (parameterQueryParameter.attribute.Value == null) {
                     value = parameters[parameterQueryParameter.paramter.Position] as string;
                 }
-                request.AddQueryParameter(name, value);
+                if(value != null)request.AddQueryParameter(name, value);
             }
             #endregion
 
             #region UrlParameter設定
-            foreach (var interfaceUrlParameter in instanceType.GetCustomAttributes<UrlParameterAttribute>()) {
+            foreach (var interfaceUrlParameter in instanceType.GetCustomAttributes<RestUrlParameterAttribute>()) {
                 request.AddCookie(interfaceUrlParameter.Name, interfaceUrlParameter.Value);
             }
-            foreach (var methodUrlParameter in caller.GetCustomAttributes<UrlParameterAttribute>()) {
+            foreach (var methodUrlParameter in caller.GetCustomAttributes<RestUrlParameterAttribute>()) {
                 request.AddCookie(methodUrlParameter.Name, methodUrlParameter.Value);
             }
             foreach (var parameterUrlParameter in caller.GetParameters().Select(x => new {
                 paramter = x,
-                attribute = x.GetCustomAttribute<UrlParameterAttribute>()
+                attribute = x.GetCustomAttribute<RestUrlParameterAttribute>()
             })) {
                 var name = parameterUrlParameter.attribute.Name;
                 if (parameterUrlParameter.attribute.Name == null) {
@@ -182,7 +188,7 @@ namespace EzCoreKit.Rest {
                 if (parameterUrlParameter.attribute.Value == null) {
                     value = parameters[parameterUrlParameter.paramter.Position] as string;
                 }
-                request.AddUrlSegment(name, value);
+                if(value != null)request.AddUrlSegment(name, value);
             }
             #endregion
         }

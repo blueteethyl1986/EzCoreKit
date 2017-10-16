@@ -5,7 +5,7 @@ using System.Text;
 namespace EzCoreKit.Rest.Attributes.Paramters {
     [AttributeUsage(
         AttributeTargets.Method | AttributeTargets.Interface | AttributeTargets.Parameter)]
-    public class QueryParameterAttribute : Attribute {
+    public class RestCookieParameterAttribute : Attribute {
         public string Name { get; set; }
         public string Value { get; set; }
     }

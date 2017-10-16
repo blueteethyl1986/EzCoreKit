@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
+using EzCoreKit.Test.TestModels;
 
 namespace EzCoreKit.Test.Rest {
     public class RestClientBuilderTest {
@@ -17,6 +18,7 @@ namespace EzCoreKit.Test.Rest {
         public async void RestClientBuilder_CallInstanceMethodTest() {
             RestClientBuilder<IFakeAPI> builder = new RestClientBuilder<IFakeAPI>();
             var obj = builder.Build();
+            var temp = await obj.GetPosts();
             var result = await obj.GetEarthquakesLocation();
         }
     }
