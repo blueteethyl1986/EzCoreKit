@@ -22,12 +22,16 @@ namespace EzCoreKit.Rest {
             var returnType = ((MethodInfo)caller).ReturnType;
             if(returnType == typeof(void)) return null;
 
+            if(returnType.BaseType == typeof(Task)){
+                returnType = returnType.GenericTypeArguments.First();
+            }
+
             var methodSetting = caller.GetCustomAttribute<RestMethodAttribute>() ?? new RestMethodAttribute();
             switch(methodSetting.ResponseFormat) {
                 case DataFormat.Json:
-                    return ConvertJson(returnType, response.Content, null);
+                    return ConvertJson(returnType, response.Content, methodSetting.Path);
                 case DataFormat.Xml:
-                    return ConvertXml(returnType, response.Content, null);
+                    return ConvertXml(returnType, response.Content, methodSetting.Path);
                 default:
                     throw new NotSupportedException("RestMethodAttribute.ResponseFormat指定目標不支援");
             }

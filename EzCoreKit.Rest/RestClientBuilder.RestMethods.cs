@@ -88,13 +88,13 @@ namespace EzCoreKit.Rest {
                 paramter = x,
                 attribute = x.GetCustomAttribute<RestHeaderParameterAttribute>()
             })) {
-                var name = parameterHeader.attribute.Name;
-                if (parameterHeader.attribute.Name == null) {
+                var name = parameterHeader.attribute?.Name;
+                if (name == null) {
                     name = parameterHeader.paramter.Name;
                 }
-                var value = parameterHeader.attribute.Value;
-                if (parameterHeader.attribute.Value == null) {
-                    value = parameters[parameterHeader.paramter.Position] as string;
+                var value = parameterHeader.attribute?.Value;
+                if (value == null) {
+                    value = parameters[parameterHeader.paramter.Position]?.ToString();
                 }
                 if(value != null)request.AddHeader(name, value);
             }
@@ -111,13 +111,13 @@ namespace EzCoreKit.Rest {
                 paramter = x,
                 attribute = x.GetCustomAttribute<RestCookieParameterAttribute>()
             })) {
-                var name = parameterCookie.attribute.Name;
-                if (parameterCookie.attribute.Name == null) {
+                var name = parameterCookie.attribute?.Name;
+                if (name == null) {
                     name = parameterCookie.paramter.Name;
                 }
-                var value = parameterCookie.attribute.Value;
-                if (parameterCookie.attribute.Value == null) {
-                    value = parameters[parameterCookie.paramter.Position] as string;
+                var value = parameterCookie.attribute?.Value;
+                if (value == null) {
+                    value = parameters[parameterCookie.paramter.Position]?.ToString();
                 }
                 if(value != null)request.AddCookie(name, value);
             }
@@ -134,13 +134,13 @@ namespace EzCoreKit.Rest {
                 paramter = x,
                 attribute = x.GetCustomAttribute<RestFormParameterAttribute>()
             })) {
-                var name = parameterParameter.attribute.Name;
-                if (parameterParameter.attribute.Name == null) {
+                var name = parameterParameter.attribute?.Name;
+                if (name == null) {
                     name = parameterParameter.paramter.Name;
                 }
-                var value = parameterParameter.attribute.Value;
-                if (parameterParameter.attribute.Value == null) {
-                    value = parameters[parameterParameter.paramter.Position] as string;
+                var value = parameterParameter.attribute?.Value;
+                if (value == null) {
+                    value = parameters[parameterParameter.paramter.Position]?.ToString();
                 }
                 if(value != null)request.AddParameter(name, value);
             }
@@ -157,13 +157,13 @@ namespace EzCoreKit.Rest {
                 paramter = x,
                 attribute = x.GetCustomAttribute<RestQueryParameterAttribute>()
             })) {
-                var name = parameterQueryParameter.attribute.Name;
-                if (parameterQueryParameter.attribute.Name == null) {
+                var name = parameterQueryParameter.attribute?.Name;
+                if (name == null) {
                     name = parameterQueryParameter.paramter.Name;
                 }
-                var value = parameterQueryParameter.attribute.Value;
-                if (parameterQueryParameter.attribute.Value == null) {
-                    value = parameters[parameterQueryParameter.paramter.Position] as string;
+                var value = parameterQueryParameter.attribute?.Value;
+                if (value == null) {
+                    value = parameters[parameterQueryParameter.paramter.Position]?.ToString();
                 }
                 if(value != null)request.AddQueryParameter(name, value);
             }
@@ -180,13 +180,13 @@ namespace EzCoreKit.Rest {
                 paramter = x,
                 attribute = x.GetCustomAttribute<RestUrlParameterAttribute>()
             })) {
-                var name = parameterUrlParameter.attribute.Name;
-                if (parameterUrlParameter.attribute.Name == null) {
+                var name = parameterUrlParameter.attribute?.Name;
+                if (name == null) {
                     name = parameterUrlParameter.paramter.Name;
                 }
-                var value = parameterUrlParameter.attribute.Value;
-                if (parameterUrlParameter.attribute.Value == null) {
-                    value = parameters[parameterUrlParameter.paramter.Position] as string;
+                var value = parameterUrlParameter.attribute?.Value;
+                if (value == null) {
+                    value = parameters[parameterUrlParameter.paramter.Position]?.ToString();
                 }
                 if(value != null)request.AddUrlSegment(name, value);
             }

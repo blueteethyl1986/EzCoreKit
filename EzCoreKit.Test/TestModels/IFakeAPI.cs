@@ -7,7 +7,7 @@ using RestSharp;
 using EzCoreKit.Rest.Attributes.Paramters;
 
 namespace EzCoreKit.Test.TestModels {
-    [RestBaseUri("http://opendata.cwb.gov.tw/")]
+    [RestBaseUri("https://jsonplaceholder.typicode.com/")]
     public interface IFakeAPI {
         [RestMethod(//Default Method=HttpMethods.Get
             Uri = "posts",
