@@ -8,7 +8,7 @@ using Xunit;
 using EzCoreKit.Extensions;
 
 namespace EzCoreKit.Test.Linq {
-    public class OrderByAndGroupByExtension_Test {
+    public class LinqExtension_Test {
         public List<Student> InitList() {
             List<Student> result = new List<Student>();
             result.Add(new Student() {
@@ -62,6 +62,17 @@ namespace EzCoreKit.Test.Linq {
             var groupedList = list.GroupBy("Class".BoxingToArray());
 
             Assert.Equal(groupedList, list.GroupBy(x => x.Class));
+        }
+
+        [Fact(DisplayName = "Linq.ForEach")]
+        public void ForEach_Test() {
+            var intAry = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+            int sum = 0;
+            intAry.ForEach(x => {
+                sum += x;
+            });
+
+            Assert.Equal(intAry.Sum(), sum);
         }
     }
 }
