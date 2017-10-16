@@ -29,7 +29,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.AspNetCore.Mvc", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.AspNetCore.All", "EzCoreKit.AspNetCore.All\EzCoreKit.AspNetCore.All.csproj", "{522485E9-D030-44C4-B7FE-03EDA2879FA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Rest", "EzCoreKit.Rest\EzCoreKit.Rest.csproj", "{ACDF0E45-4DDA-474E-AD75-0874786E2335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Rest", "EzCoreKit.Rest\EzCoreKit.Rest.csproj", "{ACDF0E45-4DDA-474E-AD75-0874786E2335}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56629E85-0294-4F23-9187-39EB978F64EC}"
+	ProjectSection(SolutionItems) = preProject
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

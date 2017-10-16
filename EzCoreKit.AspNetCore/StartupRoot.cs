@@ -98,7 +98,7 @@ namespace EzCoreKit.AspNetCore {
             }
 
             //錯誤處理
-            Action<IApplicationBuilder> ErrorHandler = (builder) => {
+            Action<IApplicationBuilder> errorHandler = (builder) => {
                 builder.Run(handler => {
                     return Task.Run(() => {
                         //取得狀態碼
@@ -120,10 +120,10 @@ namespace EzCoreKit.AspNetCore {
             };
 
             //狀態對應
-            app.UseStatusCodePages(ErrorHandler);
+            app.UseStatusCodePages(errorHandler);
 
             //例外對應
-            app.UseExceptionHandler(ErrorHandler);
+            app.UseExceptionHandler(errorHandler);
         }
     }
 }
