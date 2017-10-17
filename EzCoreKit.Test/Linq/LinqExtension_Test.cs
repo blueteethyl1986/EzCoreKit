@@ -64,6 +64,16 @@ namespace EzCoreKit.Test.Linq {
             Assert.Equal(groupedList, list.GroupBy(x => x.Class));
         }
 
+        [Fact(DisplayName = "Linq.WhereByObject")]
+        public void WhereByObject_Test() {
+            var list = InitList();
+            var groupedList = list.GroupBy("Class".BoxingToArray());
+
+            Assert.Equal(list.Where(new {
+                Class = "A"
+            }), list.Where(x => x.Class == "A"));
+        }
+
         [Fact(DisplayName = "Linq.ForEach")]
         public void ForEach_Test() {
             var intAry = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
