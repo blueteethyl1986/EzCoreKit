@@ -6,6 +6,12 @@
     <Authors>XuPeiYao</Authors>
     <Company>XuPeiYao</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>MIT</Copyright>
+    <Description>為EzCoreKit.AspNetCore.x項目所有套件集合</Description>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore.All</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore.All</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

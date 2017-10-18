@@ -7,6 +7,12 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>XuPeiYao</Authors>
     <Company>XuPeiYao</Company>
+    <Description>針對AspNetCore.Mvc的常用擴充</Description>
+    <Copyright>MIT</Copyright>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore.All</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore.All</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

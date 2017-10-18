@@ -6,6 +6,12 @@
     <Version>3.0.0</Version>
     <Authors>XuPeiYao</Authors>
     <Company>XuPeiYao</Company>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore.WebSockets</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore.WebSockets</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <Description>針對在AspNetCore中使用WebSockets服務的擴充與提供更簡單服務建立</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

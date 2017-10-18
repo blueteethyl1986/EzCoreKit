@@ -6,7 +6,12 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>XuPeiYao</Authors>
     <Company>XuPeiYao</Company>
-    <Description />
+    <Description>安全相關擴充方法與幫助類別</Description>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.Cryptography</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.Cryptography</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

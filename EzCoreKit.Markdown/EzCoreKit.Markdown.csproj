@@ -5,8 +5,13 @@
     <Version>3.0.0</Version>
     <Authors>XuPeiYao</Authors>
     <Company>XuPeiYao</Company>
-    <Description />
+    <Description>提供Markdown文件解析</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.Markdown</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.Markdown</RepositoryUrl>
+    <Copyright>MIT</Copyright>
+    <RepositoryType>github</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

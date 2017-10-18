@@ -7,7 +7,12 @@
     <Authors>XuPeiYao</Authors>
     <Company>XuPeiYao</Company>
     <Product>EzCoreKit.AspNetCore</Product>
-    <Description />
+    <Description>針對AspNetCore常用方法之樣板與擴充方法</Description>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.AspNetCore</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

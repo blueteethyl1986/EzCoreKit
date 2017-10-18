@@ -6,6 +6,12 @@
     <Version>3.0.0</Version>
     <Authors>XuPeiYao</Authors>
     <Company>XuPeiYao</Company>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.Rest</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.Rest</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <Description>提供AOP型式的RESTful API Client建置</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
