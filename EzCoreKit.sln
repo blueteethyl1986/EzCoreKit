@@ -33,10 +33,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Rest", "EzCoreKit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56629E85-0294-4F23-9187-39EB978F64EC}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzCoreKit.Jobs", "EzCoreKit.Jobs\EzCoreKit.Jobs.csproj", "{8576641F-CEC0-4DE2-998D-A10C7E990F87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzCoreKit.Jobs", "EzCoreKit.Jobs\EzCoreKit.Jobs.csproj", "{8576641F-CEC0-4DE2-998D-A10C7E990F87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

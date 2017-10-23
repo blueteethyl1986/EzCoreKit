@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace EzCoreKit.Threading {
     /// <summary>
-    /// 針對<see cref="Test"/>之幫助類別
+    /// 針對<see cref="Task"/>之幫助類別
     /// </summary>
     public static class TaskHelper {
         /// <summary>
