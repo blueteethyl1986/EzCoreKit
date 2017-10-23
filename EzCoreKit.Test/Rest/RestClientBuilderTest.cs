@@ -19,7 +19,11 @@ namespace EzCoreKit.Test.Rest {
             RestClientBuilder<IFakeAPI> builder = new RestClientBuilder<IFakeAPI>();
             var obj = builder.Build();
             var temp = await obj.GetPosts();
+
+            Assert.NotEmpty(temp);
+
             var result = await obj.GetEarthquakesLocation();
+            Assert.NotNull(result);
         }
     }
 }
