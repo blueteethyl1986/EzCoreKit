@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>XuPeiYao</Authors>
+    <Company />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>提供MIME對應與查詢</Description>
+    <Version>2.0.0</Version>
+    <PackageProjectUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.MIME</PackageProjectUrl>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://github.com/XuPeiYao/EzCoreKit/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>github</RepositoryType>
+    <RepositoryUrl>https://github.com/XuPeiYao/EzCoreKit/tree/master/EzCoreKit.MIME</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\EzCoreKit.MIME.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>
