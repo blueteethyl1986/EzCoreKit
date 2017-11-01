@@ -1,4 +1,6 @@
-# EzCoreKit [![xpy MyGet Build Status](https://www.myget.org/BuildSource/Badge/xpy?identifier=9e998e97-5cd7-475e-bf52-1c1ffed913f4)](https://www.myget.org/) [![Build Status](https://travis-ci.org/XuPeiYao/EzCoreKit.svg?branch=master)](https://travis-ci.org/XuPeiYao/EzCoreKit)
+# EzCoreKit
+[![xpy MyGet Build Status](https://www.myget.org/BuildSource/Badge/xpy?identifier=9e998e97-5cd7-475e-bf52-1c1ffed913f4)](https://www.myget.org/) [![Build Status](https://travis-ci.org/XuPeiYao/EzCoreKit.svg?branch=master)](https://travis-ci.org/XuPeiYao/EzCoreKit) [![GitHub last commit](https://img.shields.io/github/last-commit/xupeiyao/ezcorekit.svg)]() [![license](https://img.shields.io/github/license/xupeiyao/ezcorekit.svg)]()
+
 這是一個針對.NET Standard 2.0與.Net 461平台的一個功能擴充包，與Helper類別庫。有關各子套件用途如下列所示，並且個套件使用說明於各目錄下README.md。
 
 ## 子套件
