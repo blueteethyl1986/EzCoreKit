@@ -1,0 +1,17 @@
+language: csharp
+dist: trusty
+mono: none
+dotnet: 2.0.0
+os:
+- linux
+- osx
+osx_image: xcode9
+matrix:
+  allow_failures:
+    - os: osx
+install:
+- dotnet restore
+script:
+- dotnet build
+- dotnet pack
+- dotnet test ./EzCoreKit.Test/EzCoreKit.Test.csproj
