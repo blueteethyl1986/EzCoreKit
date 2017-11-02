@@ -2,7 +2,7 @@ using System;
 using EzCoreKit.MIME.Attributes;
 
 namespace EzCoreKit.MIME {
-	public partial class DeclareMIME {
+    public static partial class DeclareMIME {
 		/// <summary>
 		/// Assembler Source File
 		/// </summary>
@@ -79,7 +79,9 @@ namespace EzCoreKit.MIME {
 		/// HyperText Markup Language (HTML)
 		/// </summary>
 		[FileExtName(".html")]
-		public const string HyperText_Markup_Language_HTML = "text/html";
+        [FileExtName(".htm")]
+        [Alias("HTML")]
+        public const string HyperText_Markup_Language_HTML = "text/html";
 
 		/// <summary>
 		/// iCalendar

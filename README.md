@@ -18,3 +18,4 @@
 12. EzCoreKit.AspNetCore.Mvc: 針對ASP.net Core MVC提供進階功能控制器。
 13. EzCoreKit.AspNetCore.WebSockets: 針對ASP.net Core提供簡易快速的WebSockets服務建立。
 14. EzCoreKit.AspNetCore.All: 用以快速引入EzCoreKit.AspNetCore相關套件。
+15. EzCoreKit.MIME: 提供常用600多筆MIME對應查詢。

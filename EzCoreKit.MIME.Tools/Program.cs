@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace EzCoreKit.MIME.Tools {
-    class Program {
+    public static partial class Program {
 
         static void Main(string[] args) {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -56,7 +56,7 @@ namespace EzCoreKit.MIME.Tools {
             write.WriteLine("using EzCoreKit.MIME.Attributes;");
             write.WriteLine();
             write.WriteLine("namespace EzCoreKit.MIME {");
-            write.WriteLine("\tpublic partial class DeclareMIME {");
+            write.WriteLine("\tpublic static partial class DeclareMIME {");
             var nList = list.Select(x => {
                 x.Name = ConvertName(x.Name);
                 return x;

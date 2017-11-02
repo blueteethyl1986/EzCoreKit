@@ -2,7 +2,7 @@ using System;
 using EzCoreKit.MIME.Attributes;
 
 namespace EzCoreKit.MIME {
-	public partial class DeclareMIME {
+	public static partial class DeclareMIME {
 		/// <summary>
 		/// 3D Crossword Plugin
 		/// </summary>
@@ -109,6 +109,7 @@ namespace EzCoreKit.MIME {
 		/// Adobe Flash
 		/// </summary>
 		[FileExtName(".swf")]
+        [Alias("Flash")]
 		public const string Adobe_Flash = "application/x-shockwave-flash";
 
 		/// <summary>
@@ -121,6 +122,7 @@ namespace EzCoreKit.MIME {
 		/// Adobe Portable Document Format
 		/// </summary>
 		[FileExtName(".pdf")]
+        [Alias("PDF")]
 		public const string Adobe_Portable_Document_Format = "application/pdf";
 
 		/// <summary>
@@ -176,12 +178,6 @@ namespace EzCoreKit.MIME {
 		/// </summary>
 		[FileExtName(".ami")]
 		public const string AmigaDE = "application/vnd.amiga.ami";
-
-		/// <summary>
-		/// Andrew Toolkit
-		/// </summary>
-		[FileExtName("N/A")]
-		public const string Andrew_Toolkit = "application/andrew-inset";
 
 		/// <summary>
 		/// Android Package Archive
@@ -1130,6 +1126,7 @@ namespace EzCoreKit.MIME {
 		/// JavaScript Object Notation (JSON)
 		/// </summary>
 		[FileExtName(".json")]
+        [Alias("JSON")]
 		public const string JavaScript_Object_Notation_JSON = "application/json";
 
 		/// <summary>
@@ -3099,6 +3096,7 @@ namespace EzCoreKit.MIME {
 		/// XML - Extensible Markup Language
 		/// </summary>
 		[FileExtName(".xml")]
+        [Alias("XML")]
 		public const string XML_Extensible_Markup_Language = "application/xml";
 
 		/// <summary>

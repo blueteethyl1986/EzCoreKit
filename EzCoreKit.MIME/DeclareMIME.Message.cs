@@ -2,7 +2,7 @@ using System;
 using EzCoreKit.MIME.Attributes;
 
 namespace EzCoreKit.MIME {
-	public partial class DeclareMIME {
+    public static partial class DeclareMIME {
 		/// <summary>
 		/// Email Message
 		/// </summary>
