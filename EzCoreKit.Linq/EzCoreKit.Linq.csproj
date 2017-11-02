@@ -18,6 +18,10 @@
     <DocumentationFile>bin\Debug\netstandard2.0\EzCoreKit.Linq.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\EzCoreKit.Linq.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\EzCoreKit.Reflection\EzCoreKit.Reflection.csproj" />
   </ItemGroup>

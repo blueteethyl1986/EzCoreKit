@@ -18,6 +18,10 @@
     <DocumentationFile>bin\Debug\netstandard2.0\EzCoreKit.AspNetCore.All.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\EzCoreKit.AspNetCore.All.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\EzCoreKit.AspNetCore.Mvc\EzCoreKit.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\EzCoreKit.AspNetCore.WebSockets\EzCoreKit.AspNetCore.WebSockets.csproj" />

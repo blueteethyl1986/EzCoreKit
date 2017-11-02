@@ -19,6 +19,10 @@
     <GenerateSerializationAssemblies></GenerateSerializationAssemblies>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\EzCoreKit.Reflection.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
     <ProjectReference Include="..\EzCoreKit.Extensions\EzCoreKit.Extensions.csproj" />
