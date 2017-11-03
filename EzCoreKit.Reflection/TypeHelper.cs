@@ -22,7 +22,7 @@ namespace EzCoreKit.Reflection {
                                 where t.Namespace == ns
                                 select t);
             }
-            return Type.EmptyTypes;
+            return result.ToArray();
         }
 
         /// <summary>
