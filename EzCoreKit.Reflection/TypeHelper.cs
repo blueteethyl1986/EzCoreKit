@@ -9,17 +9,18 @@ namespace EzCoreKit.Reflection {
     /// 類型幫助類別
     /// </summary>
     public static class TypeHelper {
-        /// <summary>Assembly.GetCallingAssembly()
+        /// <summary>
         /// 取得指定命名空間內所有類型陣列
         /// </summary>
         /// <param name="ns">指定命名空間</param>
         /// <returns>指定命名空間內所有類型陣列</returns>
         public static Type[] GetNamespaceTypes(string ns) {
+            List<Type> result = new List<Type>();
             foreach(var assembly in AppDomain.CurrentDomain.GetAssemblies()) {
                 var types = assembly.GetTypes();
-                return (from t in types
-                        where t.Namespace == ns
-                        select t).ToArray();
+                result.AddRange(from t in types
+                                where t.Namespace == ns
+                                select t);
             }
             return Type.EmptyTypes;
         }
