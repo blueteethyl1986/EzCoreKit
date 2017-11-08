@@ -39,6 +39,13 @@ namespace EzCoreKit.Test.Threading {
                 .Task.ToSync();
 
             Assert.Equal(c2, 100);
+
+
+            var d = new Promise<int>((res, rej) => {
+                rej(new Exception());
+            }).Then(x=>x*2 , x => -1).Then(x => x * 3).Task.ToSync();
+
+            Assert.Equal(d, -3);
         }
     }
 }

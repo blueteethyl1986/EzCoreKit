@@ -77,15 +77,15 @@ namespace EzCoreKit.Threading {
         }
 
         /// <summary>
-        /// 取得並處理Promise運行結果
+        /// 取得並處理Promise實現結果
         /// </summary>
-        /// <typeparam name="T2">運行結果處理類型</typeparam>
-        /// <param name="func">運行結果處理方法</param>
+        /// <typeparam name="T2">實現類型</typeparam>
+        /// <param name="onFulfilled">實現處理方法</param>
         /// <returns>Promise</returns>
-        public Promise<T2> Then<T2>(Func<T, T2> func) {
-            return new Promise<T2>((res, rej) => {
+        public Promise<T> Then(Func<T, T> onFulfilled) {
+            return new Promise<T>((res, rej) => {
                 try {
-                    res(func(this.Task.GetAwaiter().GetResult()));
+                    res(onFulfilled(this.Task.GetAwaiter().GetResult()));
                 } catch (Exception e) {
                     rej(e);
                 }
@@ -93,17 +93,28 @@ namespace EzCoreKit.Threading {
         }
 
         /// <summary>
+        /// 取得並處理Promise實現結果
+        /// </summary>
+        /// <typeparam name="T2">實現類型</typeparam>
+        /// <param name="onFulfilled">實現處理方法</param>
+        /// <param name="onRejected">拒絕處理方法</param>
+        /// <returns>Promise</returns>
+        public Promise<T> Then(Func<T, T> onFulfilled, Func<Exception, T> onRejected){
+            return Then(onFulfilled).Catch(onRejected);
+        }
+
+        /// <summary>
         /// 捕捉例外並進行例外處理
         /// </summary>
-        /// <param name="func">例外處理方法</param>
+        /// <param name="onRejected">例外處理方法</param>
         /// <returns>Promise</returns>
-        public Promise<T> Catch(Func<Exception, T> func) {
+        public Promise<T> Catch(Func<Exception, T> onRejected) {
             return new Promise<T>((res, rej) => {
                 try {
                     res(this.Task.GetAwaiter().GetResult());
                 } catch (Exception e) {
                     try {
-                        res(func(e));
+                        res(onRejected(e));
                     } catch (Exception e2) {
                         rej(e2);
                     }
@@ -154,10 +165,21 @@ namespace EzCoreKit.Threading {
             });
         }
 
+        /// <summary>
+        /// 隱含轉換為<see cref="Task{T}"/>
+        /// </summary>
+        /// <param name="obj">實例</param>
+        public static implicit operator Task<T>(Promise<T> obj){
+            return obj.Task;
+        }
 
+        /// <summary>
+        /// 明確轉換為<see cref="Promise{object}"/>
+        /// </summary>
+        /// <param name="obj">實例</param>
         public static explicit operator Promise<object>(Promise<T> obj){
             return new Promise<object>((res, rej) => {
-                obj.Then<T>(x=> { res(x); return x; })
+                obj.Then(x=> { res(x); return x; })
                 .Catch(x => { rej(x); return default(T); })
                 .Task.ToSync();
             });
