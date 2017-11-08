@@ -8,7 +8,7 @@ namespace EzCoreKit.Threading {
     /// </summary>
     public enum PromiseStatus {
         /// <summary>
-        /// 等候中
+        /// 擱置
         /// </summary>
         Pending,
         /// <summary>
