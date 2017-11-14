@@ -11,12 +11,14 @@ namespace EzCoreKit.Threading {
     /// <typeparam name="T">回傳結果類型</typeparam>
     /// <param name="resolve">實現回呼函數</param>
     /// <param name="reject">拒絕回呼函數</param>
+    [Obsolete("請使用RSG.Promise.Core替代")]
     public delegate void PromiseExecutor<T>(Action<T> resolve, Action<Exception> reject);
 
     /// <summary>
     /// Promise代表一個將完成（或失敗）的一個非同步操作，所產生的值。
     /// </summary>
     /// <typeparam name="T">回傳結果類型</typeparam>
+    [Obsolete("請使用RSG.Promise.Core替代")]
     public class Promise<T> {
         private event Action OnSuccess;
         private event Action OnError;
