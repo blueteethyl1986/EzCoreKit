@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
@@ -70,6 +71,33 @@ namespace EzCoreKit.AspNetCore {
         }
 
         /// <summary>
+        /// 加入簡易JWT Bearer驗證並使用Default Schema
+        /// </summary>
+        /// <param name="service">服務建構器</param>
+        /// <param name="signingKey">簽名金鑰</param>
+        /// <param name="signingAlgorithm">簽名演算法</param>
+        /// <param name="issuer">發行者</param>
+        /// <param name="audience">接收者</param>
+        /// <returns>驗證建構器</returns>
+        public static AuthenticationBuilder AddEzJwtBearerWithDefaultSchema(
+            this IServiceCollection service,
+            SecurityKey signingKey,
+            string signingAlgorithm,
+            string issuer,
+            string audience)
+        {
+            return service.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddEzJwtBearer(
+                signingKey,
+                signingAlgorithm,
+                issuer,
+                audience
+            );
+        }
+
+        /// <summary>
         /// 產生Token
         /// </summary>
         /// <param name="expires">過期時間</param>
@@ -89,5 +117,6 @@ namespace EzCoreKit.AspNetCore {
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
     }
 }
