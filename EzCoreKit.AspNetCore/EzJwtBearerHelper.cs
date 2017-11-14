@@ -118,5 +118,60 @@ namespace EzCoreKit.AspNetCore {
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        #region 多載
+
+        /// <summary>
+        /// 加入簡易JWT Bearer驗證
+        /// </summary>
+        /// <param name="builder">驗證建構器</param>
+        /// <param name="signingKey">簽名金鑰</param>
+        /// <param name="signingAlgorithm">簽名演算法</param>
+        /// <param name="issuer">發行者</param>
+        /// <returns>驗證建構器</returns>
+        public static AuthenticationBuilder AddEzJwtBearer(
+            this AuthenticationBuilder builder,
+            SecurityKey signingKey,
+            string signingAlgorithm,
+            string issuer) => AddEzJwtBearer(builder, signingKey, signingAlgorithm, issuer, issuer);
+
+        /// <summary>
+        /// 加入簡易JWT Bearer驗證，並使用<see cref="SecurityAlgorithms.HmacSha256"/>作為簽名演算法
+        /// </summary>
+        /// <param name="builder">驗證建構器</param>
+        /// <param name="signingKey">簽名金鑰</param>
+        /// <param name="issuer">發行者</param>
+        /// <returns>驗證建構器</returns>
+        public static AuthenticationBuilder AddEzJwtBearer(
+            this AuthenticationBuilder builder,
+            SecurityKey signingKey,
+            string issuer) => AddEzJwtBearer(builder, signingKey, SecurityAlgorithms.HmacSha256, issuer);
+        
+        /// <summary>
+        /// 加入簡易JWT Bearer驗證並使用Default Schema
+        /// </summary>
+        /// <param name="service">服務建構器</param>
+        /// <param name="signingKey">簽名金鑰</param>
+        /// <param name="signingAlgorithm">簽名演算法</param>
+        /// <param name="issuer">發行者</param>
+        /// <returns>驗證建構器</returns>
+        public static AuthenticationBuilder AddEzJwtBearerWithDefaultSchema(
+            this IServiceCollection service,
+            SecurityKey signingKey,
+            string signingAlgorithm,
+            string issuer) => AddEzJwtBearerWithDefaultSchema(service, signingKey, signingAlgorithm, issuer, issuer);
+
+        /// <summary>
+        /// 加入簡易JWT Bearer驗證並使用Default Schema，並使用<see cref="SecurityAlgorithms.HmacSha256"/>作為簽名演算法
+        /// </summary>
+        /// <param name="service">服務建構器</param>
+        /// <param name="signingKey">簽名金鑰</param>
+        /// <param name="issuer">發行者</param>
+        /// <returns>驗證建構器</returns>
+        public static AuthenticationBuilder AddEzJwtBearerWithDefaultSchema(
+            this IServiceCollection service,
+            SecurityKey signingKey,
+            string issuer) => AddEzJwtBearerWithDefaultSchema(service, signingKey, SecurityAlgorithms.HmacSha256, issuer);
+
+        #endregion
     }
 }
