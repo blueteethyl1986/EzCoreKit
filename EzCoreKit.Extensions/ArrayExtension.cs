@@ -85,5 +85,28 @@ namespace EzCoreKit.Extensions {
                 obj.SetValue(value, i);
             }
         }
+
+        /// <summary>
+        /// 提取陣列中指定的區段
+        /// </summary>
+        /// <typeparam name="T">陣列元素型別</typeparam>
+        /// <param name="obj">目前實例</param>
+        /// <param name="index">起始索引</param>
+        /// <param name="length">長度</param>
+        /// <returns>提取區段</returns>
+        public static Span<T> SpanSlice<T>(this T[] obj, int index, int length) {
+            return obj.AsSpan().Slice(index, length);
+        }
+
+        /// <summary>
+        /// 提取陣列中指定的區段
+        /// </summary>
+        /// <typeparam name="T">陣列元素型別</typeparam>
+        /// <param name="obj">目前實例</param>
+        /// <param name="index">起始索引</param>
+        /// <returns>提取區段</returns>
+        public static Span<T> SpanSlice<T>(this T[] obj, int index) {
+            return obj.AsSpan().Slice(index);
+        }
     }
 }
