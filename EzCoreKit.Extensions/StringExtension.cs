@@ -15,11 +15,14 @@ namespace EzCoreKit.Extensions {
         /// <param name="startIndex">起始索引</param>
         /// <param name="length">擷取子字串最長長度</param>
         /// <returns>子字串</returns>
-        public static string SafeSubstring(this string obj, int startIndex, int length) {
-            if (obj.Length >= startIndex) return string.Empty;
+        public static string SafeSubstring(this string obj, int startIndex, int? length = null) {
+            if (!length.HasValue) length = obj.Length;
+            if (obj.Length <= startIndex) return string.Empty;
+            if (startIndex < 0) startIndex = 0;
+            if (length < 0) length = 0;
             string result = obj.Substring(startIndex);
-            length = Math.Min(result.Length, length);
-            return result.Substring(0, length);
+            length = Math.Min(result.Length, length.Value);
+            return result.Substring(0, length.Value);
         }
 
         /// <summary>
@@ -74,8 +77,8 @@ namespace EzCoreKit.Extensions {
         /// <param name="end">結束字串</param>
         /// <returns>字串間的字串</returns>
         public static string InnerString(this string obj, string start, string end) {
-            string result = obj.Substring(obj.IndexOf(start) + start.Length);
-            return result.Substring(0, result.IndexOf(end));
+            string result = obj.SafeSubstring(obj.IndexOf(start) + start.Length);
+            return result.SafeSubstring(0, result.IndexOf(end));
         }
     }
 }
