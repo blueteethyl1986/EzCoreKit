@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace EzCoreKit.Extensions {
     /// <summary>
@@ -79,6 +80,15 @@ namespace EzCoreKit.Extensions {
         public static string InnerString(this string obj, string start, string end) {
             string result = obj.SafeSubstring(obj.IndexOf(start) + start.Length);
             return result.SafeSubstring(0, result.IndexOf(end));
+        }
+
+        /// <summary>
+        /// 轉字串
+        /// </summary>
+        /// <param name="obj">目前實例</param>
+        /// <returns>Span轉字串結果</returns>
+        public static string ToString(Span<char> obj) {
+            return new string(obj.ToArray());
         }
     }
 }

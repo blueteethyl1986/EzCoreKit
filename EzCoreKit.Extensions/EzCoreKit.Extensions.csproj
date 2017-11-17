@@ -23,4 +23,8 @@
     <DocumentationFile>bin\Release\netstandard2.0\EzCoreKit.Extensions.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Memory" Version="4.4.0-preview2-25405-01" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using EzCoreKit.Extensions;
 using Xunit;
 using System.Linq;
@@ -83,6 +83,15 @@ namespace EzCoreKit.Test.Extensions {
                 arys.SetValue(i, index);
                 Assert.Equal(arys.GetValue(index), i);
             }
+        }
+
+        [Fact(DisplayName = "Extensions.Array.SpanSlice")]
+        public void Array_SpanSlice() {
+            int[] ary = Enumerable.Range(0, 10).ToArray();
+
+            ary.SpanSlice(0, 2).Fill(123);// 將前兩項設為 123
+
+            Assert.Equal(ary[0], 123);
         }
     }
 }
