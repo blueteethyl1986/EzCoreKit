@@ -34,6 +34,11 @@ namespace EzCoreKit.AspNetCore {
         public static string Audience { get; private set; }
 
         /// <summary>
+        /// JWT Bearer事件
+        /// </summary>
+        public static JwtBearerEvents Events { get; set; }
+
+        /// <summary>
         /// 加入簡易JWT Bearer驗證
         /// </summary>
         /// <param name="builder">驗證建構器</param>
@@ -41,21 +46,24 @@ namespace EzCoreKit.AspNetCore {
         /// <param name="signingAlgorithm">簽名演算法</param>
         /// <param name="issuer">發行者</param>
         /// <param name="audience">接收者</param>
+        /// <param name="validateLifetime">是否檢驗過期</param>
         /// <returns>驗證建構器</returns>
         public static AuthenticationBuilder AddEzJwtBearer(
             this AuthenticationBuilder builder,
             SecurityKey signingKey,
             string signingAlgorithm,
             string issuer,
-            string audience){
+            string audience,
+            bool validateLifetime = false) {
             EzJwtBearerHelper.SigningKey = signingKey;
             EzJwtBearerHelper.SigningAlgorithm = signingAlgorithm ?? SecurityAlgorithms.HmacSha256;
             EzJwtBearerHelper.Issuer = audience ?? issuer;
             EzJwtBearerHelper.Audience = audience;
-            
+
             return builder.AddJwtBearer(o => {
                 o.IncludeErrorDetails = true;
                 o.SaveToken = true;
+                o.Events = EzJwtBearerHelper.Events;
 
                 o.TokenValidationParameters = new TokenValidationParameters() {
                     IssuerSigningKey = signingKey,
@@ -65,7 +73,7 @@ namespace EzCoreKit.AspNetCore {
                     ValidateIssuerSigningKey = true,
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidateLifetime = true
+                    ValidateLifetime = validateLifetime
                 };
             });
         }
@@ -78,14 +86,15 @@ namespace EzCoreKit.AspNetCore {
         /// <param name="signingAlgorithm">簽名演算法</param>
         /// <param name="issuer">發行者</param>
         /// <param name="audience">接收者</param>
+        /// <param name="validateLifetime">是否檢驗過期</param>
         /// <returns>驗證建構器</returns>
         public static AuthenticationBuilder AddEzJwtBearerWithDefaultSchema(
             this IServiceCollection service,
             SecurityKey signingKey,
             string signingAlgorithm,
             string issuer,
-            string audience)
-        {
+            string audience,
+            bool validateLifetime = false) {
             return service.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -93,7 +102,8 @@ namespace EzCoreKit.AspNetCore {
                 signingKey,
                 signingAlgorithm,
                 issuer,
-                audience
+                audience,
+                validateLifetime
             );
         }
 
@@ -105,7 +115,7 @@ namespace EzCoreKit.AspNetCore {
         /// <returns>Token字串</returns>
         public static string GenerateToken(DateTime expires, params Claim[] claims) {
             var creds = new SigningCredentials(
-                EzJwtBearerHelper.SigningKey, 
+                EzJwtBearerHelper.SigningKey,
                 EzJwtBearerHelper.SigningAlgorithm);
 
             var token = new JwtSecurityToken(
@@ -127,12 +137,15 @@ namespace EzCoreKit.AspNetCore {
         /// <param name="signingKey">簽名金鑰</param>
         /// <param name="signingAlgorithm">簽名演算法</param>
         /// <param name="issuer">發行者</param>
+        /// <param name="validateLifetime">檢驗是否過期，預設為<see cref="false"/></param>
         /// <returns>驗證建構器</returns>
         public static AuthenticationBuilder AddEzJwtBearer(
             this AuthenticationBuilder builder,
             SecurityKey signingKey,
             string signingAlgorithm,
-            string issuer) => AddEzJwtBearer(builder, signingKey, signingAlgorithm, issuer, issuer);
+            string issuer,
+            bool validateLifetime = false)
+            => AddEzJwtBearer(builder, signingKey, signingAlgorithm, issuer, issuer, validateLifetime);
 
         /// <summary>
         /// 加入簡易JWT Bearer驗證，並使用<see cref="SecurityAlgorithms.HmacSha256"/>作為簽名演算法
@@ -140,12 +153,15 @@ namespace EzCoreKit.AspNetCore {
         /// <param name="builder">驗證建構器</param>
         /// <param name="signingKey">簽名金鑰</param>
         /// <param name="issuer">發行者</param>
+        /// <param name="validateLifetime">檢驗是否過期，預設為<see cref="false"/></param>
         /// <returns>驗證建構器</returns>
         public static AuthenticationBuilder AddEzJwtBearer(
             this AuthenticationBuilder builder,
             SecurityKey signingKey,
-            string issuer) => AddEzJwtBearer(builder, signingKey, SecurityAlgorithms.HmacSha256, issuer);
-        
+            string issuer,
+            bool validateLifetime = false)
+            => AddEzJwtBearer(builder, signingKey, SecurityAlgorithms.HmacSha256, issuer, validateLifetime);
+
         /// <summary>
         /// 加入簡易JWT Bearer驗證並使用Default Schema
         /// </summary>
@@ -153,12 +169,15 @@ namespace EzCoreKit.AspNetCore {
         /// <param name="signingKey">簽名金鑰</param>
         /// <param name="signingAlgorithm">簽名演算法</param>
         /// <param name="issuer">發行者</param>
+        /// <param name="validateLifetime">檢驗是否過期，預設為<see cref="false"/></param>
         /// <returns>驗證建構器</returns>
         public static AuthenticationBuilder AddEzJwtBearerWithDefaultSchema(
             this IServiceCollection service,
             SecurityKey signingKey,
             string signingAlgorithm,
-            string issuer) => AddEzJwtBearerWithDefaultSchema(service, signingKey, signingAlgorithm, issuer, issuer);
+            string issuer,
+            bool validateLifetime = false)
+            => AddEzJwtBearerWithDefaultSchema(service, signingKey, signingAlgorithm, issuer, issuer, validateLifetime);
 
         /// <summary>
         /// 加入簡易JWT Bearer驗證並使用Default Schema，並使用<see cref="SecurityAlgorithms.HmacSha256"/>作為簽名演算法
@@ -166,11 +185,14 @@ namespace EzCoreKit.AspNetCore {
         /// <param name="service">服務建構器</param>
         /// <param name="signingKey">簽名金鑰</param>
         /// <param name="issuer">發行者</param>
+        /// <param name="validateLifetime">檢驗是否過期，預設為<see cref="false"/></param>
         /// <returns>驗證建構器</returns>
         public static AuthenticationBuilder AddEzJwtBearerWithDefaultSchema(
             this IServiceCollection service,
             SecurityKey signingKey,
-            string issuer) => AddEzJwtBearerWithDefaultSchema(service, signingKey, SecurityAlgorithms.HmacSha256, issuer);
+            string issuer,
+            bool validateLifetime = false)
+            => AddEzJwtBearerWithDefaultSchema(service, signingKey, SecurityAlgorithms.HmacSha256, issuer, validateLifetime);
 
         #endregion
     }
