@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace EzCoreKit.AspNetCore {
     /// <summary>
-    /// 提供簡易Bearer的JWT Toekn實作
+    /// 提供簡易Bearer的JWT Toekn實作與驗證方法
     /// </summary>
     public static class EzJwtBearerHelper {
         /// <summary>
@@ -37,6 +37,40 @@ namespace EzCoreKit.AspNetCore {
         /// JWT Bearer事件
         /// </summary>
         public static JwtBearerEvents Events { get; set; }
+
+        private static JwtBearerOptions _jwtOptions;
+
+        /// <summary>
+        /// 驗證輸入Token字串是否合法，並取得身分識別資訊
+        /// </summary>
+        /// <param name="token">Token字串</param>
+        /// <returns>身分識別資訊</returns>
+        public static ClaimsPrincipal ValidToken(string token) {
+            // copy from https://stackoverflow.com/questions/41785249/how-to-validate-jwt-during-websocket-request-net-core
+            List<Exception> validationFailures = null;
+            SecurityToken validatedToken;
+            foreach (var validator in _jwtOptions.SecurityTokenValidators) {
+                if (validator.CanReadToken(token)) {
+                    ClaimsPrincipal principal;
+                    try {
+                        principal = validator.ValidateToken(token, _jwtOptions.TokenValidationParameters, out validatedToken);
+                    } catch (Exception ex) {
+                        // Refresh the configuration for exceptions that may be caused by key rollovers. The user can also request a refresh in the event.
+                        if (_jwtOptions.RefreshOnIssuerKeyNotFound && _jwtOptions.ConfigurationManager != null
+                            && ex is SecurityTokenSignatureKeyNotFoundException) {
+                            _jwtOptions.ConfigurationManager.RequestRefresh();
+                        }
+
+                        if (validationFailures == null)
+                            validationFailures = new List<Exception>(1);
+                        validationFailures.Add(ex);
+                        continue;
+                    }
+                    return principal;
+                }
+            }
+            return null;
+        }
 
         /// <summary>
         /// 加入簡易JWT Bearer驗證
@@ -75,6 +109,8 @@ namespace EzCoreKit.AspNetCore {
                     ValidateAudience = true,
                     ValidateLifetime = validateLifetime
                 };
+
+                _jwtOptions = o;
             });
         }
 
