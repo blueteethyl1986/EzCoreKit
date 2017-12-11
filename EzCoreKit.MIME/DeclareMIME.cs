@@ -45,7 +45,7 @@ namespace EzCoreKit.MIME {
             }
             return result.ToArray();
         }
-        
+
         /// <summary>
         /// 使用MIME名稱查詢對應的MIME
         /// </summary>
@@ -55,14 +55,14 @@ namespace EzCoreKit.MIME {
             var fields = typeof(DeclareMIME).GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
             name = name.ToLower();
             foreach (var field in fields) {
-                if(field.Name.ToLower() == name ||
+                if (field.Name.ToLower() == name ||
                    field.GetCustomAttributes<AliasAttribute>().Any(x => x.Name.ToLower() == name)) {
                     return (string)field.GetValue(null);
                 }
             }
             return null;
         }
-        
+
         /// <summary>
         /// 取得<see cref="DeclareMIME"/>類別內定義的所有MIME名稱列表
         /// </summary>
@@ -70,7 +70,7 @@ namespace EzCoreKit.MIME {
         public static string[] GetMIMENameList() {
             List<string> result = new List<string>();
             var fields = typeof(DeclareMIME).GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
-            foreach(var field in fields) {
+            foreach (var field in fields) {
                 result.Add(field.Name);
             }
             return result.ToArray();
@@ -102,7 +102,7 @@ namespace EzCoreKit.MIME {
             var result = new List<string>();
             var fields = typeof(DeclareMIME).GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
             foreach (var field in fields) {
-                if(field.GetValue(null) == mime) {
+                if (mime.Equals(field.GetValue(null))) {
                     result.Add(field.Name);
                 }
             }
@@ -118,7 +118,7 @@ namespace EzCoreKit.MIME {
             var result = new List<string>();
             var fields = typeof(DeclareMIME).GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
             foreach (var field in fields) {
-                if (field.GetValue(null) == mime) {
+                if (mime.Equals(field.GetValue(null))) {
                     result.AddRange(
                         field.GetCustomAttributes<FileExtNameAttribute>().Select(x => x.FileExtension)
                     );
@@ -148,12 +148,12 @@ namespace EzCoreKit.MIME {
                     Portable_Network_Graphics_PNG,
                     WAP_Bitamp_WBMP,
                     Tagged_Image_File_Format,
-                    JPEG_2000_Compound_Image_File_Format,                    
+                    JPEG_2000_Compound_Image_File_Format,
                     FlashPix
                 };
             }
         }
-        
+
         /// <summary>
         /// 常見圖片類型副檔名
         /// </summary>
